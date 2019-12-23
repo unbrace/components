@@ -18,6 +18,13 @@
   },
   "homepage": "https://github.com/unbrace/components#readme",
   "dependencies": {
-    "np": "^5.2.1"
-  }
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "np": "^5.2.1",
+    "typescript": "^3.7.4",
+    "@types/react": "^16.9.15",
+    "@types/react-dom": "^16.9.2"
+  },
+  "typings": "index.d.ts"
 }
