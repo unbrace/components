@@ -2,7 +2,7 @@
   "name": "@unbrace/components",
   "version": "0.0.2",
   "description": "Frontend components used by Unbrace",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "publish": "np",
     "test": "echo \"Error: no test specified\""
