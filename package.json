@@ -1,6 +1,6 @@
 {
   "name": "@unbrace/components",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "description": "Frontend components used by Unbrace",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -29,9 +29,9 @@
     "@types/react-dom": "^16.9.4",
     "@types/styled-components": "^4.4.0",
     "np": "^5.2.1",
-    "typescript": "^3.7.4",
     "rollup": "^1.27.5",
-    "rollup-plugin-typescript2": "^0.25.2"
+    "rollup-plugin-typescript2": "^0.25.2",
+    "typescript": "^3.7.4"
   },
   "typings": "index.d.ts"
 }
