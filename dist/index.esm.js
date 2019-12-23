@@ -1,5 +1,6 @@
 import React__default, { createElement, createRef, PureComponent, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import merge from 'lodash.merge';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -103,8 +104,11 @@ var defaultTheme = {
     }
 };
 var Badge = function (props) {
-    var theme = useContext(ThemeContext);
-    return React__default.createElement(StyledBadge, __assign({}, props, { theme: theme || defaultTheme }));
+    var providedTheme = useContext(ThemeContext);
+    var theme = providedTheme
+        ? merge(defaultTheme, providedTheme)
+        : defaultTheme;
+    return React__default.createElement(StyledBadge, __assign({}, props, { theme: theme }));
 };
 var StyledBadge = styled("div")(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  align-self: center;\n  display: inline-block;\n  border-radius: ", ";\n  font-size: ", ";\n  font-weight: ", ";\n  letter-spacing: ", ";\n  max-height: 100%;\n  padding: ", ";\n  text-align: center;\n  text-transform: ", ";\n\n  &:first-letter {\n    text-transform: ", ";\n  }\n\n  ", ";\n  ", ";\n\n  ", "\n  ", ";\n\n  ", "\n  ", ";\n\n  ", "\n  ", ";\n\n  ", "\n  ", ";\n"], ["\n  align-self: center;\n  display: inline-block;\n  border-radius: ", ";\n  font-size: ",
     ";\n  font-weight: ", ";\n  letter-spacing: ", ";\n  max-height: 100%;\n  padding: ",
