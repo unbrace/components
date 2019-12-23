@@ -1,5 +1,6 @@
 import styled, { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
+import merge from "lodash.merge";
 
 type Props = {
   capitalize?: boolean;
@@ -42,9 +43,12 @@ const defaultTheme = {
 };
 
 const Badge: React.FunctionComponent<Props> = (props: Props) => {
-  const theme = useContext(ThemeContext);
+  const providedTheme = useContext(ThemeContext);
+  const theme = providedTheme
+    ? merge(defaultTheme, providedTheme)
+    : defaultTheme;
 
-  return <StyledBadge {...props} theme={theme || defaultTheme} />;
+  return <StyledBadge {...props} theme={theme} />;
 };
 
 const StyledBadge = styled("div")<Props>`
