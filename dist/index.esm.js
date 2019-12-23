@@ -108,7 +108,6 @@ var Badge = function (props) {
     var theme = providedTheme
         ? merge(defaultTheme, providedTheme)
         : defaultTheme;
-    console.log("theme", theme);
     return React__default.createElement(StyledBadge, __assign({}, props, { theme: theme }));
 };
 var StyledBadge = styled("div")(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  align-self: center;\n  display: inline-block;\n  border-radius: ", ";\n  font-size: ", ";\n  font-weight: ", ";\n  letter-spacing: ", ";\n  max-height: 100%;\n  padding: ", ";\n  text-align: center;\n  text-transform: ", ";\n\n  &:first-letter {\n    text-transform: ", ";\n  }\n\n  ", ";\n  ", ";\n\n  ", "\n  ", ";\n\n  ", "\n  ", ";\n\n  ", "\n  ", ";\n\n  ", "\n  ", ";\n"], ["\n  align-self: center;\n  display: inline-block;\n  border-radius: ", ";\n  font-size: ",
