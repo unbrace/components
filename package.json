@@ -4,6 +4,7 @@
   "description": "Frontend components used by Unbrace",
   "main": "index.js",
   "scripts": {
+    "publish": "np",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
