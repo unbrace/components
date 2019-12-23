@@ -1,18 +1,20 @@
-import * as React from 'react';
+import * as React from "react";
 
-type Props = {
+export interface Props {
   clickOutsideHandler: () => void;
-};
+}
 
 export default class ClickOutside extends React.PureComponent<Props> {
-  private wrapperNode: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
+  private wrapperNode: React.RefObject<HTMLDivElement> = React.createRef<
+    HTMLDivElement
+  >();
 
   componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutside);
+    document.addEventListener("mousedown", this.handleClickOutside);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside);
+    document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
   handleClickOutside = (event: MouseEvent) => {

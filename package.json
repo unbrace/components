@@ -2,8 +2,10 @@
   "name": "@unbrace/components",
   "version": "0.0.5",
   "description": "Frontend components used by Unbrace",
-  "main": "index.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "scripts": {
+    "build": "rollup -c",
     "publish-np": "np",
     "test": "echo \"Error: no test specified\""
   },
@@ -17,14 +19,19 @@
     "url": "https://github.com/unbrace/components/issues"
   },
   "homepage": "https://github.com/unbrace/components#readme",
-  "dependencies": {
-    "react": "^16.12.0"
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
-    "@types/react": "^16.9.15",
-    "@types/react-dom": "^16.9.2",
+    "@types/react": "^16.9.13",
+    "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^4.4.0",
     "np": "^5.2.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "rollup": "^1.27.5",
+    "rollup-plugin-typescript2": "^0.25.2"
   },
   "typings": "index.d.ts"
 }
