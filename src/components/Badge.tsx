@@ -47,6 +47,7 @@ const Badge: React.FunctionComponent<Props> = (props: Props) => {
   const theme = providedTheme
     ? merge(defaultTheme, providedTheme)
     : defaultTheme;
+  console.log("theme", theme);
 
   return <StyledBadge {...props} theme={theme} />;
 };
