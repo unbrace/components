@@ -6,7 +6,7 @@
   "module": "dist/index.esm.js",
   "scripts": {
     "build": "rollup -c",
-    "publish-np": "np",
+    "publish-np": "npm run build && np",
     "test": "echo \"Error: no test specified\""
   },
   "repository": {
