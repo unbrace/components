@@ -7,12 +7,12 @@ export default [
     external: Object.keys(pkg.peerDependencies || {}),
     plugins: [
       typescript({
-        typescript: require('typescript')
-      })
+        typescript: require('typescript'),
+      }),
     ],
     output: [
       { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'esm' }
-    ]
-  }
+      { file: pkg.module, format: 'esm' },
+    ],
+  },
 ];

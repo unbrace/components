@@ -10,7 +10,7 @@
     "lint-fix": "eslint src/**/*.{ts,tsx,js} --fix",
     "publish-np": "npm run build && np",
     "test": "echo \"Error: no test specified\"",
-    "storybook": "rollup -c rollup.story.config.js && start-storybook"
+    "storybook": "start-storybook -p 6006 -c .storybook"
   },
   "repository": {
     "type": "git",

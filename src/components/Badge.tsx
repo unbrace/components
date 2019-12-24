@@ -1,17 +1,17 @@
 import styled, { ThemeContext } from 'styled-components';
-import React, { useContext } from 'react';
+import * as React from 'react';
 import merge from 'lodash.merge';
 import { componentTheme, ComponentTheme } from '../theme';
 
 type Props = {
+  color?: 'danger' | 'success' | 'warning' | 'primary' | 'secondary';
   isCapitalized?: boolean;
   onlyText?: boolean;
-  color?: 'danger' | 'success' | 'warning' | 'primary' | 'secondary';
   size?: 'xsmall' | 'small' | 'large';
 };
 
 const Badge: React.FunctionComponent<Props> = (props: Props) => {
-  const providedTheme = useContext(ThemeContext);
+  const providedTheme = React.useContext(ThemeContext);
   const theme: ComponentTheme = providedTheme ? merge(componentTheme, providedTheme) : componentTheme;
 
   return <StyledBadge {...props} theme={theme} />;
