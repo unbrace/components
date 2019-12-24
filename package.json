@@ -5,10 +5,10 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c rollup.config.js",
     "publish-np": "npm run build && np",
     "test": "echo \"Error: no test specified\"",
-    "showme": "start-storybook"
+    "showme": "rollup -c rollup.story.config.js && start-storybook"
   },
   "repository": {
     "type": "git",
