@@ -6,7 +6,7 @@ import { componentTheme } from "../theme";
 type Props = {
   isCapitalized?: boolean;
   onlyText?: boolean;
-  type?: "danger" | "success" | "warning" | "primary" | "secondary";
+  color?: "danger" | "success" | "warning" | "primary" | "secondary";
   size?: "xsmall" | "small" | "large";
 };
 
@@ -45,33 +45,33 @@ const StyledBadge = styled("div")<Props>`
     text-transform: ${props => props.isCapitalized && "uppercase"};
   }
 
-  ${props => props.type === "primary" && props.theme.badge.color.primary};
+  ${props => props.color === "primary" && props.theme.badge.color.primary};
   ${props =>
-    props.type === "primary" &&
+    props.color === "primary" &&
     !props.onlyText &&
     props.theme.badge.background.primary};
 
-  ${props => props.type === "secondary" && props.theme.badge.color.secondary}
+  ${props => props.color === "secondary" && props.theme.badge.color.secondary}
   ${props =>
-    props.type === "secondary" &&
+    props.color === "secondary" &&
     !props.onlyText &&
     props.theme.badge.background.secondary};
 
-  ${props => props.type === "success" && props.theme.badge.color.success}
+  ${props => props.color === "success" && props.theme.badge.color.success}
   ${props =>
-    props.type === "success" &&
+    props.color === "success" &&
     !props.onlyText &&
     props.theme.badge.background.success};
 
-  ${props => props.type === "warning" && props.theme.badge.color.warning}
+  ${props => props.color === "warning" && props.theme.badge.color.warning}
   ${props =>
-    props.type === "warning" &&
+    props.color === "warning" &&
     !props.onlyText &&
     props.theme.badge.background.warning};
 
-  ${props => props.type === "danger" && props.theme.badge.color.danger}
+  ${props => props.color === "danger" && props.theme.badge.color.danger}
   ${props =>
-    props.type === "danger" &&
+    props.color === "danger" &&
     !props.onlyText &&
     props.theme.badge.background.danger};
 `;
