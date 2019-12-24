@@ -1,7 +1,7 @@
 import styled, { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import merge from "lodash.merge";
-import { componentTheme } from "../theme";
+import { componentTheme, ComponentTheme } from "../theme";
 
 type Props = {
   isCapitalized?: boolean;
@@ -12,7 +12,7 @@ type Props = {
 
 const Badge: React.FunctionComponent<Props> = (props: Props) => {
   const providedTheme = useContext(ThemeContext);
-  const theme = providedTheme
+  const theme: ComponentTheme = providedTheme
     ? merge(componentTheme, providedTheme)
     : componentTheme;
 
@@ -22,22 +22,22 @@ const Badge: React.FunctionComponent<Props> = (props: Props) => {
 const StyledBadge = styled("div")<Props>`
   align-self: center;
   display: inline-block;
-  border-radius: ${props => props.theme.badge.borderRadius};
+  border-radius: ${props => props.theme.badge.borderRadius.main};
   font-size: ${props =>
     props.size === "xsmall"
-      ? props.theme.badge.fontSizeXSmall
-      : props.theme.badge.fontSize};
-  font-weight: ${props => props.theme.badge.fontWeight};
+      ? props.theme.badge.fontSize.xsmall
+      : props.theme.badge.fontSize.main};
+  font-weight: ${props => props.theme.badge.fontWeight.main};
   letter-spacing: ${props => (props.isCapitalized ? "normal" : "2px")};
   max-height: 100%;
   padding: ${props =>
     props.onlyText
       ? "0px"
       : props.size === "large"
-      ? props.theme.badge.paddingLarge
+      ? props.theme.badge.padding.large
       : props.size === "small" || props.size === "xsmall"
-      ? props.theme.badge.paddingSmall
-      : props.theme.badge.padding};
+      ? props.theme.badge.padding.small
+      : props.theme.badge.padding.main};
   text-align: center;
   text-transform: ${props => (props.isCapitalized ? "lowercase" : "uppercase")};
 
