@@ -14,7 +14,7 @@ export default [
       { file: pkg.main, format: 'cjs' },
       { file: pkg.module, format: 'esm' },
       {
-        file: 'src/stories/index.js',
+        file: 'compiled-components/index.js',
         format: 'es',
         banner: '/* eslint-disable */'
       }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ClickOutside } from './';
+import { ClickOutside } from '../../compiled-components';
 
 export default { title: 'Button' };
 
