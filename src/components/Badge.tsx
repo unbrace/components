@@ -6,8 +6,8 @@ import { componentTheme } from "../theme";
 type Props = {
   isCapitalized?: boolean;
   onlyText?: boolean;
-  type: "danger" | "success" | "warning" | "primary" | "secondary";
-  size: "xsmall" | "small" | "large";
+  type?: "danger" | "success" | "warning" | "primary" | "secondary";
+  size?: "xsmall" | "small" | "large";
 };
 
 const Badge: React.FunctionComponent<Props> = (props: Props) => {
