@@ -11,6 +11,7 @@
 # production
 /dist
 /build
+/storybook-static
 
 # misc
 .env
