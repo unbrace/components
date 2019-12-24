@@ -11,6 +11,7 @@
 # production
 /dist
 /build
+/bundled-compnents
 
 # misc
 .env
