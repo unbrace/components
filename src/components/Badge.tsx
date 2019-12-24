@@ -1,52 +1,20 @@
 import styled, { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import merge from "lodash.merge";
+import { componentTheme } from "../theme";
 
 type Props = {
-  capitalize?: boolean;
-  danger?: boolean;
-  large?: boolean;
+  isCapitalized?: boolean;
   onlyText?: boolean;
-  primary?: boolean;
-  secondary?: boolean;
-  small?: boolean;
-  xSmall?: boolean;
-  success?: boolean;
-  warning?: boolean;
-};
-
-const defaultTheme = {
-  badge: {
-    borderRadius: "25px",
-    fontSize: "13px",
-    fontSizeXSmall: "10px",
-    fontWeight: "500",
-    padding: "6px 23px",
-    paddingLarge: "10px 20px",
-    paddingSmall: "4px 14px",
-
-    background: {
-      danger: `background-color: #FEE4E3;`,
-      primary: `background-color: #E8FBFF;`,
-      secondary: `background-color: #F5F7FD;`,
-      success: `background-color: #E3FCEF;`,
-      warning: `background-color: #FFFFD8;`
-    },
-    color: {
-      danger: `color: #DF5858;`,
-      primary: `color: #0093B2;`,
-      secondary: `color: #686B82;`,
-      success: `color: #188A50;`,
-      warning: `color: #C57600;`
-    }
-  }
+  type: "danger" | "success" | "warning" | "primary" | "secondary";
+  size: "xsmall" | "small" | "large";
 };
 
 const Badge: React.FunctionComponent<Props> = (props: Props) => {
   const providedTheme = useContext(ThemeContext);
   const theme = providedTheme
-    ? merge(defaultTheme, providedTheme)
-    : defaultTheme;
+    ? merge(componentTheme, providedTheme)
+    : componentTheme;
 
   return <StyledBadge {...props} theme={theme} />;
 };
@@ -56,48 +24,56 @@ const StyledBadge = styled("div")<Props>`
   display: inline-block;
   border-radius: ${props => props.theme.badge.borderRadius};
   font-size: ${props =>
-    props.xSmall
+    props.size === "xsmall"
       ? props.theme.badge.fontSizeXSmall
       : props.theme.badge.fontSize};
   font-weight: ${props => props.theme.badge.fontWeight};
-  letter-spacing: ${props => (props.capitalize ? "normal" : "2px")};
+  letter-spacing: ${props => (props.isCapitalized ? "normal" : "2px")};
   max-height: 100%;
   padding: ${props =>
     props.onlyText
       ? "0px"
-      : props.large
+      : props.size === "large"
       ? props.theme.badge.paddingLarge
-      : props.small || props.xSmall
+      : props.size === "small" || props.size === "xsmall"
       ? props.theme.badge.paddingSmall
       : props.theme.badge.padding};
   text-align: center;
-  text-transform: ${props => (props.capitalize ? "lowercase" : "uppercase")};
+  text-transform: ${props => (props.isCapitalized ? "lowercase" : "uppercase")};
 
   &:first-letter {
-    text-transform: ${props => props.capitalize && "uppercase"};
+    text-transform: ${props => props.isCapitalized && "uppercase"};
   }
 
-  ${props => props.primary && props.theme.badge.color.primary};
+  ${props => props.type === "primary" && props.theme.badge.color.primary};
   ${props =>
-    props.primary && !props.onlyText && props.theme.badge.background.primary};
+    props.type === "primary" &&
+    !props.onlyText &&
+    props.theme.badge.background.primary};
 
-  ${props => props.secondary && props.theme.badge.color.secondary}
+  ${props => props.type === "secondary" && props.theme.badge.color.secondary}
   ${props =>
-    props.secondary &&
+    props.type === "secondary" &&
     !props.onlyText &&
     props.theme.badge.background.secondary};
 
-  ${props => props.success && props.theme.badge.color.success}
+  ${props => props.type === "success" && props.theme.badge.color.success}
   ${props =>
-    props.success && !props.onlyText && props.theme.badge.background.success};
+    props.type === "success" &&
+    !props.onlyText &&
+    props.theme.badge.background.success};
 
-  ${props => props.warning && props.theme.badge.color.warning}
+  ${props => props.type === "warning" && props.theme.badge.color.warning}
   ${props =>
-    props.warning && !props.onlyText && props.theme.badge.background.warning};
+    props.type === "warning" &&
+    !props.onlyText &&
+    props.theme.badge.background.warning};
 
-  ${props => props.danger && props.theme.badge.color.danger}
+  ${props => props.type === "danger" && props.theme.badge.color.danger}
   ${props =>
-    props.danger && !props.onlyText && props.theme.badge.background.danger};
+    props.type === "danger" &&
+    !props.onlyText &&
+    props.theme.badge.background.danger};
 `;
 
 export default Badge;

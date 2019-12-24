@@ -8,7 +8,7 @@
     "build": "rollup -c rollup.config.js",
     "publish-np": "npm run build && np",
     "test": "echo \"Error: no test specified\"",
-    "showme": "rollup -c rollup.story.config.js && start-storybook"
+    "storybook": "rollup -c rollup.story.config.js && start-storybook"
   },
   "repository": {
     "type": "git",
