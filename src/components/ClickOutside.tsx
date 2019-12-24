@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export interface Props {
-  clickOutsideHandler: () => void;
+  onOutsideClick: () => void;
 }
 
 export default class ClickOutside extends React.PureComponent<Props> {
@@ -24,7 +24,7 @@ export default class ClickOutside extends React.PureComponent<Props> {
       event.target instanceof Node &&
       !this.wrapperNode.current.contains(event.target)
     ) {
-      this.props.clickOutsideHandler();
+      this.props.onOutsideClick();
     } else {
       event.preventDefault();
       event.stopPropagation();
