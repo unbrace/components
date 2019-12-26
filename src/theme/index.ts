@@ -9,9 +9,10 @@ const baseTheme = {
 
 const componentTheme = {
   badge: getBadgeTheme(baseTheme),
+  ...baseTheme,
 };
 
 export type DefaultTheme = typeof baseTheme;
 export type ComponentTheme = typeof componentTheme;
 
-export { componentTheme };
+export { baseTheme, componentTheme };

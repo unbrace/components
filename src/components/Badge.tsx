@@ -1,7 +1,4 @@
-import styled, { ThemeContext } from 'styled-components';
-import * as React from 'react';
-import merge from 'lodash.merge';
-import { componentTheme, ComponentTheme } from '../theme';
+import styled from 'styled-components';
 
 type Props = {
   color?: 'danger' | 'success' | 'warning' | 'primary' | 'secondary';
@@ -10,14 +7,7 @@ type Props = {
   size?: 'xsmall' | 'small' | 'large';
 };
 
-const Badge: React.FunctionComponent<Props> = (props: Props) => {
-  const providedTheme = React.useContext(ThemeContext);
-  const theme: ComponentTheme = providedTheme ? merge(componentTheme, providedTheme) : componentTheme;
-
-  return <StyledBadge {...props} theme={theme} />;
-};
-
-const StyledBadge = styled('div')<Props>`
+export const Badge = styled('div')<Props>`
   align-self: center;
   background-color: ${props => !props.onlyText && props.theme.badge.background[`${props.color}`]};
   border-radius: ${props => props.theme.badge.borderRadius.main};
