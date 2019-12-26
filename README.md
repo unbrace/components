@@ -46,7 +46,7 @@ Button theme schema (found in storybook)
   }
 ```
 
-You own theme
+Your own theme
 
 ```javascript
 {

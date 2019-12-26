@@ -2,18 +2,18 @@ import { DefaultTheme } from '..';
 
 export const getBadgeTheme = (theme: DefaultTheme) => ({
   background: {
-    danger: `background-color: ${theme.palette.danger.shade1};`,
-    primary: `background-color: ${theme.palette.primary.shade1};`,
-    secondary: `background-color: ${theme.palette.neutral.shade1};`,
-    success: `background-color: ${theme.palette.success.shade1};`,
-    warning: `background-color: ${theme.palette.warning.shade1};`,
+    danger: theme.palette.danger.shade1,
+    primary: theme.palette.primary.shade1,
+    secondary: theme.palette.neutral.shade1,
+    success: theme.palette.success.shade1,
+    warning: theme.palette.warning.shade1,
   },
   color: {
-    danger: `color: ${theme.palette.danger.shade4};`,
-    primary: `color: ${theme.palette.primary.shade5};`,
-    secondary: `color: ${theme.palette.neutral.shade6};`,
-    success: `color: ${theme.palette.success.shade5};`,
-    warning: `color: ${theme.palette.warning.shade9};`,
+    danger: theme.palette.danger.shade4,
+    primary: theme.palette.primary.shade5,
+    secondary: theme.palette.neutral.shade6,
+    success: theme.palette.success.shade5,
+    warning: theme.palette.warning.shade9,
   },
   padding: {
     main: '6px 23px',
