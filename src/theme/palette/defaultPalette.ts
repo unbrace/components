@@ -68,4 +68,4 @@ const defaultPalette = {
   },
 };
 
-export { defaultPalette };
+export default defaultPalette;

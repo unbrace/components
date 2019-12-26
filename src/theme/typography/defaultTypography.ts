@@ -29,4 +29,4 @@ const defaultTypography = {
   },
 };
 
-export { defaultTypography };
+export default defaultTypography;
