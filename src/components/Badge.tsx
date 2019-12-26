@@ -19,7 +19,7 @@ const Badge: React.FunctionComponent<Props> = (props: Props) => {
 
 const StyledBadge = styled('div')<Props>`
   align-self: center;
-  background-color: ${props => props.theme.badge.background[`${props.color}`]};
+  background-color: ${props => !props.onlyText && props.theme.badge.background[`${props.color}`]};
   border-radius: ${props => props.theme.badge.borderRadius.main};
   color: ${props => props.theme.badge.color[`${props.color}`]};
   display: inline-block;
