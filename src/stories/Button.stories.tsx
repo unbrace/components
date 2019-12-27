@@ -2,16 +2,23 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Button, { SubmitButton } from '../components/Button';
 import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
+import styled from 'styled-components';
+
+const Spacer = styled.div`
+  > div {
+    margin: 10px;
+  }
+`;
 
 storiesOf('Button', module).add('colors', () => {
   return (
     <UnbraceThemeProvider>
-      <div>
+      <Spacer>
         <Button color="primary">primary</Button>
         <Button color="secondary">secondary</Button>
         <Button color="danger">danger</Button>
         <Button color="tertiary">tertiary</Button>
-      </div>
+      </Spacer>
     </UnbraceThemeProvider>
   );
 });

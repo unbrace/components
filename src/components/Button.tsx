@@ -62,9 +62,9 @@ const Button = styled.button<ButtonProps>`
 `;
 
 const SubmitButton: React.FunctionComponent<ButtonProps> = ({
-  isLoading,
   children,
   disabled,
+  isLoading,
   ...other
 }: ButtonProps) => (
   <Button disabled={disabled} isLoading={isLoading} type="submit" {...other}>

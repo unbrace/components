@@ -7,7 +7,7 @@ type Props = {
   size?: 'xsmall' | 'small' | 'large';
 };
 
-export const Badge = styled('div')<Props>`
+const Badge = styled('div')<Props>`
   align-self: center;
   background-color: ${props => !props.onlyText && props.theme.badge.background[`${props.color}`]};
   border-radius: ${props => props.theme.badge.borderRadius.main};

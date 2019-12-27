@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Badge } from '../components/Badge';
+import Badge from '../components/Badge';
 import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 
 const Spacer = styled.div`
