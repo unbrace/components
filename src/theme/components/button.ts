@@ -2,14 +2,18 @@ import { DefaultTheme } from '..';
 
 const getButtonTheme = (theme: DefaultTheme) => ({
   background: {
-    danger: theme.palette.danger.shade5,
-    dangerHover: theme.palette.danger.shade6,
-    primary: theme.palette.secondary.shade5,
-    primaryHover: theme.palette.secondary.shade6,
-    secondary: theme.palette.neutral.shade2,
-    secondaryHover: theme.palette.neutral.shade3,
-    tertiary: 'none',
-    tertiaryHover: theme.palette.neutral.shade2,
+    main: {
+      danger: theme.palette.danger.shade5,
+      primary: theme.palette.secondary.shade5,
+      secondary: theme.palette.neutral.shade2,
+      tertiary: 'none',
+    },
+    hover: {
+      danger: theme.palette.danger.shade6,
+      primary: theme.palette.secondary.shade6,
+      secondary: theme.palette.neutral.shade3,
+      tertiary: theme.palette.neutral.shade2,
+    },
   },
   borderRadius: {
     main: '5px',

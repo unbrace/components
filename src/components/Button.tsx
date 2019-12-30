@@ -12,7 +12,7 @@ export type ButtonProps = {
 };
 
 const Button = styled.button<ButtonProps>`
-  background: ${props => props.theme.button.background[`${props.color}`]};
+  background: ${props => props.theme.button.background.main[`${props.color}`]};
   border-radius: ${props => props.theme.button.borderRadius.main};
   border: none;
   box-shadow: ${props => props.theme.button.boxShadow[`${props.color}`]};
@@ -57,7 +57,7 @@ const Button = styled.button<ButtonProps>`
 
   &:active:hover,
   &:hover {
-    background: ${props => props.theme.button.background[`${props.color}Hover`]};
+    background: ${props => props.theme.button.background.hover[`${props.color}`]};
   }
 `;
 
