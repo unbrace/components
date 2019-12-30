@@ -31,7 +31,7 @@ const getButtonTheme = (theme: DefaultTheme) => ({
   padding: {
     main: '12px 25px',
   },
-  transition: `all ${theme.globals.transition}`,
+  transition: `all ${theme.globals.transition.main}`,
 });
 
 export default getButtonTheme;
