@@ -1,5 +1,6 @@
-import { getBadgeTheme } from './components/badge';
+import getBadgeTheme from './components/badge';
 import getButtonTheme from './components/button';
+import getIconButtonTheme from './components/iconButton';
 import globals from './components/globals';
 import defaultPalette from './palette/defaultPalette';
 import defaultTypography from './typography/defaultTypography';
@@ -13,6 +14,7 @@ const baseTheme = {
 const componentTheme = {
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
+  iconButton: getIconButtonTheme(baseTheme),
   ...baseTheme,
 };
 

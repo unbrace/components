@@ -4,14 +4,16 @@ const getButtonTheme = (theme: DefaultTheme) => ({
   background: {
     main: {
       danger: theme.palette.danger.shade5,
-      primary: theme.palette.secondary.shade5,
-      secondary: theme.palette.neutral.shade2,
+      neutral: theme.palette.neutral.shade3,
+      primary: theme.palette.primary.shade5,
+      secondary: theme.palette.secondary.shade5,
       tertiary: 'none',
     },
     hover: {
       danger: theme.palette.danger.shade6,
-      primary: theme.palette.secondary.shade6,
-      secondary: theme.palette.neutral.shade3,
+      neutral: theme.palette.neutral.shade4,
+      primary: theme.palette.primary.shade6,
+      secondary: theme.palette.secondary.shade6,
       tertiary: theme.palette.neutral.shade2,
     },
   },
@@ -20,13 +22,15 @@ const getButtonTheme = (theme: DefaultTheme) => ({
   },
   boxShadow: {
     danger: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.danger.shade3}`,
-    primary: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.secondary.shade3}`,
-    secondary: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.neutral.shade1}`,
+    primary: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.primary.shade3}`,
+    neutral: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.neutral.shade3}`,
+    secondary: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.secondary.shade1}`,
   },
   color: {
     danger: theme.palette.danger.shade1,
-    primary: theme.palette.secondary.shade1,
-    secondary: theme.palette.neutral.shade6,
+    neutral: theme.palette.neutral.shade7,
+    primary: theme.palette.primary.shade1,
+    secondary: theme.palette.secondary.shade1,
     tertiary: theme.palette.secondary.shade5,
   },
   fontSize: {

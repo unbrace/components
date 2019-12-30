@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 export type ButtonProps = {
   block?: boolean;
   children?: React.ReactNode;
-  color?: 'primary' | 'secondary' | 'tertiary' | 'danger';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'neutral';
   isDisabled?: boolean;
   isLoading?: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
