@@ -5,7 +5,7 @@ import { componentTheme } from '../theme';
 
 type Props = {
   children: React.ReactElement;
-  customTheme?: Record<string, string>;
+  customTheme?: object;
 };
 
 const UnbraceThemeProvider: React.FunctionComponent<Props> = ({ children, customTheme }: Props) => {
