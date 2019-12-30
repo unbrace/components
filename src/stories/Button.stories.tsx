@@ -5,7 +5,7 @@ import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 import styled from 'styled-components';
 
 const Spacer = styled.div`
-  > div {
+  > button {
     margin: 10px;
   }
 `;
@@ -23,7 +23,7 @@ storiesOf('Button', module).add('colors', () => {
   );
 });
 
-storiesOf('Button', module).add('submit Buttons', () => {
+storiesOf('Button', module).add('variants', () => {
   const [loading, setloading] = React.useState(false);
   const handleFakeLoading = () => {
     setloading(true);
@@ -32,9 +32,17 @@ storiesOf('Button', module).add('submit Buttons', () => {
 
   return (
     <UnbraceThemeProvider>
-      <SubmitButton isLoading={loading} onClick={handleFakeLoading} color="primary">
-        primary
-      </SubmitButton>
+      <Spacer>
+        <SubmitButton isLoading={loading} onClick={handleFakeLoading} color="primary">
+          Submit
+        </SubmitButton>
+        <Button disabled color="primary">
+          disabled
+        </Button>
+        <SubmitButton isLoading color="primary">
+          always loading
+        </SubmitButton>
+      </Spacer>
     </UnbraceThemeProvider>
   );
 });

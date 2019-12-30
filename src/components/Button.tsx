@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 
 export type ButtonProps = {
   block?: boolean;
-  color?: 'primary' | 'secondary' | 'tertiary' | 'danger';
   children?: React.ReactNode;
+  color?: 'primary' | 'secondary' | 'tertiary' | 'danger';
   disabled?: boolean;
   isLoading?: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
@@ -13,7 +13,7 @@ export type ButtonProps = {
 
 const Button = styled.button<ButtonProps>`
   background: ${props => props.theme.button.background[`${props.color}`]};
-  border-radius: ${props => props.theme.button.borderRadius};
+  border-radius: ${props => props.theme.button.borderRadius.main};
   border: none;
   box-shadow: ${props => props.theme.button.boxShadow[`${props.color}`]};
   color: ${props => props.theme.button.color[`${props.color}`]};
@@ -23,7 +23,7 @@ const Button = styled.button<ButtonProps>`
   font-size: ${props => props.theme.button.fontSize.main};
   font-weight: 500;
   justify-content: center;
-  padding: ${props => props.theme.button.padding};
+  padding: ${props => props.theme.button.padding.main};
   position: relative;
   text-align: center;
   transition: ${props => props.theme.button.transition};

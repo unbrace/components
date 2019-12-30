@@ -11,7 +11,9 @@ const getButtonTheme = (theme: DefaultTheme) => ({
     tertiary: 'none',
     tertiaryHover: theme.palette.neutral.shade2,
   },
-  borderRadius: '5px',
+  borderRadius: {
+    main: '5px',
+  },
   boxShadow: {
     danger: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.danger.shade3}`,
     primary: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.secondary.shade3}`,
@@ -26,7 +28,9 @@ const getButtonTheme = (theme: DefaultTheme) => ({
   fontSize: {
     main: theme.typography.fontSize.regular,
   },
-  padding: '12px 25px',
+  padding: {
+    main: '12px 25px',
+  },
   transition: `all ${theme.globals.transition}`,
 });
 
