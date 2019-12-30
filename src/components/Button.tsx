@@ -5,7 +5,7 @@ export type ButtonProps = {
   block?: boolean;
   children?: React.ReactNode;
   color?: 'primary' | 'secondary' | 'tertiary' | 'danger';
-  disabled?: boolean;
+  isDisabled?: boolean;
   isLoading?: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   type?: 'button' | 'reset' | 'submit' | undefined;
@@ -29,7 +29,7 @@ const Button = styled.button<ButtonProps>`
   transition: ${props => props.theme.button.transition};
 
   ${props =>
-    !props.disabled &&
+    !props.isDisabled &&
     css`
       &:focus,
       &:hover {
@@ -42,7 +42,7 @@ const Button = styled.button<ButtonProps>`
   }
 
   ${props => props.block && 'width: 100%;'};
-  ${props => props.disabled && 'opacity: 0.6; cursor: not-allowed;'};
+  ${props => props.isDisabled && 'opacity: 0.6; cursor: not-allowed;'};
 
   ${props =>
     props.isLoading &&
@@ -63,11 +63,11 @@ const Button = styled.button<ButtonProps>`
 
 const SubmitButton: React.FunctionComponent<ButtonProps> = ({
   children,
-  disabled,
+  isDisabled,
   isLoading,
   ...other
 }: ButtonProps) => (
-  <Button disabled={disabled} isLoading={isLoading} type="submit" {...other}>
+  <Button isDisabled={isDisabled} isLoading={isLoading} type="submit" {...other}>
     {children}
     {isLoading && (
       <svg

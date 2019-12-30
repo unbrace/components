@@ -36,7 +36,7 @@ storiesOf('Button', module).add('variants', () => {
         <SubmitButton isLoading={loading} onClick={handleFakeLoading} color="primary">
           Submit
         </SubmitButton>
-        <Button disabled color="primary">
+        <Button isDisabled color="primary">
           disabled
         </Button>
         <SubmitButton isLoading color="primary">

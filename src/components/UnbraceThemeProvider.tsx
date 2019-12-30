@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, DefaultTheme } from 'styled-components';
 import merge = require('lodash.merge');
-import { componentTheme, ComponentTheme } from '../theme';
+import { componentTheme } from '../theme';
 
 type Props = {
   children: React.ReactElement;
-  customTheme?: Partial<ComponentTheme>;
+  customTheme?: DefaultTheme;
 };
 
 const UnbraceThemeProvider: React.FunctionComponent<Props> = ({ children, customTheme }: Props) => {
