@@ -7,13 +7,13 @@ type Props = {
 
 const Tooltip = styled.span<Props>`
   animation: ${animations.fadeIn} 0.1s ease-in forwards;
-  background: ${props => props.theme.iconButton.tooltip.background};
-  border-radius: ${props => props.theme.iconButton.tooltip.borderRadius};
-  box-shadow: ${props => props.theme.iconButton.tooltip.boxShadow};
-  color: ${props => props.theme.iconButton.tooltip.color};
-  font-size: ${props => props.theme.iconButton.tooltip.fontSize};
+  background: ${props => props.theme.tooltip.background};
+  border-radius: ${props => props.theme.tooltip.borderRadius};
+  box-shadow: ${props => props.theme.tooltip.boxShadow};
+  color: ${props => props.theme.tooltip.color};
+  font-size: ${props => props.theme.tooltip.fontSize};
   opacity: 0;
-  padding: ${props => props.theme.iconButton.tooltip.padding};
+  padding: ${props => props.theme.tooltip.padding};
   position: fixed;
   transform: ${props => (props.leftAligned ? 'none' : 'translateX(-50%)')};
   z-index: 100;

@@ -43,7 +43,7 @@ storiesOf('Button', module).add('variants', () => {
         <SubmitButton isLoading color="primary">
           always loading
         </SubmitButton>
-        <IconButton>☼</IconButton>
+        <IconButton tooltip={'this is an icon button'}>☼</IconButton>
       </Spacer>
     </UnbraceThemeProvider>
   );
