@@ -1,6 +1,6 @@
 import { DefaultTheme } from '..';
 
-export const getBadgeTheme = (theme: DefaultTheme) => ({
+const getBadgeTheme = (theme: DefaultTheme) => ({
   background: {
     danger: theme.palette.danger.shade1,
     primary: theme.palette.primary.shade1,
@@ -31,3 +31,5 @@ export const getBadgeTheme = (theme: DefaultTheme) => ({
     main: 500,
   },
 });
+
+export default getBadgeTheme;

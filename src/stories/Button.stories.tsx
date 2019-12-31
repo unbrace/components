@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Button, { SubmitButton } from '../components/Button';
-import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 import styled from 'styled-components';
+import { Button, IconButton, SubmitButton } from '../components/Button';
+import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 
 const Spacer = styled.div`
   > button {
@@ -18,6 +18,7 @@ storiesOf('Button', module).add('colors', () => {
         <Button color="secondary">secondary</Button>
         <Button color="danger">danger</Button>
         <Button color="tertiary">tertiary</Button>
+        <Button color="neutral">neutral</Button>
       </Spacer>
     </UnbraceThemeProvider>
   );
@@ -42,6 +43,7 @@ storiesOf('Button', module).add('variants', () => {
         <SubmitButton isLoading color="primary">
           always loading
         </SubmitButton>
+        <IconButton tooltip={'this is an icon button'}>☼</IconButton>
       </Spacer>
     </UnbraceThemeProvider>
   );
