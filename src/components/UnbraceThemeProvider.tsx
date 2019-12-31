@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
-import merge = require('lodash.merge');
 import { componentTheme } from '../theme';
+import merge from 'lodash/merge';
 
 type Props = {
   children: React.ReactElement;
