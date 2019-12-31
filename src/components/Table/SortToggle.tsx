@@ -43,7 +43,7 @@ const SortToggle: React.FunctionComponent<Props> = ({ value, onChange }: Props) 
   );
 
   return (
-    <IconButton onClick={clickHandler} tooltip="sort">
+    <IconButton onClick={clickHandler}>
       <ColoredSort sortState={value.state} />
     </IconButton>
   );

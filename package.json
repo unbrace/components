@@ -30,7 +30,6 @@
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "react-transition-group": "^4.3.0",
     "styled-components": "^4.4.0"
   },
   "devDependencies": {

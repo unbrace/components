@@ -1,15 +1,23 @@
 import styled, { css } from 'styled-components';
 import { FlexValues } from './types';
 
-const FlexRow = styled.div<{ justifyContent?: FlexValues; alignItems?: FlexValues; small?: boolean }>`
+type Props = {
+  alignItems?: FlexValues;
+  isSmall?: boolean;
+  justifyContent?: FlexValues;
+};
+
+const FlexRow = styled.div<Props>`
   display: flex;
-  ${props => !props.small && `flex-basis: 100%;`};
   max-width: 100%;
+  ${props => !props.isSmall && `flex-basis: 100%;`};
+
   ${props =>
     props.justifyContent &&
     css`
       justify-content: ${props.justifyContent};
     `}
+
   ${props =>
     props.alignItems &&
     css`

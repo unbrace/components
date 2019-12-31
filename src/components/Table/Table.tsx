@@ -26,7 +26,7 @@ const Table: React.FunctionComponent<Props> = ({ children, className, columns, s
     <TableWrapper className={className} sizes={sizes} alignments={alignments}>
       <thead>
         {columns && (
-          <TableRow noHover>
+          <TableRow>
             {columns.map((column: TableColumn, index: number) => (
               <Th
                 column={column}

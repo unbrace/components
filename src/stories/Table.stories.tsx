@@ -11,7 +11,7 @@ const Spacer = styled.div`
 `;
 
 const tableColumnProps: TableColumn[] = [
-  { title: 'name', size: 400 },
+  { title: 'name', size: 400, isSortable: true },
   { title: 'sector', size: 250 },
   { title: 'status', size: 150, align: 'center' },
   { title: 'description', size: 190, align: 'right' },
