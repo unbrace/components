@@ -1,44 +1,51 @@
-import styled from 'config/theme';
+import styled from 'styled-components';
 import * as React from 'react';
 import { debounce } from 'ts-debounce';
 import Tooltip from '../Tooltip';
 
 type Props = {
   capitalize?: boolean;
-  listCount?: number;
+  children?: React.ReactNode;
   list?: string[];
+  listCount?: number;
 };
 
 const TextWrap = styled.span<Props>`
+  display: block;
+  margin-right: ${props => (props.listCount ? '40px;' : 0)};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   ${props =>
     props.capitalize
       ? `
   text-transform: capitalize; `
       : null}
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-  margin-right: ${props => (props.listCount ? '40px;' : 0)};
 
   ${props =>
     props.listCount &&
     `
     &:before {
+      background: ${props.theme.table.color.badge}
+      border-radius: 16px;
       content: '${props.listCount}';
+      padding: 0px 8px;
       position: absolute;
       right: 8px;
-      padding: 0px 8px;
-      border-radius: 16px;
-      background: ${props.theme.table.color.badge}
     }
   `}
 `;
 
-const TextWrapComponent: React.FunctionComponent<Props> = ({ listCount, list, ...rest }) => {
-  const wrapRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
+const TextWrapComponent: React.FunctionComponent<Props> = ({ listCount, list, ...rest }: Props) => {
   const [isTruncated, setIsTruncated] = React.useState(false);
+  const wrapRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
   const [position, setPosition] = React.useState({ active: false, left: 0, top: 0 });
+
+  const debouncedTruncatedSet = debounce(() => {
+    if (wrapRef.current) {
+      setIsTruncated(wrapRef.current.clientWidth < wrapRef.current.scrollWidth);
+    }
+  }, 300);
 
   React.useLayoutEffect(() => {
     setTimeout(() => {
@@ -52,12 +59,6 @@ const TextWrapComponent: React.FunctionComponent<Props> = ({ listCount, list, ..
     // eslint-disable-next-line
   }, []);
 
-  const debouncedTruncatedSet = debounce(() => {
-    if (wrapRef.current) {
-      setIsTruncated(wrapRef.current.clientWidth < wrapRef.current.scrollWidth);
-    }
-  }, 300);
-
   const handleMouseEnter = (e: React.MouseEvent<HTMLSpanElement>) => {
     if (isTruncated) {
       const pos = e.currentTarget.getBoundingClientRect();
@@ -70,7 +71,7 @@ const TextWrapComponent: React.FunctionComponent<Props> = ({ listCount, list, ..
     }
   };
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLSpanElement>) => {
+  const handleMouseLeave = () => {
     if (isTruncated) {
       setPosition({
         active: false,
@@ -83,10 +84,10 @@ const TextWrapComponent: React.FunctionComponent<Props> = ({ listCount, list, ..
   return (
     <React.Fragment>
       <TextWrap
-        ref={wrapRef}
+        listCount={isTruncated ? listCount : undefined}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        listCount={isTruncated ? listCount : undefined}
+        ref={wrapRef}
         {...rest}
       />
       {isTruncated && position.active && (

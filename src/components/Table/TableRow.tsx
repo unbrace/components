@@ -1,12 +1,11 @@
-import { media } from 'config/theme/utils';
+import { media } from '../../theme/config';
 import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { ThemedStyledProps } from 'styled-components';
-import styled from '../../config/theme';
-import { RootTheme } from '../../config/theme/types';
-import { AnimationProps } from '../../config/theme/types';
+import styled, { ThemedStyledProps } from 'styled-components';
+import { AnimationProps } from '../../theme/types';
+import { ComponentTheme } from '../../theme';
 
-const tableRowProps = (props: ThemedStyledProps<{ active?: boolean; noHover?: boolean }, RootTheme>) => `
+const tableRowProps = (props: ThemedStyledProps<{ active?: boolean; noHover?: boolean }, ComponentTheme>) => `
   ${!props.noHover ? `cursor: pointer` : `cursor: default`};
   height: ${props.theme.table.rowHeight};
   background-color: ${
@@ -16,7 +15,7 @@ const tableRowProps = (props: ThemedStyledProps<{ active?: boolean; noHover?: bo
   ${props.active && `box-shadow: ${props.theme.table.boxShadow};`}
 `;
 
-const tableDataProps = (props: ThemedStyledProps<{}, RootTheme>) => `
+const tableDataProps = (props: ThemedStyledProps<{}, ComponentTheme>) => `
   border-bottom: ${props.theme.table.tableBorder};
   border-top: ${props.theme.table.tableBorder};
   padding: 10px 0px 10px 15px;
@@ -119,9 +118,9 @@ export const SubTableRow = styled.tr<{ active?: boolean }>`
     }
 
     &:last-child {
-      text-align: right;
       padding-right: 15px;
       position: relative;
+      text-align: right;
     }
 
     .status {

@@ -1,12 +1,17 @@
-import { IconButton } from 'components';
-import { Sort } from 'components/icons';
 import * as React from 'react';
 import styled from 'styled-components';
-import { SortValue } from 'types';
+import { Sort } from '../../icons';
+import { IconButton } from '../Button';
+
+export type SortValue = {
+  name: string;
+  secondary?: boolean;
+  state: SortState;
+};
 
 type Props = {
-  value: SortValue;
   onChange: (name: string, state: SortState, secondary?: boolean) => void;
+  value: SortValue;
 };
 
 export enum SortState {
@@ -46,8 +51,8 @@ const SortToggle: React.FunctionComponent<Props> = ({ value, onChange }: Props) 
 
 const ColoredSort = styled(Sort)<{ sortState?: SortState }>`
   svg {
-    width: 15px !important;
     height: 15px !important;
+    width: 15px !important;
   }
 
   path:first-child {

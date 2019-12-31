@@ -1,8 +1,21 @@
-import SortToggle from './SortToggle';
+import SortToggle, { SortState, SortValue } from './SortToggle';
 import Table from './Table';
 import TableData from './TableData';
 import { Row, SubRow, SubTableRow } from './TableRow';
 import TextWrap from './TextWrap';
+import Th from './Th';
 import TransitionedTableRow from './TransitionedTableRow';
 
-export { Table, SubRow, SubTableRow, Row, TableData, TransitionedTableRow as TableRow, TextWrap, SortToggle };
+export {
+  Row,
+  SortState,
+  SortToggle,
+  SortValue,
+  SubRow,
+  SubTableRow,
+  Table,
+  TableData,
+  TextWrap,
+  Th,
+  TransitionedTableRow as TableRow,
+};

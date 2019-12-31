@@ -1,37 +1,26 @@
-import styled, { css } from 'config/theme';
-import { media } from 'config/theme/utils';
 import * as React from 'react';
-import { Action } from 'typesafe-actions';
-import { SortValue } from '../../types';
-import { SortState } from './SortToggle';
-import { TableRow } from './TableRow';
-import Th from './Th';
+import styled, { css } from 'styled-components';
+import { media } from '../../theme/config';
+import { SortValue, TableRow, Th } from './';
 
 export type TableColumn = {
-  title: string | React.ReactNode;
-  size: 'auto' | number;
   align?: 'left' | 'right' | 'center';
-  sortable?: boolean;
   customSortingName?: string;
+  size: 'auto' | number;
+  isSortable?: boolean;
+  title: string | React.ReactNode;
 };
 
 type Props = {
-  columns?: TableColumn[];
   children: React.ReactNode;
   className?: string;
-  sortingActionCreator?: (name: string, state: SortState, secondary?: boolean) => Action;
+  columns?: TableColumn[];
   sortValues?: SortValue[];
 };
 
-const Table: React.FunctionComponent<Props> = ({
-  columns,
-  children,
-  className,
-  sortingActionCreator,
-  sortValues,
-}: Props) => {
-  const sizes = columns && columns.map(prop => prop.size);
+const Table: React.FunctionComponent<Props> = ({ children, className, columns, sortValues }: Props) => {
   const alignments = columns && columns.map(prop => prop.align || 'left');
+  const sizes = columns && columns.map(prop => prop.size);
 
   return (
     <TableWrapper className={className} sizes={sizes} alignments={alignments}>
@@ -40,9 +29,8 @@ const Table: React.FunctionComponent<Props> = ({
           <TableRow noHover>
             {columns.map((column: TableColumn, index: number) => (
               <Th
-                key={index}
                 column={column}
-                sortingActionCreator={sortingActionCreator}
+                key={index}
                 sortValue={
                   sortValues && sortValues.find(s => s.name === ((column.customSortingName || column.title) as string))
                 }
@@ -74,10 +62,10 @@ const TableWrapper = styled.table<{ sizes?: Array<'auto' | number>; alignments?:
 
   th {
     color: ${props => props.theme.table.color.header};
-    text-align: left;
-    padding: 10px 0px 10px 15px;
-    text-transform: uppercase;
     font-weight: 500;
+    padding: 10px 0px 10px 15px;
+    text-align: left;
+    text-transform: uppercase;
 
     &:first-child {
       border-radius: 7px 0 0 0;
@@ -98,11 +86,11 @@ const TableWrapper = styled.table<{ sizes?: Array<'auto' | number>; alignments?:
             &:nth-child(${index + 1}) {
               ${size !== 'auto' &&
                 css`
-                  width: ${size}px;
                   min-width: ${size}px;
+                  width: ${size}px;
                 `}
             }
-          `
+          `,
       )};
   }
 
@@ -115,7 +103,7 @@ const TableWrapper = styled.table<{ sizes?: Array<'auto' | number>; alignments?:
           th:nth-child(${index + 1}) {
             text-align: ${alignment};
           }
-        `
+        `,
     )};
 `;
 
