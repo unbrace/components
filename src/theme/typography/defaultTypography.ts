@@ -1,8 +1,6 @@
 /*eslint-disable*/
 const defaultTypography = {
   letterSpacing: '1px',
-
-  // 16px = 1 rem - as defined in injectGlobals
   fontSize: {
     huge_0: '3.00rem',
     huge_2: '3.12rem',
@@ -29,4 +27,4 @@ const defaultTypography = {
   },
 };
 
-export { defaultTypography };
+export default defaultTypography;
