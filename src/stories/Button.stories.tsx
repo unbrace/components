@@ -43,8 +43,19 @@ storiesOf('Button', module).add('variants', () => {
         <SubmitButton isLoading color="primary">
           always loading
         </SubmitButton>
-        <IconButton tooltip={'this is an icon button'}>☼</IconButton>
       </Spacer>
+    </UnbraceThemeProvider>
+  );
+});
+
+storiesOf('Button', module).add('icon button', () => {
+  return (
+    <UnbraceThemeProvider>
+      <>
+        <IconButton size="small">S</IconButton>
+        <IconButton>N</IconButton>
+        <IconButton size="large">L</IconButton>
+      </>
     </UnbraceThemeProvider>
   );
 });

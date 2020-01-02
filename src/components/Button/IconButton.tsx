@@ -5,6 +5,7 @@ import Tooltip from '../Tooltip';
 
 type Props = {
   isDisabled?: boolean;
+  size?: 'small' | 'main' | 'large';
   tooltip?: string;
   tooltipPositionUp?: boolean;
   isLoading?: boolean;
@@ -75,12 +76,12 @@ const IconButton = styled('button')<Props>`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: ${props => props.theme.iconButton.size.button};
+  height: ${props => props.theme.iconButton.size.button[props.size ? props.size : 'main']};
   justify-content: space-around;
   margin: ${props => props.theme.iconButton.margin.main};
   padding: 0;
   transition: color, background 0.25s ease-out;
-  width: ${props => props.theme.iconButton.size.button};
+  width: ${props => props.theme.iconButton.size.button[props.size ? props.size : 'main']};
   ${props => props.isDisabled && 'cursor: not-allowed'};
 
   &:hover {
@@ -90,8 +91,8 @@ const IconButton = styled('button')<Props>`
 
   > span > svg,
   > span > span > svg {
-    width: ${props => props.theme.iconButton.size.icon};
-    height: ${props => props.theme.iconButton.size.icon};
+    width: ${props => props.theme.iconButton.size.icon[props.size ? props.size : 'main']};
+    height: ${props => props.theme.iconButton.size.icon[props.size ? props.size : 'main']};
     fill: ${props =>
       props.isDisabled ? props.theme.iconButton.color.isDisabled : props.theme.iconButton.color.normal};
   }
