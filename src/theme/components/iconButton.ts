@@ -14,8 +14,16 @@ const getIconButtonTheme = (theme: DefaultTheme) => ({
   },
   padding: { main: '5px 20px' },
   size: {
-    button: '42px',
-    icon: '26px',
+    button: {
+      large: '50px',
+      main: '42px',
+      small: '34px',
+    },
+    icon: {
+      large: '32px',
+      main: '26px',
+      small: '20px',
+    },
   },
 });
 
