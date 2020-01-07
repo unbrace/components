@@ -8,13 +8,23 @@ const getButtonTheme = (theme: DefaultTheme) => ({
       primary: theme.palette.primary.shade5,
       secondary: theme.palette.secondary.shade5,
       tertiary: 'none',
+      outline: 'transparent',
     },
     hover: {
-      danger: theme.palette.danger.shade6,
-      neutral: theme.palette.neutral.shade4,
-      primary: theme.palette.primary.shade6,
-      secondary: theme.palette.secondary.shade6,
-      tertiary: theme.palette.neutral.shade2,
+      main: {
+        danger: theme.palette.danger.shade6,
+        neutral: theme.palette.neutral.shade4,
+        primary: theme.palette.primary.shade6,
+        secondary: theme.palette.secondary.shade6,
+        tertiary: theme.palette.neutral.shade2,
+      },
+      outline: {
+        danger: theme.palette.danger.shade1,
+        neutral: theme.palette.neutral.shade1,
+        primary: theme.palette.primary.shade1,
+        secondary: theme.palette.secondary.shade1,
+        tertiary: theme.palette.neutral.shade1,
+      },
     },
   },
   borderRadius: {

@@ -9,14 +9,15 @@ export type ButtonProps = {
   isLoading?: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   type?: 'button' | 'reset' | 'submit' | undefined;
+  variant?: 'outline';
 };
 
 const Button = styled.button<ButtonProps>`
-  background: ${props => props.theme.button.background.main[`${props.color}`]};
+  background: ${props => props.theme.button.background.main[props.color || 'primary']};
   border-radius: ${props => props.theme.button.borderRadius.main};
   border: none;
-  box-shadow: ${props => props.theme.button.boxShadow[`${props.color}`]};
-  color: ${props => props.theme.button.color[`${props.color}`]};
+  box-shadow: ${props => props.theme.button.boxShadow[props.color || 'primary']};
+  color: ${props => props.theme.button.color[props.color || 'primary']};
   cursor: pointer;
   display: flex;
   font-family: ${props => props.theme.typography.fontFamily};
@@ -55,10 +56,26 @@ const Button = styled.button<ButtonProps>`
      }
     `};
 
+  &:focus,
   &:active:hover,
   &:hover {
-    background: ${props => props.theme.button.background.hover[`${props.color}`]};
+    background: ${props => props.theme.button.background.hover.main[props.color || 'primary']};
   }
+
+  ${props =>
+    props.variant === 'outline' &&
+    css`
+      box-shadow: none;
+      background: ${props.theme.button.background.main.outline};
+      border: solid 2px ${props.theme.button.background.main[props.color || 'primary']};
+      color: ${props.theme.button.background.main[props.color || 'primary']};
+
+      &:focus,
+      &:active:hover,
+      &:hover {
+        background: ${props.theme.button.background.hover.outline[props.color || 'primary']};
+      }
+    `}
 `;
 
 const SubmitButton: React.FunctionComponent<ButtonProps> = ({

@@ -5,7 +5,10 @@ import { Button, IconButton, SubmitButton } from '../components/Button';
 import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 
 const Spacer = styled.div`
-  > button {
+  > div {
+    display: flex;
+  }
+  button {
     margin: 10px;
   }
 `;
@@ -14,11 +17,27 @@ storiesOf('Button', module).add('colors', () => {
   return (
     <UnbraceThemeProvider>
       <Spacer>
-        <Button color="primary">primary</Button>
-        <Button color="secondary">secondary</Button>
-        <Button color="danger">danger</Button>
-        <Button color="tertiary">tertiary</Button>
-        <Button color="neutral">neutral</Button>
+        <div>
+          <Button color="primary">primary</Button>
+          <Button color="secondary">secondary</Button>
+          <Button color="danger">danger</Button>
+          <Button color="tertiary">tertiary</Button>
+          <Button color="neutral">neutral</Button>
+        </div>
+        <div>
+          <Button variant="outline" color="primary">
+            outline primary
+          </Button>
+          <Button variant="outline" color="secondary">
+            outline secondary
+          </Button>
+          <Button variant="outline" color="danger">
+            outline danger
+          </Button>
+          <Button variant="outline" color="tertiary">
+            outline tertiary
+          </Button>
+        </div>
       </Spacer>
     </UnbraceThemeProvider>
   );
