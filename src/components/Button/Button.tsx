@@ -13,7 +13,7 @@ export type ButtonProps = {
 };
 
 const Button = styled.button<ButtonProps>`
-  background: ${props => props.theme.button.background.main[props.variant || props.color || 'primary']};
+  background: ${props => props.theme.button.background.main[props.color || 'primary']};
   border-radius: ${props => props.theme.button.borderRadius.main};
   border: none;
   box-shadow: ${props => props.variant !== 'outline' && props.theme.button.boxShadow[`${props.color}`]};
@@ -64,6 +64,7 @@ const Button = styled.button<ButtonProps>`
   ${props =>
     props.variant === 'outline' &&
     css`
+      background: ${props.theme.button.background.main.outline};
       border: solid 2px ${props.theme.button.background.main[props.color || 'primary']};
       color: ${props.theme.button.background.main[props.color || 'primary']};
 
