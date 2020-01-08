@@ -22,7 +22,7 @@ const Button = styled.button<ButtonProps>`
   display: flex;
   font-family: ${props => props.theme.typography.fontFamily};
   font-size: ${props => props.theme.button.fontSize.main};
-  font-weight: 500;
+  font-weight: ${props => props.theme.button.fontWeight.main};
   justify-content: center;
   padding: ${props => props.theme.button.padding.main};
   position: relative;
@@ -67,8 +67,10 @@ const Button = styled.button<ButtonProps>`
     css`
       box-shadow: none;
       background: ${props.theme.button.background.main.outline};
-      border: solid 2px ${props.theme.button.background.main[props.color || 'primary']};
+      border: solid ${props.theme.button.borderWidth.outline}
+        ${props.theme.button.background.main[props.color || 'primary']};
       color: ${props.theme.button.background.main[props.color || 'primary']};
+      font-weight: ${props => props.theme.button.fontWeight.outline};
 
       &:focus,
       &:active:hover,
