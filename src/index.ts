@@ -1,7 +1,5 @@
-import Badge from './components/Badge';
-import { Button, IconButton, SubmitButton } from './components/Button';
-import ClickOutside from './components/ClickOutside';
-import Tooltip from './components/Tooltip';
-import UnbraceThemeProvider from './components/UnbraceThemeProvider';
-
-export { Badge, Button, ClickOutside, IconButton, SubmitButton, Tooltip, UnbraceThemeProvider };
+export { default as Badge } from './components/Badge';
+export { Button, IconButton, SubmitButton } from './components/Button';
+export { default as ClickOutside } from './components/ClickOutside';
+export { default as Tooltip } from './components/Tooltip';
+export { default as UnbraceThemeProvider } from './components/UnbraceThemeProvider';
