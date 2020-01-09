@@ -30,6 +30,9 @@ const getButtonTheme = (theme: DefaultTheme) => ({
   borderRadius: {
     main: '5px',
   },
+  borderWidth: {
+    outline: '1px',
+  },
   boxShadow: {
     danger: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.danger.shade3}`,
     primary: `0px 1px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 1px ${theme.palette.primary.shade3}`,
@@ -45,6 +48,10 @@ const getButtonTheme = (theme: DefaultTheme) => ({
   },
   fontSize: {
     main: theme.typography.fontSize.regular,
+  },
+  fontWeight: {
+    main: 500,
+    outline: 400,
   },
   padding: {
     main: '12px 25px',
