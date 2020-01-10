@@ -5,6 +5,7 @@ import globals from './components/globals';
 import defaultPalette from './palette/defaultPalette';
 import defaultTypography from './typography/defaultTypography';
 import getTooltipTheme from './components/tooltip';
+import getSelectTheme from './components/select';
 
 const baseTheme = {
   globals: globals,
@@ -17,6 +18,7 @@ const componentTheme = {
   button: getButtonTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
   tooltip: getTooltipTheme(baseTheme),
+  select: getSelectTheme(baseTheme),
   ...baseTheme,
 };
 
