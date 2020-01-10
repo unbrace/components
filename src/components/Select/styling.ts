@@ -5,6 +5,7 @@ export const getSelectStyling = (theme: ComponentTheme, error?: string, isCapita
   const selectTheme = theme.select;
 
   return {
+    // eslint-disable-next-line
     control: (provided: any, state: any) => {
       const { ...defaultStyles } = provided;
 
@@ -27,6 +28,7 @@ export const getSelectStyling = (theme: ComponentTheme, error?: string, isCapita
     indicatorSeparator: () => ({
       display: 'none',
     }),
+    // eslint-disable-next-line
     option: (provided: any, state: any) => {
       return {
         ...provided,

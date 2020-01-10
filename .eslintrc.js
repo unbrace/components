@@ -26,7 +26,6 @@ module.exports = {
     'no-console': [0, 'log', 'error'],
     'no-var-requires': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/no-explicit-any': 0,
   },
   settings: {
     react: {
