@@ -25,4 +25,5 @@ const componentTheme = {
 export type DefaultTheme = typeof baseTheme;
 export type ComponentTheme = typeof componentTheme;
 
+export { media } from './utils';
 export { baseTheme, componentTheme };
