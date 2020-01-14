@@ -83,7 +83,7 @@ const Paginator: React.FunctionComponent<Props> = ({
         </IconButton>
       </PaginatorWrapper>
     ),
-    [pageStatus, pageIndex, loadingPageIndex, selectOptions, hasNextPage],
+    [pageStatus, pageIndex, loadingPageIndex, selectOptions, hasNextPage, selectedValue],
   );
 
   return redux ? (
