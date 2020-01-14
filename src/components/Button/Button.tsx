@@ -47,13 +47,14 @@ const Button = styled.button<ButtonProps>`
 
   ${props =>
     props.isLoading &&
-    `padding-right: 50px
-     opacity: 0.7;
-     pointer-events: none;
+    css`
+      padding-right: 50px;
+      opacity: 0.7;
+      pointer-events: none;
 
-     > svg#loader {
-       stroke: ${props.theme.palette.neutral.shade0};
-     }
+      > svg#loader {
+        stroke: ${props.theme.palette.neutral.shade0};
+      }
     `};
 
   &:focus,
