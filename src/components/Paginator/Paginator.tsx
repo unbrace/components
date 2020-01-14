@@ -41,6 +41,10 @@ const Paginator: React.FunctionComponent<Props> = ({
 
   // React select needs objects as options
   const selectOptions = React.useMemo(() => pageSizes.map(size => ({ value: size })), [pageSizes]);
+  const selectedValue = React.useMemo(() => selectOptions.find(option => option.value === pageSize), [
+    selectOptions,
+    pageSize,
+  ]);
 
   React.useEffect(() => {
     if (loadingPageIndex !== pageIndex) {
@@ -68,7 +72,7 @@ const Paginator: React.FunctionComponent<Props> = ({
         <PageSizeWrapper>
           <Select
             options={selectOptions}
-            value={selectOptions.find(option => option.value === pageSize)}
+            value={selectedValue}
             onChange={setPageSize}
             getOptionLabel={(option: { value: number }) => option.value.toString()}
             getOptionValue={(option: { value: number }) => option.value}
