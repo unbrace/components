@@ -3,6 +3,10 @@ import { DefaultTheme } from '..';
 const getAlertsTheme = (theme: DefaultTheme) => ({
   background: {
     main: theme.palette.neutral.shade0,
+    danger: theme.palette.danger.shade1,
+    default: theme.palette.primary.shade1,
+    success: theme.palette.success.shade1,
+    warning: theme.palette.warning.shade1,
   },
   borderRadius: {
     main: theme.globals.borderRadius.main,
@@ -12,13 +16,9 @@ const getAlertsTheme = (theme: DefaultTheme) => ({
   },
   color: {
     danger: theme.palette.danger.shade5,
-    dangerSecondary: theme.palette.danger.shade1,
     default: theme.palette.primary.shade5,
-    defaultSecondary: theme.palette.primary.shade1,
     success: theme.palette.success.shade5,
-    successSecondary: theme.palette.success.shade1,
     warning: theme.palette.warning.shade5,
-    warningSecondary: theme.palette.warning.shade1,
   },
   positioning: {
     main: {

@@ -21,6 +21,7 @@ export enum AlertType {
 type Props = {
   alerts: AlertWithIdentifier[];
   removeAlert: (id: string) => void;
+  duration?: number;
 };
 
 const AlertContainer = styled(TransitionGroup)`
@@ -37,12 +38,19 @@ const AlertContainer = styled(TransitionGroup)`
   `};
 `;
 
-const Alerts: React.FunctionComponent<Props> = ({ alerts, removeAlert }: Props) => {
+const Alerts: React.FunctionComponent<Props> = ({ alerts, removeAlert, duration }: Props) => {
   return (
     <AlertContainer className="alert-list">
       {alerts.map((alert, index) => (
         <CSSTransition timeout={200} classNames="alert" key={alert.id} appear>
-          <Alert key={alert.id} alert={alert} index={index} removeAlert={removeAlert} noAutoClose={alert.noAutoClose} />
+          <Alert
+            key={alert.id}
+            alert={alert}
+            index={index}
+            removeAlert={removeAlert}
+            noAutoClose={alert.noAutoClose}
+            duration={duration}
+          />
         </CSSTransition>
       ))}
     </AlertContainer>

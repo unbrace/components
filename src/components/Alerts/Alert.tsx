@@ -9,9 +9,17 @@ type Props = {
   removeAlert: (id: string) => void;
   className?: string;
   noAutoClose?: boolean;
+  duration?: number;
 };
 
-const Alert: React.FunctionComponent<Props> = ({ alert, index, removeAlert, className, noAutoClose }: Props) => {
+const Alert: React.FunctionComponent<Props> = ({
+  alert,
+  index,
+  removeAlert,
+  className,
+  noAutoClose,
+  duration,
+}: Props) => {
   const removeSelf = React.useCallback(() => {
     removeAlert(alert.id);
   }, [removeAlert, alert.id]);
@@ -22,7 +30,7 @@ const Alert: React.FunctionComponent<Props> = ({ alert, index, removeAlert, clas
         () => {
           removeSelf();
         },
-        alert.type !== AlertType.Success ? 5000 : 10000,
+        duration || alert.type !== AlertType.Success ? 5000 : 10000,
       );
     }
   }, [alert, removeSelf, noAutoClose]);

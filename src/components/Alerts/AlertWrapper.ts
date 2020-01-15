@@ -8,23 +8,23 @@ const typeColors = (
   switch (props.type) {
     case AlertType.Danger:
       return {
-        background: props.theme.alerts.color.dangerSecondary,
+        background: props.theme.alerts.background.danger,
         color: props.theme.alerts.color.danger,
       };
     case AlertType.Success:
       return {
-        background: props.theme.alerts.color.successSecondary,
+        background: props.theme.alerts.background.success,
         color: props.theme.alerts.color.success,
       };
     case AlertType.Warning:
       return {
-        background: props.theme.alerts.color.warningSecondary,
+        background: props.theme.alerts.background.warning,
         color: props.theme.alerts.color.warning,
       };
     case AlertType.Default:
     default:
       return {
-        background: props.theme.alerts.color.defaultSecondary,
+        background: props.theme.alerts.background.default,
         color: props.theme.alerts.color.default,
       };
   }
