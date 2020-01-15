@@ -6,3 +6,4 @@ export { default as UnbraceThemeProvider } from './UnbraceThemeProvider';
 export { Select } from './Select';
 export { Paginator } from './Paginator';
 export * from './icons';
+export * from './Alerts';

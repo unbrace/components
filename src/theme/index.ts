@@ -6,6 +6,7 @@ import defaultPalette from './palette/defaultPalette';
 import defaultTypography from './typography/defaultTypography';
 import getTooltipTheme from './components/tooltip';
 import getSelectTheme from './components/select';
+import getAlertsTheme from './components/alerts';
 
 const baseTheme = {
   globals: globals,
@@ -14,6 +15,7 @@ const baseTheme = {
 };
 
 const componentTheme = {
+  alerts: getAlertsTheme(baseTheme),
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
