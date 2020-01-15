@@ -63,6 +63,7 @@
     "rollup-plugin-typescript2": "^0.25.2",
     "storybook-addon-react-docgen": "^1.2.28",
     "styled-components": "^5.0.0",
+    "ts-debounce": "^1.0.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.4"
   },
