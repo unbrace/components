@@ -1,12 +1,12 @@
 import { DefaultTheme } from '..';
 
 const getTableTheme = (theme: DefaultTheme) => ({
-  backgroundColor: {
+  background: {
     active: theme.palette.primary.shade1,
     hover: theme.palette.neutral.shade1,
     main: theme.palette.neutral.shade0,
   },
-  boxShadow: theme.globals.boxShadow.narrow,
+  boxShadow: { main: theme.globals.boxShadow.narrow },
   color: {
     badge: theme.palette.neutral.shade3,
     contact: theme.palette.primary.shade4,

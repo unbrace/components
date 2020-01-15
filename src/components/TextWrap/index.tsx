@@ -7,10 +7,9 @@ type Props = {
   children?: React.ReactNode;
   isCapitalized?: boolean;
   list?: string[];
-  listCount?: number;
 };
 
-const TextWrap = styled.span<Props>`
+const TextWrap = styled.span<Props & { listCount?: number }>`
   display: block;
   margin-right: ${props => (props.listCount ? '40px;' : 0)};
   overflow: hidden;
@@ -25,9 +24,9 @@ const TextWrap = styled.span<Props>`
 
   ${props =>
     props.listCount &&
-    `
+    css`
     &:before {
-      background: ${props.theme.table.color.badge}
+      background: ${props.theme.table.color.badge};
       border-radius: 16px;
       content: '${props.listCount}';
       padding: 0px 8px;
@@ -37,7 +36,8 @@ const TextWrap = styled.span<Props>`
   `}
 `;
 
-const TextWrapComponent: React.FunctionComponent<Props> = ({ listCount, list, ...rest }: Props) => {
+const TextWrapComponent: React.FunctionComponent<Props> = ({ list, ...rest }: Props) => {
+  const listCount = list && (list.length > 1 ? list.length : undefined);
   const wrapRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
   const [isTruncated, setIsTruncated] = React.useState(false);
   const [position, setPosition] = React.useState({ active: false, left: 0, top: 0 });
@@ -92,7 +92,7 @@ const TextWrapComponent: React.FunctionComponent<Props> = ({ listCount, list, ..
         {...rest}
       />
       {isTruncated && position.active && (
-        <Tooltip Alignment="left" style={{ top: position.top, left: position.left }}>
+        <Tooltip isLeftAligned style={{ top: position.top, left: position.left }}>
           {list
             ? list.map((item, index) => (
                 <li key={index + item}>
