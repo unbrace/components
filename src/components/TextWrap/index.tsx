@@ -26,7 +26,7 @@ const TextWrap = styled.span<Props & { listCount?: number }>`
     props.listCount &&
     css`
     &:before {
-      background: ${props.theme.table.color.badge};
+      background: ${props.theme.textWrap.background.pill};
       border-radius: 16px;
       content: '${props.listCount}';
       padding: 0px 8px;
@@ -57,7 +57,6 @@ const TextWrapComponent: React.FunctionComponent<Props> = ({ list, ...rest }: Pr
     window.addEventListener('resize', debouncedTruncatedSet);
 
     return () => window.removeEventListener('resize', debouncedTruncatedSet);
-    // eslint-disable-next-line
   }, []);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLSpanElement>) => {

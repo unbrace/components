@@ -31,7 +31,8 @@ storiesOf('Paginator', module).add(
   },
   {
     props: {
-      propTablesExclude: [UnbraceThemeProvider],
+      propTablesExclude: [UnbraceThemeProvider, PaginatorExample],
+      propTables: [Paginator],
     },
   },
 );

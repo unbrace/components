@@ -3,12 +3,22 @@ import * as React from 'react';
 import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 import styled from 'styled-components';
 import TextWrap from '../components/TextWrap';
+import { IconButton, Tooltip } from '../components';
+import Close from '../components/icons/Close';
 
 const Wrapper = styled.div`
-  margin-left: 200px;
+  margin-left: 0px;
   max-width: 100px;
   padding: 10px;
-  background: lightgray;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid lightgrey;
+`;
+
+const ButtonWrapper = styled.div`
+  margin: 16px 0 0 0;
+  width: 100px;
+  display: flex;
+  justify-content: center;
 `;
 
 storiesOf('Tooltip', module).add(
@@ -16,15 +26,22 @@ storiesOf('Tooltip', module).add(
   () => {
     return (
       <UnbraceThemeProvider>
-        <Wrapper>
-          <TextWrap>{'hover me to see a tooltip'}</TextWrap>
-        </Wrapper>
+        <React.Fragment>
+          <Wrapper>
+            <TextWrap>{'hover me to see a tooltip'}</TextWrap>
+          </Wrapper>
+          <ButtonWrapper>
+            <IconButton tooltip="Close tooltip">
+              <Close />
+            </IconButton>
+          </ButtonWrapper>
+        </React.Fragment>
       </UnbraceThemeProvider>
     );
   },
   {
     props: {
-      propTablesExclude: [Wrapper, UnbraceThemeProvider],
+      propTablesExclude: [Wrapper, ButtonWrapper, Close, IconButton, UnbraceThemeProvider],
     },
   },
 );

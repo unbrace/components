@@ -5,26 +5,37 @@ import styled from 'styled-components';
 import TextWrap from '../components/TextWrap';
 
 const Wrapper = styled.div`
-  margin-left: 200px;
+  margin-left: 0px;
+  margin-bottom: 16px;
   max-width: 100px;
   padding: 10px;
-  background: lightgray;
+  background: rgba(0, 0, 0, 0.03);
+  position: relative;
+  border: 1px solid lightgrey;
 `;
 
 storiesOf('Textwrap', module).add(
   'default',
   () => {
+    const list = ['Item 1', 'item 2', 'item 3'];
+
     return (
       <UnbraceThemeProvider>
-        <Wrapper>
-          <TextWrap>{'This text is so long it needs to be wrapped'}</TextWrap>
-        </Wrapper>
+        <React.Fragment>
+          <Wrapper>
+            <TextWrap>{'This text is so long it needs to be wrapped'}</TextWrap>
+          </Wrapper>
+          <Wrapper>
+            <TextWrap list={list}>{list.join(', ')}</TextWrap>
+          </Wrapper>
+        </React.Fragment>
       </UnbraceThemeProvider>
     );
   },
   {
     props: {
-      propTablesExclude: [Wrapper, UnbraceThemeProvider],
+      propTables: [TextWrap],
+      propTablesExclude: [Wrapper, UnbraceThemeProvider, React.Fragment],
     },
   },
 );
