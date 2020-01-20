@@ -7,3 +7,5 @@ export { Select } from './Select';
 export { default as TextWrap } from './TextWrap';
 export { default as Tooltip } from './Tooltip';
 export { default as UnbraceThemeProvider } from './UnbraceThemeProvider';
+export { Paginator } from './Paginator';
+export * from './Alerts';

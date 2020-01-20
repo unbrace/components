@@ -7,6 +7,7 @@ import getTableTheme from './components/table';
 import getTooltipTheme from './components/tooltip';
 import defaultPalette from './palette/defaultPalette';
 import defaultTypography from './typography/defaultTypography';
+import getAlertsTheme from './components/alerts';
 
 const baseTheme = {
   globals: globals,
@@ -15,6 +16,7 @@ const baseTheme = {
 };
 
 const componentTheme = {
+  alerts: getAlertsTheme(baseTheme),
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
