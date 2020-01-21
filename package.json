@@ -9,7 +9,7 @@
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint-fix": "eslint src/**/*.{ts,tsx} --fix",
     "publish-np": "npm run build && np",
-    "test": "npm run lint",
+    "test": "yarn lint",
     "storybook": "start-storybook -p 6006 -c .storybook watch-css"
   },
   "repository": {
