@@ -20,6 +20,7 @@ storiesOf('Button', module).add('colors', () => {
         <div>
           <Button color="primary">primary</Button>
           <Button color="secondary">secondary</Button>
+          <Button color="success">success</Button>
           <Button color="danger">danger</Button>
           <Button color="tertiary">tertiary</Button>
           <Button color="neutral">neutral</Button>
@@ -30,6 +31,9 @@ storiesOf('Button', module).add('colors', () => {
           </Button>
           <Button variant="outline" color="secondary">
             outline secondary
+          </Button>
+          <Button variant="outline" color="success">
+            outline success
           </Button>
           <Button variant="outline" color="danger">
             outline danger
