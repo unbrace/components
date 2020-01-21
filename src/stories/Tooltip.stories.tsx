@@ -3,7 +3,7 @@ import * as React from 'react';
 import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 import styled from 'styled-components';
 import TextWrap from '../components/TextWrap';
-import { IconButton, Tooltip } from '../components';
+import { IconButton } from '../components';
 import Close from '../components/icons/Close';
 
 const Wrapper = styled.div`

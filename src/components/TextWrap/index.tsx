@@ -57,6 +57,7 @@ const TextWrapComponent: React.FunctionComponent<Props> = ({ list, ...rest }: Pr
     window.addEventListener('resize', debouncedTruncatedSet);
 
     return () => window.removeEventListener('resize', debouncedTruncatedSet);
+    // eslint-disable-next-line
   }, []);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLSpanElement>) => {
