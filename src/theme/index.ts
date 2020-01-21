@@ -7,6 +7,7 @@ import defaultTypography from './typography/defaultTypography';
 import getTooltipTheme from './components/tooltip';
 import getSelectTheme from './components/select';
 import getAlertsTheme from './components/alerts';
+import getDrawerTheme from './components/drawer';
 
 const baseTheme = {
   globals: globals,
@@ -18,6 +19,7 @@ const componentTheme = {
   alerts: getAlertsTheme(baseTheme),
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
+  drawer: getDrawerTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
   tooltip: getTooltipTheme(baseTheme),
   select: getSelectTheme(baseTheme),
