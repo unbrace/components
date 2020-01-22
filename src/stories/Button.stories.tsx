@@ -75,9 +75,13 @@ storiesOf('Button', module).add('icon button', () => {
   return (
     <UnbraceThemeProvider>
       <>
-        <IconButton size="small">S</IconButton>
-        <IconButton>N</IconButton>
-        <IconButton size="large">L</IconButton>
+        <IconButton size="small" tooltip="small">
+          S
+        </IconButton>
+        <IconButton tooltip="normal">N</IconButton>
+        <IconButton size="large" positionAbsolute tooltip="large">
+          L
+        </IconButton>
       </>
     </UnbraceThemeProvider>
   );
