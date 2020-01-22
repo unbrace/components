@@ -12,14 +12,16 @@ const getDrawerTheme = (theme: DefaultTheme) => ({
     header: theme.palette.neutral.shade8,
   },
   boxShadow: {
-    main: `inset 0px 2px 2px ${theme.palette.neutral.shade3}`,
+    left: '2px 0px 7px rgba(0, 0, 0, 0.03), 40px 0px 30px rgba(0, 0, 0, 0.01)',
+    right: '-2px 0px 7px rgba(0, 0, 0, 0.03), -40px 0px 30px rgba(0, 0, 0, 0.01)',
   },
   padding: {
     main: '16px 0',
-    header: '0 16px',
+    header: '0 16px 0 24px',
   },
   transition: {
-    main: 'left 0.2s cubic-bezier(0.67, 0.49, 0.15, 0.82)',
+    left: 'left 0.2s cubic-bezier(0.67, 0.49, 0.15, 0.82)',
+    right: 'right 0.2s cubic-bezier(0.67, 0.49, 0.15, 0.82)',
   },
   width: {
     open: '320px',

@@ -8,3 +8,5 @@ export { default as Tooltip } from './Tooltip';
 export { default as UnbraceThemeProvider } from './UnbraceThemeProvider';
 export { Paginator } from './Paginator';
 export * from './Alerts';
+export { Drawer } from './Drawer';
+export { Heading, Text } from './Text';

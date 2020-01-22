@@ -9,6 +9,7 @@ import defaultPalette from './palette/defaultPalette';
 import defaultTypography from './typography/defaultTypography';
 import getAlertsTheme from './components/alerts';
 import getDrawerTheme from './components/drawer';
+import getTextTheme from './components/text';
 
 const baseTheme = {
   globals: globals,
@@ -25,6 +26,7 @@ const componentTheme = {
   select: getSelectTheme(baseTheme),
   textWrap: getTextWrapTheme(baseTheme),
   tooltip: getTooltipTheme(baseTheme),
+  text: getTextTheme(baseTheme),
   ...baseTheme,
 };
 

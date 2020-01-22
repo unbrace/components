@@ -7,7 +7,7 @@ type Props = {
   children?: React.ReactNode;
   isCapitalized?: boolean;
   list?: string[];
-};
+} & React.HTMLAttributes<HTMLSpanElement>;
 
 const TextWrap = styled.span<Props & { listCount?: number }>`
   display: block;

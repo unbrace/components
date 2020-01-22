@@ -1518,9 +1518,10 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
-"@unbrace/hooks@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@unbrace/hooks/-/hooks-0.0.3.tgz#db5e234976fe264f971ce6b44a0c4537cdf1aa42"
+"@unbrace/hooks@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@unbrace/hooks/-/hooks-0.1.0.tgz#788b63d9660a024b3face4e2dc5efed8034f36a8"
+  integrity sha512-I8tHloiZ1ctl9j9ZoJQbnriP2hy0CEYI7pf09B24k7PqSdrjXZqCpJZbKYkNbqPJbUHnpH6zSC1rx2VeoEZFhQ==
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"

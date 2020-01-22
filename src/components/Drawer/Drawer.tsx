@@ -1,18 +1,39 @@
-import styled from 'styled-components';
+import * as React from 'react';
+import DrawerHeader from './DrawerHeader';
+import { DrawerWrapper } from './DrawerWrapper';
 
-export type Props = {
-  open: boolean;
+export type DrawerHeaderProps = {
+  closeable?: boolean;
+  onCloseDrawer?: () => void;
+  title?: string;
+  closeTooltip?: string;
 };
 
-export const Drawer = styled.aside<Props>`
-  background: ${props => props.theme.drawer.background.main};
-  border-right: ${props => props.theme.drawer.border.main};
-  bottom: 0;
-  left: ${props => (props.open ? 0 : props.theme.sidebar.width.open)};
-  padding: ${props => props.theme.drawer.padding.main};
-  position: fixed;
-  top: 0;
-  transition: ${props => props.theme.drawer.transition.main};
-  width: ${props => props.theme.sidebar.width.open};
-  z-index: ${props => props.theme.sidebar.zIndex.main};
-`;
+export type DrawerWrapperProps = {
+  open: boolean;
+  position?: 'left' | 'right';
+};
+
+type Props = {
+  children: React.ReactNode | React.ReactNode[];
+} & DrawerHeaderProps &
+  DrawerWrapperProps;
+
+const Drawer: React.FC<Props> = ({
+  open,
+  closeable,
+  title,
+  onCloseDrawer,
+  closeTooltip,
+  children,
+  position = 'left',
+}: Props) => {
+  return (
+    <DrawerWrapper open={open} position={position}>
+      <DrawerHeader {...{ closeable, title, onCloseDrawer, closeTooltip }}></DrawerHeader>
+      {children}
+    </DrawerWrapper>
+  );
+};
+
+export default Drawer;
