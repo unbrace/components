@@ -51,5 +51,5 @@ const StyledText = styled.p<TextAsTagProps & TextProps>`
 `;
 
 export const Text: React.FC<TextAsTagProps & TextProps> = ({ asTag, ...rest }: TextAsTagProps & TextProps) => (
-  <StyledText as={asTag} asTag={asTag} {...rest} />
+  <StyledText as={asTag} {...rest} />
 );
