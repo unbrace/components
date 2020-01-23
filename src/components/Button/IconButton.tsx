@@ -9,6 +9,7 @@ type Props = {
   tooltip?: string;
   tooltipPositionUp?: boolean;
   isLoading?: boolean;
+  positionAbsolute?: boolean;
 } & React.HTMLAttributes<HTMLButtonElement>;
 
 type State = {
@@ -40,8 +41,14 @@ class EnhancedIconButton extends React.Component<Props, State> {
       const { left, bottom, top, width } = position;
       this.setState({
         active: true,
-        left: left + width / 2,
-        top: this.props.tooltipPositionUp ? top - width + 10 : bottom + 5,
+        left: this.props.positionAbsolute ? width / 2 : left + width / 2,
+        top: this.props.tooltipPositionUp
+          ? this.props.positionAbsolute
+            ? 10 - width
+            : top - width + 10
+          : this.props.positionAbsolute
+          ? width + 5
+          : bottom + 5,
       });
     }
   };
@@ -55,13 +62,17 @@ class EnhancedIconButton extends React.Component<Props, State> {
   };
 
   render() {
-    const { children, tooltip, ...other } = this.props;
+    const { children, tooltip, positionAbsolute, ...other } = this.props;
     const { active, left, top } = this.state;
 
     return (
       <IconButton {...other} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} type="button">
         {children}
-        {tooltip && active && !this.props.isDisabled && <Tooltip style={{ top, left }}>{tooltip}</Tooltip>}
+        {tooltip && active && !this.props.isDisabled && (
+          <Tooltip style={{ top, left }} positionAbsolute={positionAbsolute}>
+            {tooltip}
+          </Tooltip>
+        )}
       </IconButton>
     );
   }
@@ -81,6 +92,7 @@ const IconButton = styled('button')<Props>`
   margin: ${props => props.theme.iconButton.margin.main};
   padding: 0;
   transition: color, background 0.25s ease-out;
+  position: relative;
   width: ${props => props.theme.iconButton.size.button[props.size ? props.size : 'main']};
   ${props => props.isDisabled && 'cursor: not-allowed'};
 
