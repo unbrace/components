@@ -74,3 +74,70 @@ storiesOf('Text', module).add(
   },
   { ...{ propsStoryConfig } },
 );
+
+storiesOf('Text', module).add(
+  'colors',
+  () => {
+    return (
+      <UnbraceThemeProvider>
+        <React.Fragment>
+          <Text asTag="p" size="m" color="primary">
+            Color primary @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="primary" colorLevel="medium">
+            Color primary @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="primary" colorLevel="light">
+            Color primary @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="secondary">
+            Color secondary @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="secondary" colorLevel="medium">
+            Color secondary @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="secondary" colorLevel="light">
+            Color secondary @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="success">
+            Color success @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="success" colorLevel="medium">
+            Color success @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="success" colorLevel="light">
+            Color success @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="danger">
+            Color danger @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="danger" colorLevel="medium">
+            Color danger @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="danger" colorLevel="light">
+            Color danger @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="warning">
+            Color warning @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="warning" colorLevel="medium">
+            Color warning @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="warning" colorLevel="light">
+            Color warning @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="neutral">
+            Color neutral @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="neutral" colorLevel="medium">
+            Color neutral @ Unbrace Components
+          </Text>
+          <Text asTag="p" size="m" color="neutral" colorLevel="light">
+            Color neutral @ Unbrace Components
+          </Text>
+        </React.Fragment>
+      </UnbraceThemeProvider>
+    );
+  },
+  { ...{ propsStoryConfig } },
+);
