@@ -3,6 +3,7 @@ import { animations } from '../../theme/keyframes';
 
 type Props = {
   isLeftAligned?: boolean;
+  positionAbsolute?: boolean;
 };
 
 const Tooltip = styled.span<Props>`
@@ -14,7 +15,7 @@ const Tooltip = styled.span<Props>`
   font-size: ${props => props.theme.tooltip.fontSize.main};
   opacity: 0;
   padding: ${props => props.theme.tooltip.padding.main};
-  position: fixed;
+  position: ${props => (props.positionAbsolute ? 'absolute' : 'fixed')};
   transform: ${props => (props.isLeftAligned ? 'none' : 'translateX(-50%)')};
   z-index: 100;
 
