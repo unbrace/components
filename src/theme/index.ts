@@ -8,6 +8,8 @@ import getTooltipTheme from './components/tooltip';
 import defaultPalette from './palette/defaultPalette';
 import defaultTypography from './typography/defaultTypography';
 import getAlertsTheme from './components/alerts';
+import getDrawerTheme from './components/drawer';
+import getTextTheme from './components/text';
 
 const baseTheme = {
   globals: globals,
@@ -19,10 +21,12 @@ const componentTheme = {
   alerts: getAlertsTheme(baseTheme),
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
+  drawer: getDrawerTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
   select: getSelectTheme(baseTheme),
   textWrap: getTextWrapTheme(baseTheme),
   tooltip: getTooltipTheme(baseTheme),
+  text: getTextTheme(baseTheme),
   ...baseTheme,
 };
 

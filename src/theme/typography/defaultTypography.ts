@@ -1,5 +1,6 @@
 /*eslint-disable*/
 const defaultTypography = {
+  fontFamily: '"Poppins", Arial, sans-serif',
   letterSpacing: '1px',
   fontSize: {
     huge_0: '3.00rem',
