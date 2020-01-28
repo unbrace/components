@@ -10,6 +10,7 @@ import defaultTypography from './typography/defaultTypography';
 import getAlertsTheme from './components/alerts';
 import getDrawerTheme from './components/drawer';
 import getTextTheme from './components/text';
+import getPillTheme from './components/pill';
 
 const baseTheme = {
   globals: globals,
@@ -27,6 +28,7 @@ const componentTheme = {
   textWrap: getTextWrapTheme(baseTheme),
   tooltip: getTooltipTheme(baseTheme),
   text: getTextTheme(baseTheme),
+  pill: getPillTheme(baseTheme),
   ...baseTheme,
 };
 

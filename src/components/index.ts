@@ -10,3 +10,4 @@ export { Paginator } from './Paginator';
 export * from './Alerts';
 export { Drawer } from './Drawer';
 export { Heading, Text } from './Text';
+export { Pill } from './Pill';
