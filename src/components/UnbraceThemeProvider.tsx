@@ -9,7 +9,7 @@ type Props = {
 };
 
 const UnbraceThemeProvider: React.FunctionComponent<Props> = ({ children, customTheme }: Props) => {
-  const theme = customTheme ? merge(customTheme, componentTheme) : componentTheme;
+  const theme = customTheme ? merge(componentTheme, customTheme) : componentTheme;
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
