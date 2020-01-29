@@ -62,11 +62,17 @@ class EnhancedIconButton extends React.Component<Props, State> {
   };
 
   render() {
-    const { children, tooltip, positionAbsolute, ...other } = this.props;
+    const { children, tooltip, positionAbsolute, onClick, ...other } = this.props;
     const { active, left, top } = this.state;
 
     return (
-      <IconButton {...other} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} type="button">
+      <IconButton
+        {...other}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+        type="button"
+        onClick={!this.props.isDisabled ? onClick : undefined}
+      >
         {children}
         {tooltip && active && !this.props.isDisabled && (
           <Tooltip style={{ top, left }} positionAbsolute={positionAbsolute}>
