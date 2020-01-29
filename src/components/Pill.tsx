@@ -11,7 +11,7 @@ export const Pill = styled.span<Props>`
   border-radius: ${props => props.theme.pill.fontSize[props.size || 'm']};
   padding: ${props => props.theme.pill.padding[props.size || 'm']};
   font-size: ${props => props.theme.pill.fontSize[props.size || 'm']};
-  min-width: ${props => props.theme.pill.fontSize[props.size || 'm']};
+  min-width: calc(${props => props.theme.pill.fontSize[props.size || 'm']} * 1.5);
   text-align: center;
   display: inline-block;
   line-height: 1.5;
