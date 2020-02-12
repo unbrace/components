@@ -23,6 +23,10 @@
   },
   "homepage": "https://github.com/unbrace/components#readme",
   "dependencies": {
+    "@date-io/date-fns": "1.x",
+    "@material-ui/core": "^4.9.2",
+    "@material-ui/pickers": "^3.2.10",
+    "date-fns": "^2.9.0",
     "lodash.merge": "^4.6.2"
   },
   "peerDependencies": {
@@ -67,7 +71,8 @@
     "styled-components": "^4.4.0",
     "ts-debounce": "^1.0.0",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "webpack-bundle-analyzer": "^3.6.0"
   },
   "typings": "dist/index.d.ts",
   "files": [

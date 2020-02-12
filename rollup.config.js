@@ -1,5 +1,6 @@
 import typescript from 'rollup-plugin-typescript2';
 import pkg from './package.json';
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 export default [
   {
@@ -9,6 +10,7 @@ export default [
       typescript({
         typescript: require('typescript'),
       }),
+      new BundleAnalyzerPlugin()
     ],
     output: [
       { file: pkg.main, format: 'cjs' },
