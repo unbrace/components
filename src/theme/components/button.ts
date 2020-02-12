@@ -49,7 +49,7 @@ const getButtonTheme = (theme: DefaultTheme) => ({
     primary: theme.palette.primary.shade1,
     secondary: theme.palette.secondary.shade1,
     success: theme.palette.success.shade1,
-    tertiary: theme.palette.primary.shade5,
+    tertiary: theme.palette.neutral.shade5,
   },
   fontSize: {
     main: theme.typography.fontSize.regular,
