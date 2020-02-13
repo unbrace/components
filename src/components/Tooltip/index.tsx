@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { animations } from '../../theme/keyframes';
 
 type Props = {
@@ -22,6 +22,12 @@ const Tooltip = styled.span<Props>`
   > li {
     list-style-type: none;
   }
+
+  ${props =>
+    props.positionAbsolute &&
+    css`
+      white-space: nowrap;
+    `}
 `;
 
 export default Tooltip;
