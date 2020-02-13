@@ -35,6 +35,11 @@ storiesOf('Tooltip', module).add(
               <Close />
             </IconButton>
           </ButtonWrapper>
+          <ButtonWrapper>
+            <IconButton positionAbsolute tooltip="Close tooltip">
+              <Close />
+            </IconButton>
+          </ButtonWrapper>
         </React.Fragment>
       </UnbraceThemeProvider>
     );
