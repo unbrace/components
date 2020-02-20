@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { debounce } from 'ts-debounce';
-import Tooltip from '../Tooltip';
+import Tooltip from '../Tooltip/styles';
 
 type Props = {
   children?: React.ReactNode;

@@ -2,23 +2,18 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 import styled from 'styled-components';
-import TextWrap from '../components/TextWrap';
-import { IconButton } from '../components';
-import Close from '../components/icons/Close';
+import { Tooltip2 } from '../components';
 
-const Wrapper = styled.div`
-  margin-left: 0px;
-  max-width: 100px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid lightgrey;
+const ExamplesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  > * {
+    margin-bottom: 10px;
+  }
 `;
 
-const ButtonWrapper = styled.div`
-  margin: 16px 0 0 0;
-  width: 100px;
-  display: flex;
-  justify-content: center;
+const InlineBlock = styled.div`
+  display: inline-block;
 `;
 
 storiesOf('Tooltip', module).add(
@@ -26,27 +21,29 @@ storiesOf('Tooltip', module).add(
   () => {
     return (
       <UnbraceThemeProvider>
-        <React.Fragment>
-          <Wrapper>
-            <TextWrap>{'hover me to see a tooltip'}</TextWrap>
-          </Wrapper>
-          <ButtonWrapper>
-            <IconButton tooltip="Close tooltip">
-              <Close />
-            </IconButton>
-          </ButtonWrapper>
-          <ButtonWrapper>
-            <IconButton positionAbsolute tooltip="Close tooltip">
-              <Close />
-            </IconButton>
-          </ButtonWrapper>
-        </React.Fragment>
+        <ExamplesWrapper>
+          <div>
+            <Tooltip2 text="Tooltip!">
+              <InlineBlock>Default tooltip (hover me!)</InlineBlock>
+            </Tooltip2>
+          </div>
+          <div>
+            <Tooltip2 position="top" text="Position top">
+              <InlineBlock>Tooltip position top</InlineBlock>
+            </Tooltip2>
+          </div>
+          <div style={{ position: 'relative' }}>
+            <Tooltip2 positionAbsolute text="Position absolute">
+              <InlineBlock>Rendered with position absolute</InlineBlock>
+            </Tooltip2>
+          </div>
+        </ExamplesWrapper>
       </UnbraceThemeProvider>
     );
   },
   {
     props: {
-      propTablesExclude: [Wrapper, ButtonWrapper, Close, IconButton, UnbraceThemeProvider],
+      propTablesExclude: [ExamplesWrapper, InlineBlock, UnbraceThemeProvider],
     },
   },
 );

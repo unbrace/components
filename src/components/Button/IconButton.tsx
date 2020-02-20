@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { animations } from '../../theme/keyframes';
-import Tooltip from '../Tooltip';
+import Tooltip from '../Tooltip/styles';
 
 type Props = {
   isDisabled?: boolean;
