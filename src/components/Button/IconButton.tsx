@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { animations } from '../../theme/keyframes';
-import Tooltip from '../Tooltip/styles';
+import { Tooltip } from '..';
 
 type Props = {
   isDisabled?: boolean;
@@ -12,77 +12,15 @@ type Props = {
   positionAbsolute?: boolean;
 } & React.HTMLAttributes<HTMLButtonElement>;
 
-type State = {
-  active: boolean;
-  left: number;
-  top: number;
-};
-
-class EnhancedIconButton extends React.Component<Props, State> {
-  static getDerivedStateFromProps = (props: Props) => {
-    if (props.isDisabled) {
-      return {
-        active: false,
-      };
-    }
-
-    return null;
-  };
-
-  state = {
-    active: false,
-    left: 0,
-    top: 0,
-  };
-
-  handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!this.props.isDisabled) {
-      const position = e.currentTarget.getBoundingClientRect();
-      const { left, bottom, top, width } = position;
-      this.setState({
-        active: true,
-        left: this.props.positionAbsolute ? width / 2 : left + width / 2,
-        top: this.props.tooltipPositionUp
-          ? this.props.positionAbsolute
-            ? 10 - width
-            : top - width + 10
-          : this.props.positionAbsolute
-          ? width + 5
-          : bottom + 5,
-      });
-    }
-  };
-
-  handleMouseLeave = () => {
-    this.setState({
-      active: false,
-      left: 0,
-      top: 0,
-    });
-  };
-
-  render() {
-    const { children, tooltip, positionAbsolute, onClick, ...other } = this.props;
-    const { active, left, top } = this.state;
-
-    return (
-      <IconButton
-        {...other}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-        type="button"
-        onClick={!this.props.isDisabled ? onClick : undefined}
-      >
+const EnhancedIconButton: React.FC<Props> = ({ children, tooltip, positionAbsolute, onClick, ...other }: Props) => {
+  return (
+    <Tooltip content={tooltip} positionAbsolute={positionAbsolute} isActive={Boolean(tooltip)}>
+      <IconButton {...other} type="button" onClick={!other.isDisabled ? onClick : undefined}>
         {children}
-        {tooltip && active && !this.props.isDisabled && (
-          <Tooltip style={{ top, left }} positionAbsolute={positionAbsolute}>
-            {tooltip}
-          </Tooltip>
-        )}
       </IconButton>
-    );
-  }
-}
+    </Tooltip>
+  );
+};
 
 const IconButton = styled('button')<Props>`
   align-items: center;

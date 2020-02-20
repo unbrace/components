@@ -1,46 +1,18 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
 import { debounce } from 'ts-debounce';
-import Tooltip from '../Tooltip/styles';
+import { Tooltip } from '..';
+import { TextWrap } from './styles';
 
-type Props = {
+export type TextWrapProps = {
   children?: React.ReactNode;
   isCapitalized?: boolean;
   list?: string[];
 } & React.HTMLAttributes<HTMLSpanElement>;
 
-const TextWrap = styled.span<Props & { listCount?: number }>`
-  display: block;
-  margin-right: ${props => (props.listCount ? '40px;' : 0)};
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  ${props =>
-    props.isCapitalized &&
-    css`
-      text-transform: capitalize;
-    `}
-
-  ${props =>
-    props.listCount &&
-    css`
-    &:before {
-      background: ${props.theme.textWrap.background.pill};
-      border-radius: 16px;
-      content: '${props.listCount}';
-      padding: 0px 8px;
-      position: absolute;
-      right: 8px;
-    }
-  `}
-`;
-
-const TextWrapComponent: React.FunctionComponent<Props> = ({ list, ...rest }: Props) => {
+const TextWrapComponent: React.FunctionComponent<TextWrapProps> = ({ list, ...rest }: TextWrapProps) => {
   const listCount = list && (list.length > 1 ? list.length : undefined);
   const wrapRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
   const [isTruncated, setIsTruncated] = React.useState(false);
-  const [position, setPosition] = React.useState({ active: false, left: 0, top: 0 });
 
   const debouncedTruncatedSet = debounce(() => {
     if (wrapRef.current) {
@@ -60,48 +32,19 @@ const TextWrapComponent: React.FunctionComponent<Props> = ({ list, ...rest }: Pr
     // eslint-disable-next-line
   }, []);
 
-  const handleMouseEnter = (e: React.MouseEvent<HTMLSpanElement>) => {
-    if (isTruncated) {
-      const pos = e.currentTarget.getBoundingClientRect();
-      const { left, top } = pos;
-      setPosition({
-        active: true,
-        left,
-        top: top + 32,
-      });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (isTruncated) {
-      setPosition({
-        active: false,
-        left: 0,
-        top: 0,
-      });
-    }
-  };
+  const tooltipContent = list
+    ? list.map((item, index) => (
+        <li key={index + item}>
+          {item} <br />
+        </li>
+      ))
+    : rest.children;
 
   return (
     <React.Fragment>
-      <TextWrap
-        listCount={isTruncated ? listCount : undefined}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        ref={wrapRef}
-        {...rest}
-      />
-      {isTruncated && position.active && (
-        <Tooltip isLeftAligned style={{ top: position.top, left: position.left }}>
-          {list
-            ? list.map((item, index) => (
-                <li key={index + item}>
-                  {item} <br />
-                </li>
-              ))
-            : rest.children}
-        </Tooltip>
-      )}
+      <Tooltip isActive={isTruncated} content={tooltipContent}>
+        <TextWrap listCount={isTruncated ? listCount : undefined} ref={wrapRef} {...rest} />
+      </Tooltip>
     </React.Fragment>
   );
 };

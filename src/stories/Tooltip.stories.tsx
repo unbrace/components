@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 import styled from 'styled-components';
-import { Tooltip2 } from '../components';
+import { Tooltip } from '../components';
 
 const ExamplesWrapper = styled.div`
   display: flex;
@@ -23,19 +23,19 @@ storiesOf('Tooltip', module).add(
       <UnbraceThemeProvider>
         <ExamplesWrapper>
           <div>
-            <Tooltip2 text="Tooltip!">
+            <Tooltip content="Tooltip!">
               <InlineBlock>Default tooltip (hover me!)</InlineBlock>
-            </Tooltip2>
+            </Tooltip>
           </div>
           <div>
-            <Tooltip2 position="top" text="Position top">
+            <Tooltip position="top" content="Position top">
               <InlineBlock>Tooltip position top</InlineBlock>
-            </Tooltip2>
+            </Tooltip>
           </div>
           <div style={{ position: 'relative' }}>
-            <Tooltip2 positionAbsolute text="Position absolute">
+            <Tooltip positionAbsolute content="Position absolute">
               <InlineBlock>Rendered with position absolute</InlineBlock>
-            </Tooltip2>
+            </Tooltip>
           </div>
         </ExamplesWrapper>
       </UnbraceThemeProvider>

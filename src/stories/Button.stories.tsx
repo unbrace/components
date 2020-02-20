@@ -82,7 +82,7 @@ storiesOf('Button', module).add('icon button', () => {
         <IconButton tooltip="normal">
           <Close />
         </IconButton>
-        <IconButton size="large" positionAbsolute tooltip="large">
+        <IconButton size="large" tooltip="large">
           <Close />
         </IconButton>
       </>
