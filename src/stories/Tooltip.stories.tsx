@@ -5,10 +5,11 @@ import styled from 'styled-components';
 import { Tooltip } from '../components';
 
 const ExamplesWrapper = styled.div`
+  margin: 50px 200px;
   display: flex;
   flex-direction: column;
   > * {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -30,6 +31,16 @@ storiesOf('Tooltip', module).add(
           <div>
             <Tooltip position="top" content="Position top">
               <InlineBlock>Tooltip position top</InlineBlock>
+            </Tooltip>
+          </div>
+          <div>
+            <Tooltip position="left" content="Position left">
+              <InlineBlock>Tooltip position left</InlineBlock>
+            </Tooltip>
+          </div>
+          <div>
+            <Tooltip position="right" content="Position right">
+              <InlineBlock>Tooltip position right</InlineBlock>
             </Tooltip>
           </div>
           <div style={{ position: 'relative' }}>
