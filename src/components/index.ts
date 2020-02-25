@@ -11,3 +11,4 @@ export * from './Alerts';
 export { Drawer } from './Drawer';
 export { Heading, Text } from './Text';
 export { Pill } from './Pill';
+export { default as Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, TableActions } from './Table';
