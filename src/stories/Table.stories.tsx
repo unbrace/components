@@ -144,13 +144,13 @@ storiesOf('Table', module).add(
                 </Text>
               </React.Fragment>
             </TableCell>
-            <TableCell align="right">1 rib (141g)</TableCell>
-            <TableCell align="right">360 cal</TableCell>
+            <TableCell>1 rib (141g)</TableCell>
+            <TableCell>360 cal</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Corn Dog</TableCell>
-            <TableCell align="right">1 item (175g)</TableCell>
-            <TableCell align="right">438 cal</TableCell>
+            <TableCell>1 item (175g)</TableCell>
+            <TableCell>438 cal</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>
@@ -161,18 +161,18 @@ storiesOf('Table', module).add(
                 </Text>
               </React.Fragment>
             </TableCell>
-            <TableCell align="right">1 serving (215 g)</TableCell>
-            <TableCell align="right">284 cal</TableCell>
+            <TableCell>1 serving (215 g)</TableCell>
+            <TableCell>284 cal</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Mac & Cheese</TableCell>
-            <TableCell align="right">1 serving (189 g)</TableCell>
-            <TableCell align="right">699 cal</TableCell>
+            <TableCell>1 serving (189 g)</TableCell>
+            <TableCell>699 cal</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Mashed Potatoes</TableCell>
-            <TableCell align="right">1 cup (210 g)</TableCell>
-            <TableCell align="right">174 cal</TableCell>
+            <TableCell>1 cup (210 g)</TableCell>
+            <TableCell>174 cal</TableCell>
           </TableRow>
         </Table>
       </UnbraceThemeProvider>
