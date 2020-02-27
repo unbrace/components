@@ -10,10 +10,13 @@ import {
   CellProps,
   RowProps,
 } from './styles';
+import { SortOrder, SortTableHeadCell } from './SortTableHeadCell';
 
 type TableColumn = {
   id: number | string;
   content?: string | React.ReactNode;
+  onSort?: () => void | ((event: MouseEvent) => void);
+  sortOrder?: SortOrder;
 } & CellProps;
 
 type TableData = {
@@ -35,11 +38,24 @@ const Table: React.FC<Props> = ({ columns, data, isStatic, children, ...rest }: 
       {columns && (
         <TableHead>
           <TableRow isStatic>
-            {columns.map((header, index) => (
-              <TableHeadCell align={header.align} size={header.size} key={`${index}-${header.id}`}>
-                {header.content}
-              </TableHeadCell>
-            ))}
+            {columns.map((header, index) =>
+              header.onSort && header.sortOrder ? (
+                <SortTableHeadCell
+                  active
+                  onClick={header.onSort}
+                  sortOrder={header.sortOrder}
+                  align={header.align}
+                  size={header.size}
+                  key={`${index}-${header.id}`}
+                >
+                  {header.content}
+                </SortTableHeadCell>
+              ) : (
+                <TableHeadCell align={header.align} size={header.size} key={`${index}-${header.id}`}>
+                  {header.content}
+                </TableHeadCell>
+              ),
+            )}
           </TableRow>
         </TableHead>
       )}
@@ -56,7 +72,7 @@ const Table: React.FC<Props> = ({ columns, data, isStatic, children, ...rest }: 
           ))}
         </TableBody>
       )}
-      {!data && children}
+      {!data && !columns ? children : !data ? <TableBody>{children}</TableBody> : null}
     </TableLayout>
   );
 };

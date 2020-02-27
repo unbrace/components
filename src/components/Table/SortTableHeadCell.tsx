@@ -11,22 +11,22 @@ export enum SortOrder {
 type Props = {
   children: React.ReactNode | React.ReactNode[];
   active?: boolean;
-  order?: SortOrder;
+  sortOrder?: SortOrder;
   onClick?: () => void | ((event: MouseEvent) => void);
 } & CellProps;
 
-const SortTableHeadCell: React.FC<Props> = ({ children, order, ...rest }: Props) => {
+const SortTableHeadCell: React.FC<Props> = ({ children, sortOrder, ...rest }: Props) => {
   return (
-    <TableHeadCellWithIcon {...rest} hiddenIcon={order === SortOrder.OFF}>
+    <TableHeadCellWithIcon {...rest} hiddenIcon={sortOrder === SortOrder.OFF}>
       {rest.align === 'right' ? (
         <span>
-          {rest.active && <ArrowDown isRotated={order !== SortOrder.ASC} />}
+          {rest.active && <ArrowDown isRotated={sortOrder !== SortOrder.ASC} />}
           {children}
         </span>
       ) : (
         <span>
           {children}
-          {rest.active && <ArrowDown isRotated={order !== SortOrder.ASC} />}
+          {rest.active && <ArrowDown isRotated={sortOrder !== SortOrder.ASC} />}
         </span>
       )}
     </TableHeadCellWithIcon>

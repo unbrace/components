@@ -22,11 +22,22 @@ import {
 storiesOf('Table', module).add(
   'simple',
   () => {
+    const [order, setOrder] = React.useState(SortOrder.OFF);
+
+    const handleSort = () => {
+      setOrder(order === SortOrder.ASC ? SortOrder.DESC : order === SortOrder.DESC ? SortOrder.OFF : SortOrder.ASC);
+    };
+
     return (
       <UnbraceThemeProvider>
         <Table
           columns={[
-            { id: 1, content: 'Food' },
+            {
+              id: 1,
+              content: 'Food',
+              onSort: handleSort,
+              sortOrder: order,
+            },
             { id: 2, content: 'Serving', align: 'right', size: 200 },
             { id: 3, content: 'Calories', align: 'right', size: 200 },
           ]}
@@ -91,6 +102,79 @@ storiesOf('Table', module).add(
             { id: 5, cells: ['Mashed Potatoes', '1 cup (210 g)', '174 cal'] },
           ]}
         />
+      </UnbraceThemeProvider>
+    );
+  },
+  {
+    props: {
+      propTablesExclude: [UnbraceThemeProvider],
+    },
+  },
+);
+
+storiesOf('Table', module).add(
+  'simple without use of data prop',
+  () => {
+    const [order, setOrder] = React.useState(SortOrder.OFF);
+
+    const handleSort = () => {
+      setOrder(order === SortOrder.ASC ? SortOrder.DESC : order === SortOrder.DESC ? SortOrder.OFF : SortOrder.ASC);
+    };
+
+    return (
+      <UnbraceThemeProvider>
+        <Table
+          columns={[
+            {
+              id: 1,
+              content: 'Food',
+              onSort: handleSort,
+              sortOrder: order,
+            },
+            { id: 2, content: 'Serving', align: 'right', size: 200 },
+            { id: 3, content: 'Calories', align: 'right', size: 200 },
+          ]}
+        >
+          <TableRow>
+            <TableCell>
+              <React.Fragment key="1">
+                <Text size="xs">BBQ Ribs</Text>
+                <Text size="xs" colorLevel="medium">
+                  Tasty AF
+                </Text>
+              </React.Fragment>
+            </TableCell>
+            <TableCell align="right">1 rib (141g)</TableCell>
+            <TableCell align="right">360 cal</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Corn Dog</TableCell>
+            <TableCell align="right">1 item (175g)</TableCell>
+            <TableCell align="right">438 cal</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <React.Fragment key="1">
+                <Text size="xs">Lasagne</Text>
+                <Text size="xs" colorLevel="medium">
+                  Ooh yeah
+                </Text>
+              </React.Fragment>
+            </TableCell>
+            <TableCell align="right">1 serving (215 g)</TableCell>
+            <TableCell align="right">284 cal</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Mac & Cheese</TableCell>
+            <TableCell align="right">1 serving (189 g)</TableCell>
+            <TableCell align="right">699 cal</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Mashed Potatoes</TableCell>
+            <TableCell align="right">1 cup (210 g)</TableCell>
+            <TableCell align="right">174 cal</TableCell>
+          </TableRow>
+        </Table>
       </UnbraceThemeProvider>
     );
   },
@@ -473,7 +557,7 @@ storiesOf('Table', module).add(
             <TableRow isStatic>
               <SortTableHeadCell
                 active
-                order={orderFood}
+                sortOrder={orderFood}
                 onClick={() =>
                   setOrderFood(
                     orderFood === SortOrder.ASC
@@ -490,7 +574,7 @@ storiesOf('Table', module).add(
                 active={false}
                 align="right"
                 size={200}
-                order={orderServing}
+                sortOrder={orderServing}
                 onClick={() =>
                   setOrderServing(
                     orderServing === SortOrder.ASC
