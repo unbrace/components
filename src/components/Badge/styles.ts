@@ -1,18 +1,14 @@
 import styled from 'styled-components';
+import { Props } from '.';
+import { Close } from '../icons';
 
-type Props = {
-  color?: 'danger' | 'success' | 'warning' | 'primary' | 'secondary';
-  isCapitalized?: boolean;
-  onlyText?: boolean;
-  size?: 'xsmall' | 'small' | 'large';
-};
-
-const Badge = styled('div')<Props>`
+export const Badge = styled('div')<Props>`
+  align-items: center;
   align-self: center;
   background-color: ${props => !props.onlyText && props.theme.badge.background[`${props.color}`]};
   border-radius: ${props => props.theme.badge.borderRadius.main};
   color: ${props => props.theme.badge.color[`${props.color}`]};
-  display: inline-block;
+  display: inline-flex;
   font-size: ${props =>
     props.size === 'xsmall' ? props.theme.badge.fontSize.xsmall : props.theme.badge.fontSize.main};
   font-weight: ${props => props.theme.badge.fontWeight.main};
@@ -34,4 +30,18 @@ const Badge = styled('div')<Props>`
   }
 `;
 
-export default Badge;
+export const CloseIcon = styled(Close)<Props>`
+  margin-left: 5px;
+  transition: transform 0.2s linear;
+
+  svg {
+    fill: ${props => props.theme.badge.color[`${props.color}`]};
+    height: 1.1em;
+    width: 1.1em;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+  }
+`;

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
-import Badge from '../components/Badge';
+import { Badge } from '../components';
 import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 
 const Spacer = styled.div`
@@ -43,6 +43,9 @@ storiesOf('Badge', module).add('variants', () => {
         </Badge>
         <Badge color="primary" onlyText>
           only text
+        </Badge>
+        <Badge color="primary" onDelete={() => alert('delete!')}>
+          Deletable
         </Badge>
       </Spacer>
     </UnbraceThemeProvider>
