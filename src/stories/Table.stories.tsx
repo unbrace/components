@@ -13,6 +13,10 @@ import {
   IconButton,
   Close,
   Checkmark,
+  SubRows,
+  Badge,
+  SortTableHeadCell,
+  SortOrder,
 } from '../components';
 
 storiesOf('Table', module).add(
@@ -104,7 +108,7 @@ storiesOf('Table', module).add(
       <UnbraceThemeProvider>
         <Table>
           <TableHead>
-            <TableRow>
+            <TableRow isStatic>
               <TableHeadCell>Food</TableHeadCell>
               <TableHeadCell align="right" size={200}>
                 Serving
@@ -173,11 +177,318 @@ storiesOf('Table', module).add(
       <UnbraceThemeProvider>
         <Table>
           <TableHead>
-            <TableRow>
+            <TableRow isStatic>
               <TableHeadCell>Food</TableHeadCell>
               <TableHeadCell align="right" size={200}>
                 Serving
               </TableHeadCell>
+              <TableHeadCell align="right" size={200}>
+                Calories
+              </TableHeadCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                <React.Fragment key="1">
+                  <Text size="xs">BBQ Ribs</Text>
+                  <Text size="xs" colorLevel="medium">
+                    Tasty AF
+                  </Text>
+                </React.Fragment>
+              </TableCell>
+              <TableCell align="right">1 rib (141g)</TableCell>
+              <TableCell align="right">
+                360 cal
+                <TableActions>
+                  <IconButton>
+                    <Close />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Corn Dog</TableCell>
+              <TableCell align="right">1 item (175g)</TableCell>
+              <TableCell align="right">
+                438 cal
+                <TableActions>
+                  <IconButton tooltip="Get out">
+                    <Close />
+                  </IconButton>
+                  <IconButton tooltip="Check yourself">
+                    <Checkmark />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <React.Fragment key="1">
+                  <Text size="xs">Lasagne</Text>
+                  <Text size="xs" colorLevel="medium">
+                    Ooh yeah
+                  </Text>
+                </React.Fragment>
+              </TableCell>
+              <TableCell align="right">1 serving (215 g)</TableCell>
+              <TableCell align="right">
+                284 cal
+                <TableActions>
+                  <IconButton tooltip="Get out">
+                    <Close />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Mac & Cheese</TableCell>
+              <TableCell align="right">1 serving (189 g)</TableCell>
+              <TableCell align="right">
+                699 cal
+                <TableActions>
+                  <IconButton tooltip="Get out">
+                    <Close />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Mashed Potatoes</TableCell>
+              <TableCell align="right">1 cup (210 g)</TableCell>
+              <TableCell align="right">
+                174 cal
+                <TableActions>
+                  <IconButton tooltip="Get out">
+                    <Close />
+                  </IconButton>
+                  <IconButton tooltip="Check yourself">
+                    <Checkmark />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </UnbraceThemeProvider>
+    );
+  },
+  {
+    props: {
+      propTablesExclude: [UnbraceThemeProvider],
+    },
+  },
+);
+
+storiesOf('Table', module).add(
+  'sub rows',
+  () => {
+    return (
+      <UnbraceThemeProvider>
+        <Table>
+          <TableHead>
+            <TableRow isStatic>
+              <TableHeadCell>Food</TableHeadCell>
+              <TableHeadCell align="right" size={200}>
+                Serving
+              </TableHeadCell>
+              <TableHeadCell align="right" size={200}>
+                Calories
+              </TableHeadCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                <React.Fragment key="1">
+                  <Text size="xs">BBQ Ribs</Text>
+                  <Text size="xs" colorLevel="medium">
+                    Tasty AF
+                  </Text>
+                </React.Fragment>
+              </TableCell>
+              <TableCell align="right">1 rib (141g)</TableCell>
+              <TableCell align="right">
+                360 cal
+                <TableActions>
+                  <IconButton>
+                    <Close />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Corn Dog</TableCell>
+              <TableCell align="right">1 item (175g)</TableCell>
+              <TableCell align="right">
+                438 cal
+                <TableActions>
+                  <IconButton tooltip="Get out">
+                    <Close />
+                  </IconButton>
+                  <IconButton tooltip="Check yourself">
+                    <Checkmark />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <React.Fragment key="1">
+                  <Text size="xs">Lasagne</Text>
+                  <Text size="xs" colorLevel="medium">
+                    Ooh yeah
+                  </Text>
+                </React.Fragment>
+              </TableCell>
+              <TableCell align="right">1 serving (215 g)</TableCell>
+              <TableCell align="right">
+                284 cal
+                <TableActions>
+                  <IconButton tooltip="Get out">
+                    <Close />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+            <SubRows colSpan={3} gutter={{ left: 48, bottom: 24 }}>
+              <TableRow>
+                <TableCell size={80}>
+                  <Badge size="small" color="primary">
+                    01
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <Text size="xs">
+                    Preheat oven to 375º. In a large pot of salted boiling water, cook pasta according to package
+                    directions until al dente, less 2 minutes. Drain and drizzle a bit of olive oil to prevent noodles
+                    from sticking together.
+                  </Text>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell size={80}>
+                  <Badge size="small" color="primary">
+                    02
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <Text size="xs">
+                    Meanwhile, in a large pot over medium-high heat, heat oil. Cook ground beef until no longer pink,
+                    breaking up with a wooden spoon, then drain fat. Return beef to skillet and add garlic and oregano
+                    and stir for 1 minute. Season with salt and pepper, then add marinara and stir until warmed through.{' '}
+                  </Text>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell size={80}>
+                  <Badge size="small" color="primary">
+                    03
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <Text size="xs">
+                    Combine ricotta, 1/4 cup Parmesan, and parsley in a large mixing bowl and season with salt and
+                    pepper. Set aside.
+                  </Text>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell size={80}>
+                  <Badge size="small" color="primary">
+                    04
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <Text size="xs">
+                    In a large casserole dish, spread a thin layer of meat sauce, a single layer of lasagna noodles, a
+                    layer of ricotta mixture, and a single layer of mozzarella, then repeat layers. Top last layer of
+                    noodles with meat sauce, Parmesan, and mozzarella.
+                  </Text>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell size={80}>
+                  <Badge size="small" color="primary">
+                    05
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <Text size="xs">
+                    Cover with foil and bake for 15 minutes, then increase temperature to 400º and bake uncovered for 18
+                    to 20 minutes. Garnish with parsley and serve.
+                  </Text>
+                </TableCell>
+              </TableRow>
+            </SubRows>
+            <TableRow>
+              <TableCell>Mac & Cheese</TableCell>
+              <TableCell align="right">1 serving (189 g)</TableCell>
+              <TableCell align="right">
+                699 cal
+                <TableActions>
+                  <IconButton tooltip="Get out">
+                    <Close />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Mashed Potatoes</TableCell>
+              <TableCell align="right">1 cup (210 g)</TableCell>
+              <TableCell align="right">
+                174 cal
+                <TableActions>
+                  <IconButton tooltip="Get out">
+                    <Close />
+                  </IconButton>
+                  <IconButton tooltip="Check yourself">
+                    <Checkmark />
+                  </IconButton>
+                </TableActions>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </UnbraceThemeProvider>
+    );
+  },
+  {
+    props: {
+      propTablesExclude: [UnbraceThemeProvider],
+    },
+  },
+);
+
+storiesOf('Table', module).add(
+  'row actions',
+  () => {
+    const [orderFood, setOrderFood] = React.useState<SortOrder>('asc');
+    const [orderServing, setOrderServing] = React.useState<SortOrder>('asc');
+
+    return (
+      <UnbraceThemeProvider>
+        <Table>
+          <TableHead>
+            <TableRow isStatic>
+              <SortTableHeadCell
+                active
+                order={orderFood}
+                onClick={() => setOrderFood(orderFood === 'asc' ? 'desc' : orderFood === 'desc' ? undefined : 'asc')}
+              >
+                Food
+              </SortTableHeadCell>
+              <SortTableHeadCell
+                active
+                align="right"
+                size={200}
+                order={orderServing}
+                onClick={() =>
+                  setOrderServing(orderServing === 'asc' ? 'desc' : orderServing === 'desc' ? undefined : 'asc')
+                }
+              >
+                Serving
+              </SortTableHeadCell>
               <TableHeadCell align="right" size={200}>
                 Calories
               </TableHeadCell>

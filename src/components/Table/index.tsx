@@ -62,4 +62,6 @@ const Table: React.FC<Props> = ({ columns, data, isStatic, children, ...rest }: 
 };
 
 export default Table;
+export { SubRows } from './SubRows';
+export { SortTableHeadCell, SortOrder } from './SortTableHeadCell';
 export { TableBody, TableCell, TableHead, TableHeadCell, TableRow, TableActions };

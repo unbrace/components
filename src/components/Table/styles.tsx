@@ -74,6 +74,16 @@ export const TableRow = styled.tr<RowProps>`
   }
 `;
 
+export const SubRowTableRow = styled(TableRow)`
+  + tr > td {
+    border-top: ${props => props.theme.table.border.main};
+  }
+
+  > td {
+    padding-top: 0;
+  }
+`;
+
 const tableCellProps = css<CellProps>`
   padding: ${props => props.theme.table.padding.main};
   border-bottom: ${props => props.theme.table.border.main};
@@ -101,11 +111,38 @@ const tableCellProps = css<CellProps>`
 
 export const TableHeadCell = styled.th`
   color: ${props => props.theme.table.color.header};
-  font-size: ${props => props.theme.table.fontSize.header};
+  font-size: ${props => props.theme.table.fontSize.main};
   text-transform: uppercase;
   font-weight: 500;
 
   ${tableCellProps};
+`;
+
+export const TableHeadCellWithIcon = styled(TableHeadCell)<{ hiddenIcon?: boolean }>`
+  > span {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.2s ease-in;
+    justify-content: ${props =>
+      props.align === 'right' ? 'flex-end' : props.align === 'center' ? 'center' : 'flex-start'};
+
+    &:hover {
+      color: ${props => props.theme.table.color.hover};
+
+      svg {
+        fill: ${props => (props.hiddenIcon ? props.theme.table.color.hoverInactive : props.theme.table.color.hover)};
+      }
+    }
+  }
+
+  svg {
+    margin: 0 8px;
+    transition: fill 0.2s ease-in;
+    fill: ${props => (props.hiddenIcon ? 'transparent' : props.theme.table.color.header)};
+    width: ${props => props.theme.table.fontSize.main};
+    height: ${props => props.theme.table.fontSize.main};
+  }
 `;
 
 export const TableCell = styled.td`
