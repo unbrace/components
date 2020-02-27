@@ -463,8 +463,8 @@ storiesOf('Table', module).add(
 storiesOf('Table', module).add(
   'row actions',
   () => {
-    const [orderFood, setOrderFood] = React.useState<SortOrder>('asc');
-    const [orderServing, setOrderServing] = React.useState<SortOrder>('asc');
+    const [orderFood, setOrderFood] = React.useState(SortOrder.ASC);
+    const [orderServing, setOrderServing] = React.useState(SortOrder.ASC);
 
     return (
       <UnbraceThemeProvider>
@@ -474,17 +474,31 @@ storiesOf('Table', module).add(
               <SortTableHeadCell
                 active
                 order={orderFood}
-                onClick={() => setOrderFood(orderFood === 'asc' ? 'desc' : orderFood === 'desc' ? undefined : 'asc')}
+                onClick={() =>
+                  setOrderFood(
+                    orderFood === SortOrder.ASC
+                      ? SortOrder.DESC
+                      : orderFood === SortOrder.DESC
+                      ? SortOrder.OFF
+                      : SortOrder.ASC,
+                  )
+                }
               >
                 Food
               </SortTableHeadCell>
               <SortTableHeadCell
-                active
+                active={false}
                 align="right"
                 size={200}
                 order={orderServing}
                 onClick={() =>
-                  setOrderServing(orderServing === 'asc' ? 'desc' : orderServing === 'desc' ? undefined : 'asc')
+                  setOrderServing(
+                    orderServing === SortOrder.ASC
+                      ? SortOrder.DESC
+                      : orderServing === SortOrder.DESC
+                      ? SortOrder.OFF
+                      : SortOrder.ASC,
+                  )
                 }
               >
                 Serving

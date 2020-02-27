@@ -2,27 +2,31 @@ import * as React from 'react';
 import { CellProps, TableHeadCellWithIcon } from './styles';
 import { ArrowDown } from '../icons';
 
-export type SortOrder = 'asc' | 'desc' | undefined;
+export enum SortOrder {
+  ASC = 'ASC',
+  DESC = 'DESC',
+  OFF = 'OFF',
+}
 
 type Props = {
   children: React.ReactNode | React.ReactNode[];
   active?: boolean;
-  order: SortOrder;
+  order?: SortOrder;
   onClick?: () => void | ((event: MouseEvent) => void);
 } & CellProps;
 
-const SortTableHeadCell: React.FC<Props> = ({ children, active, order, ...rest }: Props) => {
+const SortTableHeadCell: React.FC<Props> = ({ children, order, ...rest }: Props) => {
   return (
-    <TableHeadCellWithIcon {...rest} hiddenIcon={!order}>
+    <TableHeadCellWithIcon {...rest} hiddenIcon={order === SortOrder.OFF}>
       {rest.align === 'right' ? (
         <span>
-          {active && <ArrowDown isRotated={order !== 'asc'} />}
+          {rest.active && <ArrowDown isRotated={order !== SortOrder.ASC} />}
           {children}
         </span>
       ) : (
         <span>
           {children}
-          {active && <ArrowDown isRotated={order !== 'asc'} />}
+          {rest.active && <ArrowDown isRotated={order !== SortOrder.ASC} />}
         </span>
       )}
     </TableHeadCellWithIcon>

@@ -118,17 +118,22 @@ export const TableHeadCell = styled.th`
   ${tableCellProps};
 `;
 
-export const TableHeadCellWithIcon = styled(TableHeadCell)<{ hiddenIcon?: boolean }>`
+type HeadCellWithIconProps = {
+  hiddenIcon?: boolean;
+  active?: boolean;
+};
+
+export const TableHeadCellWithIcon = styled(TableHeadCell)<HeadCellWithIconProps>`
   > span {
     display: flex;
     align-items: center;
-    cursor: pointer;
+    cursor: ${props => (props.active ? 'pointer' : 'default')};
     transition: color 0.2s ease-in;
     justify-content: ${props =>
       props.align === 'right' ? 'flex-end' : props.align === 'center' ? 'center' : 'flex-start'};
 
     &:hover {
-      color: ${props => props.theme.table.color.hover};
+      color: ${props => (props.active ? props.theme.table.color.hover : props.theme.table.color.header)};
 
       svg {
         fill: ${props => (props.hiddenIcon ? props.theme.table.color.hoverInactive : props.theme.table.color.hover)};
