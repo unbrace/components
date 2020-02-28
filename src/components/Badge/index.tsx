@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Badge, CloseIcon } from './styles';
+import { Badge, CloseIcon, BadgeContent } from './styles';
 
 export type Props = {
   color?: 'danger' | 'success' | 'warning' | 'primary' | 'secondary';
@@ -14,8 +14,8 @@ export type Props = {
 const BadgeComponent: React.FC<Props> = ({ onDelete, children, ...props }: Props) => {
   return (
     <Badge {...props}>
-      {children}
-      {onDelete && <CloseIcon onClick={onDelete} color={props.color} />}
+      <BadgeContent isCapitalized={props.isCapitalized}>{children}</BadgeContent>
+      {onDelete && <CloseIcon onClick={onDelete} color={props.color} size={props.size} />}
     </Badge>
   );
 };
