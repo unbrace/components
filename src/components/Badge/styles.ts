@@ -26,13 +26,20 @@ export const Badge = styled('div')<Props>`
   text-transform: ${props => (props.isCapitalized ? 'lowercase' : 'uppercase')};
 
   &:first-letter {
-    text-transform: ${props => props.isCapitalized && 'uppercase'};
+    text-transform: ${props => props.isCapitalized && 'uppercase !important'};
   }
 `;
 
 export const CloseIcon = styled(Close)<Props>`
-  margin-left: 5px;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
   transition: transform 0.2s linear;
+  border: solid 1px ${props => props.theme.badge.color[`${props.color}`]};
+  border-radius: 50%;
+  padding: 1px;
+  margin-right: ${props =>
+    props.size === 'large' ? `-8px` : props.size === 'small' || props.size === 'xsmall' ? `-2px` : `-10px`};
 
   svg {
     fill: ${props => props.theme.badge.color[`${props.color}`]};
@@ -42,6 +49,13 @@ export const CloseIcon = styled(Close)<Props>`
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.3);
+    transform: scale(1.1);
+  }
+`;
+
+export const BadgeContent = styled.span<{ isCapitalized?: boolean }>`
+  display: inline-block;
+  &:first-letter {
+    text-transform: ${props => props.isCapitalized && 'uppercase !important'};
   }
 `;

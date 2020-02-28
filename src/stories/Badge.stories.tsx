@@ -47,6 +47,12 @@ storiesOf('Badge', module).add('variants', () => {
         <Badge color="primary" onDelete={() => alert('delete!')}>
           Deletable
         </Badge>
+        <Badge color="primary" size="small" onDelete={() => alert('delete!')}>
+          Deletable
+        </Badge>
+        <Badge color="primary" size="large" onDelete={() => alert('delete!')}>
+          Deletable
+        </Badge>
       </Spacer>
     </UnbraceThemeProvider>
   );
