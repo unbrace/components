@@ -10,12 +10,25 @@ type Props = {
   tooltipPositionUp?: boolean;
   isLoading?: boolean;
   positionAbsolute?: boolean;
+  disabledTooltip?: string;
 } & React.HTMLAttributes<HTMLButtonElement>;
 
-const EnhancedIconButton: React.FC<Props> = ({ children, tooltip, positionAbsolute, onClick, ...other }: Props) => {
+const EnhancedIconButton: React.FC<Props> = ({
+  children,
+  tooltip,
+  positionAbsolute,
+  onClick,
+  disabledTooltip,
+  isDisabled,
+  ...other
+}: Props) => {
   return (
-    <Tooltip content={tooltip} positionAbsolute={positionAbsolute} isActive={Boolean(tooltip)}>
-      <IconButton {...other} type="button" onClick={!other.isDisabled ? onClick : undefined}>
+    <Tooltip
+      content={(isDisabled && disabledTooltip) || tooltip}
+      positionAbsolute={positionAbsolute}
+      isActive={Boolean(tooltip)}
+    >
+      <IconButton {...other} isDisabled={isDisabled} type="button" onClick={!isDisabled ? onClick : undefined}>
         {children}
       </IconButton>
     </Tooltip>
