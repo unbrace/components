@@ -7,12 +7,12 @@ type Props = {
   gutter: number | { left: number; bottom: number };
 };
 
-const SubRows: React.FC<Props> = ({ colSpan, gutter, children }: Props) => {
+const SubRows: React.FC<Props> = ({ colSpan, gutter, children, ...rest }: Props) => {
   const left = typeof gutter === 'number' ? gutter : gutter.left;
   const bottom = typeof gutter === 'number' ? gutter : gutter.bottom;
 
   return (
-    <SubRowTableRow isStatic>
+    <SubRowTableRow isStatic {...rest}>
       <td colSpan={colSpan} style={{ paddingLeft: left, paddingBottom: bottom }}>
         <Table>{children}</Table>
       </td>
