@@ -56,6 +56,6 @@ export const CloseIcon = styled(Close)<Props>`
 export const BadgeContent = styled.span<{ isCapitalized?: boolean }>`
   display: inline-block;
   &:first-letter {
-    text-transform: ${props => props.isCapitalized && 'uppercase !important'};
+    text-transform: ${props => props.isCapitalized && 'uppercase'};
   }
 `;
