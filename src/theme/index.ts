@@ -11,6 +11,7 @@ import getAlertsTheme from './components/alerts';
 import getDrawerTheme from './components/drawer';
 import getTextTheme from './components/text';
 import getPillTheme from './components/pill';
+import getTableTheme from './components/table';
 
 const baseTheme = {
   globals: globals,
@@ -25,6 +26,7 @@ const componentTheme = {
   drawer: getDrawerTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
   select: getSelectTheme(baseTheme),
+  table: getTableTheme(baseTheme),
   textWrap: getTextWrapTheme(baseTheme),
   tooltip: getTooltipTheme(baseTheme),
   text: getTextTheme(baseTheme),
