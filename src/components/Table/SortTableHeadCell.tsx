@@ -20,13 +20,13 @@ const SortTableHeadCell: React.FC<Props> = ({ children, sortOrder, ...rest }: Pr
     <TableHeadCellWithIcon {...rest} hiddenIcon={sortOrder === SortOrder.OFF}>
       {rest.align === 'right' ? (
         <span>
-          {rest.active && <ArrowDown isRotated={sortOrder !== SortOrder.ASC} />}
+          {rest.active && <ArrowDown className="sort-icon" isRotated={sortOrder !== SortOrder.ASC} />}
           {children}
         </span>
       ) : (
         <span>
           {children}
-          {rest.active && <ArrowDown isRotated={sortOrder !== SortOrder.ASC} />}
+          {rest.active && <ArrowDown className="sort-icon" isRotated={sortOrder !== SortOrder.ASC} />}
         </span>
       )}
     </TableHeadCellWithIcon>

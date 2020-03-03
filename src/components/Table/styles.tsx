@@ -84,6 +84,11 @@ export const SubRowTableRow = styled(TableRow)`
   }
 `;
 
+export const SubRowTableData = styled.td<{ gutterLeft?: number; gutterBottom?: number }>`
+  padding-left: ${props => (props.gutterLeft ? props.gutterLeft : props.theme.table.padding.gutterLeft)}px;
+  padding-bottom: ${props => (props.gutterBottom ? props.gutterBottom : props.theme.table.padding.gutterBottom)}px;
+`;
+
 const tableCellProps = css<CellProps>`
   padding: ${props => props.theme.table.padding.main};
   border-bottom: ${props => props.theme.table.border.main};
@@ -135,7 +140,7 @@ export const TableHeadCellWithIcon = styled(TableHeadCell)<HeadCellWithIconProps
     &:hover {
       color: ${props => (props.active ? props.theme.table.color.hover : props.theme.table.color.header)};
 
-      svg {
+      svg.sort-icon {
         fill: ${props => (props.hiddenIcon ? props.theme.table.color.hoverInactive : props.theme.table.color.hover)};
       }
     }

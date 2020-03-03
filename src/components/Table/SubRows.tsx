@@ -1,21 +1,23 @@
 import * as React from 'react';
-import { Table, SubRowTableRow } from './styles';
+import { Table, SubRowTableRow, SubRowTableData, TableBody } from './styles';
 
 type Props = {
   colSpan: number;
   children: React.ReactNode | React.ReactNode[];
-  gutter: number | { left: number; bottom: number };
+  gutter?: number | { left: number; bottom: number };
 };
 
 const SubRows: React.FC<Props> = ({ colSpan, gutter, children, ...rest }: Props) => {
-  const left = typeof gutter === 'number' ? gutter : gutter.left;
-  const bottom = typeof gutter === 'number' ? gutter : gutter.bottom;
+  const left = gutter && (typeof gutter === 'number' ? gutter : gutter.left);
+  const bottom = gutter && (typeof gutter === 'number' ? gutter : gutter.bottom);
 
   return (
     <SubRowTableRow isStatic {...rest}>
-      <td colSpan={colSpan} style={{ paddingLeft: left, paddingBottom: bottom }}>
-        <Table>{children}</Table>
-      </td>
+      <SubRowTableData colSpan={colSpan} gutterLeft={left} gutterBottom={bottom}>
+        <Table>
+          <TableBody>{children}</TableBody>
+        </Table>
+      </SubRowTableData>
     </SubRowTableRow>
   );
 };

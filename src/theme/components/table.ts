@@ -14,7 +14,7 @@ const getTableTheme = (theme: DefaultTheme) => ({
     cell: theme.palette.neutral.shade8,
   },
   fontSize: { main: theme.typography.fontSize.regular, cell: theme.typography.fontSize.small_5 },
-  padding: { main: '10px 0px 10px 15px', end: '15px' },
+  padding: { main: '10px 0px 10px 15px', end: '15px', gutterLeft: 48, gutterBottom: 24 },
   height: { row: '60px' },
 });
 

@@ -435,7 +435,7 @@ storiesOf('Table', module).add(
                 </TableActions>
               </TableCell>
             </TableRow>
-            <SubRows colSpan={3} gutter={{ left: 48, bottom: 24 }}>
+            <SubRows colSpan={3} gutter={{ left: 56, bottom: 32 }}>
               <TableRow>
                 <TableCell size={80}>
                   <Badge size="small" color="primary">
