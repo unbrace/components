@@ -23,6 +23,7 @@ storiesOf('Table', module).add(
   'simple',
   () => {
     const [order, setOrder] = React.useState(SortOrder.OFF);
+    const [animate, setAnimate] = React.useState(false);
 
     const handleSort = () => {
       setOrder(order === SortOrder.ASC ? SortOrder.DESC : order === SortOrder.DESC ? SortOrder.OFF : SortOrder.ASC);
@@ -30,25 +31,30 @@ storiesOf('Table', module).add(
 
     return (
       <UnbraceThemeProvider>
-        <Table
-          columns={[
-            {
-              id: 1,
-              content: 'Food',
-              onSort: handleSort,
-              sortOrder: order,
-            },
-            { id: 2, content: 'Serving', align: 'right', size: 200 },
-            { id: 3, content: 'Calories', align: 'right', size: 200 },
-          ]}
-          data={[
-            { id: 1, cells: ['BBQ Ribs', '1 rib (141g)', '360 cal'] },
-            { id: 2, cells: ['Corn Dog', '1 item (175g)', '438 cal'] },
-            { id: 3, cells: ['Lasagne', '1 serving (215 g)', '284 cal'] },
-            { id: 4, cells: ['Mac & Cheese', '1 serving (189 g)', '699 cal'] },
-            { id: 5, cells: ['Mashed Potatoes', '1 cup (210 g)', '174 cal'] },
-          ]}
-        />
+        <>
+          <Table
+            enableAnimation
+            animate={animate}
+            columns={[
+              {
+                id: 1,
+                content: 'Food',
+                onSort: handleSort,
+                sortOrder: order,
+              },
+              { id: 2, content: 'Serving', align: 'right', size: 200 },
+              { id: 3, content: 'Calories', align: 'right', size: 200 },
+            ]}
+            data={[
+              { id: 1, cells: ['BBQ Ribs', '1 rib (141g)', '360 cal'] },
+              { id: 2, cells: ['Corn Dog', '1 item (175g)', '438 cal'] },
+              { id: 3, cells: ['Lasagne', '1 serving (215 g)', '284 cal'] },
+              { id: 4, cells: ['Mac & Cheese', '1 serving (189 g)', '699 cal'] },
+              { id: 5, cells: ['Mashed Potatoes', '1 cup (210 g)', '174 cal'] },
+            ]}
+          />
+          <button onClick={() => setAnimate(!animate)}>Animate</button>
+        </>
       </UnbraceThemeProvider>
     );
   },
@@ -435,7 +441,7 @@ storiesOf('Table', module).add(
                 </TableActions>
               </TableCell>
             </TableRow>
-            <SubRows colSpan={3} gutter={{ left: 56, bottom: 32 }}>
+            <SubRows colSpan={3} gutter={{ left: 56, bottom: 32 }} enableAnimation>
               <TableRow>
                 <TableCell size={80}>
                   <Badge size="small" color="primary">

@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { media } from '../../theme/utils';
+import { animations } from '../../theme/keyframes';
 
 export type CellProps = {
   align?: 'right' | 'left' | 'center';
@@ -9,6 +10,8 @@ export type CellProps = {
 export type RowProps = {
   isStatic?: boolean;
   isActive?: boolean;
+  enableAnimation?: boolean;
+  animate?: boolean;
 };
 
 type TableProps = {
@@ -72,6 +75,19 @@ export const TableRow = styled.tr<RowProps>`
       display: flex;
     }
   }
+
+  ${props =>
+    props.enableAnimation &&
+    css`
+      animation: ${animations.fadeInSubtle} 0.15s ease-out;
+
+      ${props.animate &&
+        css`
+          transition: opacity 0.15s ease-out, filter 0.1s ease-out;
+          filter: grayscale(90%);
+          opacity: 0.2;
+        `}
+    `}
 `;
 
 export const SubRowTableRow = styled(TableRow)`
@@ -84,9 +100,21 @@ export const SubRowTableRow = styled(TableRow)`
   }
 `;
 
-export const SubRowTableData = styled.td<{ gutterLeft?: number; gutterBottom?: number }>`
+type SubRowTableDataProps = {
+  gutterLeft?: number;
+  gutterBottom?: number;
+  enableAnimation?: boolean;
+};
+
+export const SubRowTableData = styled.td<SubRowTableDataProps>`
   padding-left: ${props => (props.gutterLeft ? props.gutterLeft : props.theme.table.padding.gutterLeft)}px;
   padding-bottom: ${props => (props.gutterBottom ? props.gutterBottom : props.theme.table.padding.gutterBottom)}px;
+
+  ${props =>
+    props.enableAnimation &&
+    css`
+      animation: ${animations.flyInMedium} 0.25s ease-out;
+    `}
 `;
 
 const tableCellProps = css<CellProps>`

@@ -30,7 +30,7 @@ type Props = {
   children?: React.ReactNode;
 } & RowProps;
 
-const Table: React.FC<Props> = ({ columns, data, isStatic, children, ...rest }: Props) => {
+const Table: React.FC<Props> = ({ columns, data, isStatic, enableAnimation, animate, children, ...rest }: Props) => {
   const alignments = columns?.map(col => col.align);
 
   return (
@@ -62,7 +62,12 @@ const Table: React.FC<Props> = ({ columns, data, isStatic, children, ...rest }: 
       {data && (
         <TableBody>
           {data.map((row, index) => (
-            <TableRow isStatic={isStatic} key={`${index}-${row.id}`}>
+            <TableRow
+              isStatic={isStatic}
+              key={`${index}-${row.id}`}
+              enableAnimation={enableAnimation}
+              animate={animate}
+            >
               {row.cells.map((cell, cellIndex) => (
                 <TableCell align={alignments?.[cellIndex]} key={`${index}-${cellIndex}`}>
                   {cell}
