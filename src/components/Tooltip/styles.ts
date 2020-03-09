@@ -23,9 +23,11 @@ export const StyledTooltip = styled.span<Props>`
   z-index: 100;
   white-space: nowrap;
   
-  * {
-    color: ${props => props.theme.tooltip.color.main};
-    font-size: ${props => props.theme.tooltip.fontSize.main};
+  &&& {
+    * {
+      color: ${props => props.theme.tooltip.color.main};
+      font-size: ${props => props.theme.tooltip.fontSize.main};
+    }
   }
   
   ${props =>
