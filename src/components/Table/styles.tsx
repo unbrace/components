@@ -202,6 +202,7 @@ const TableActions = styled.div<{ isInActiveRow?: boolean }>`
     !props.isInActiveRow ? props.theme.table.background.hover : props.theme.table.background.active};
   min-width: calc(100% - ${props => props.theme.table.padding.end});
   justify-content: flex-end;
+  align-items: center;
 `;
 
 TableActions.defaultProps = { className: 'actions' };
