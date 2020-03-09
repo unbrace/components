@@ -618,12 +618,12 @@ storiesOf('Table', module).add(
                 </TableActions>
               </TableCell>
             </TableRow>
-            <TableRow>
+            <TableRow isActive>
               <TableCell>Corn Dog</TableCell>
               <TableCell align="right">1 item (175g)</TableCell>
               <TableCell align="right">
                 438 cal
-                <TableActions>
+                <TableActions isInActiveRow>
                   <IconButton tooltip="Get out">
                     <Close />
                   </IconButton>

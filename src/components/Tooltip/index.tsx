@@ -19,6 +19,8 @@ type TooltipState = {
 
 const TOOLTIP_SPACING = 10;
 
+// TODO: improve position element when it overflows the window
+
 const calculateLeft = (e: React.MouseEvent, position: string, positionAbsolute?: boolean) => {
   const { left, width, right } = e.currentTarget.getBoundingClientRect();
   if (position === 'right') return positionAbsolute ? undefined : right + TOOLTIP_SPACING;

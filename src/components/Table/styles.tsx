@@ -191,16 +191,18 @@ export const TableCell = styled.td`
   ${tableCellProps};
 `;
 
-const TableActions = styled.div`
+const TableActions = styled.div<{ isInActiveRow?: boolean }>`
   display: none;
   position: absolute;
   height: 100%;
   top: 0;
   right: ${props => props.theme.table.padding.end};
   padding: ${props => props.theme.table.padding.main};
-  background: ${props => props.theme.table.background.hover};
+  background: ${props =>
+    !props.isInActiveRow ? props.theme.table.background.hover : props.theme.table.background.active};
   min-width: calc(100% - ${props => props.theme.table.padding.end});
   justify-content: flex-end;
+  align-items: center;
 `;
 
 TableActions.defaultProps = { className: 'actions' };
