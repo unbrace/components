@@ -71,7 +71,7 @@ export const TableRow = styled.tr<RowProps>`
     `}
 
   &:hover {
-    > td div.actions {
+    > td > div.actions {
       display: flex;
     }
   }
