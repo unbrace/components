@@ -7,7 +7,7 @@ type Props = {
   isDisabled?: boolean;
   size?: 'small' | 'main' | 'large';
   tooltip?: string;
-  tooltipPositionUp?: boolean;
+  tooltipPosition?: 'top' | 'bottom' | 'left' | 'right';
   isLoading?: boolean;
   positionAbsolute?: boolean;
   disabledTooltip?: string;
@@ -20,6 +20,7 @@ const EnhancedIconButton: React.FC<Props> = ({
   onClick,
   disabledTooltip,
   isDisabled,
+  tooltipPosition,
   ...other
 }: Props) => {
   return (
@@ -27,6 +28,7 @@ const EnhancedIconButton: React.FC<Props> = ({
       content={(isDisabled && disabledTooltip) || tooltip}
       positionAbsolute={positionAbsolute}
       isActive={Boolean(tooltip)}
+      position={tooltipPosition}
     >
       <IconButton {...other} isDisabled={isDisabled} type="button" onClick={!isDisabled ? onClick : undefined}>
         {children}
