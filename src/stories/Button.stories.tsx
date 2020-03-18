@@ -88,6 +88,12 @@ storiesOf('Button', module).add('icon button', () => {
         <IconButton disabledTooltip="disabled" tooltip="tooltip" isDisabled>
           <Cross />
         </IconButton>
+        <div>
+          <p>Tooltip position top:</p>
+          <IconButton size="large" tooltip="large" tooltipPosition="top">
+            <Close />
+          </IconButton>
+        </div>
       </>
     </UnbraceThemeProvider>
   );
