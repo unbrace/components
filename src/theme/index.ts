@@ -3,7 +3,6 @@ import getAlertsTheme from './components/alerts';
 import getBadgeTheme from './components/badge';
 import getButtonTheme from './components/button';
 import getDrawerTheme from './components/drawer';
-import formTheme from './components/form';
 import globals from './components/globals';
 import getIconButtonTheme from './components/iconButton';
 import getPillTheme from './components/pill';
@@ -33,7 +32,6 @@ const componentTheme = {
   tooltip: getTooltipTheme(baseTheme),
   text: getTextTheme(baseTheme),
   pill: getPillTheme(baseTheme),
-  form: formTheme(baseTheme),
   ...baseTheme,
 };
 
