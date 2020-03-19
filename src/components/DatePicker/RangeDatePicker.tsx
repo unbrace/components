@@ -25,7 +25,6 @@ export const RangeDatePicker: React.FunctionComponent<Props> = ({ initialRange, 
   const handleDayClick = (day: Date) => {
     if (from && to && day >= from && day <= to) {
       dispatch({ type: 'RESET' });
-      console.log('reset');
 
       return;
     }
