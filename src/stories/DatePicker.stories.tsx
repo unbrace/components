@@ -2,14 +2,19 @@ import * as React from 'react';
 import { DatePicker, RangeDatePicker } from '../components/DatePicker';
 import { UnbraceThemeProvider } from '../components';
 import { DayPickerProps } from 'react-day-picker';
-import { Met } from '@storybook/addon-docs/';
 
 export const RangePickerStory: React.FunctionComponent<DayPickerProps> = (props: DayPickerProps) => (
   <UnbraceThemeProvider>
-    <RangeDatePicker />
+    <RangeDatePicker onChange={console.log} {...props} />
   </UnbraceThemeProvider>
 );
-export const DatePickerStory = () => <DatePicker />;
+
+export const DatePickerStory: React.FunctionComponent<DayPickerProps> = (props: DayPickerProps) => (
+  <UnbraceThemeProvider>
+    <DatePicker onChange={console.log} {...props} />
+  </UnbraceThemeProvider>
+);
+
 export default {
   title: 'DatePicker',
   component: RangePickerStory,

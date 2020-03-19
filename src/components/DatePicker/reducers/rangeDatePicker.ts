@@ -1,3 +1,5 @@
+import { DateRange } from '../RangeDatePicker';
+
 type InitialState = {
   from: Date | undefined;
   to: Date | undefined;
@@ -9,6 +11,12 @@ export const initialState = {
   to: undefined,
   enteredTo: undefined,
 };
+
+export const createInitialState = (date: DateRange | undefined) => ({
+  from: date?.from,
+  to: date?.to,
+  enteredTo: undefined,
+});
 
 export const reducer = (state: InitialState, action: any) => {
   switch (action.type) {
