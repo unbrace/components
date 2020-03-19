@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Button, IconButton, SubmitButton } from '../components/Button';
 import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
-import { Close } from '../components/icons';
+import { Close, Cross } from '../components/icons';
 
 const Spacer = styled.div`
   > div {
@@ -82,9 +82,18 @@ storiesOf('Button', module).add('icon button', () => {
         <IconButton tooltip="normal">
           <Close />
         </IconButton>
-        <IconButton size="large" positionAbsolute tooltip="large">
+        <IconButton size="large" tooltip="large">
           <Close />
         </IconButton>
+        <IconButton disabledTooltip="disabled" tooltip="tooltip" isDisabled>
+          <Cross />
+        </IconButton>
+        <div>
+          <p>Tooltip position top:</p>
+          <IconButton size="large" tooltip="large" tooltipPosition="top">
+            <Close />
+          </IconButton>
+        </div>
       </>
     </UnbraceThemeProvider>
   );

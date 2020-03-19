@@ -1,4 +1,4 @@
-import {DefaultTheme} from "../index";
+import { DefaultTheme } from '../index';
 
 const formTheme = (theme: DefaultTheme) => ({
   checkbox: {

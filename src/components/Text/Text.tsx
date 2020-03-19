@@ -1,6 +1,7 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { HTMLAttributes } from 'react';
+import { CommonTextProps } from './types';
 
 type TextAsTagProps = {
   asTag?:
@@ -22,11 +23,7 @@ type TextAsTagProps = {
     | 'pre';
 };
 
-type TextProps = {
-  size?: 'xxl' | 'xl' | 'l' | 'm' | 's' | 'xs' | 'xxs';
-  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'neutral' | 'warning';
-  colorLevel?: 'normal' | 'medium' | 'light';
-} & HTMLAttributes<HTMLElement>;
+type TextProps = CommonTextProps & HTMLAttributes<HTMLElement>;
 
 const StyledText = styled.p<TextAsTagProps & TextProps>`
   font-weight: 400;
@@ -35,6 +32,12 @@ const StyledText = styled.p<TextAsTagProps & TextProps>`
   color: ${props => props.theme.text.color.text[props.color || 'neutral'][props.colorLevel || 'normal']};
   line-height: 1.6;
   margin: ${props => (props.asTag === 'p' ? '0 0 16px 0' : '0')};
+
+  ${props =>
+    props.transform &&
+    css`
+      text-transform: ${props.transform};
+    `}
 `;
 
 export const Text: React.FC<TextAsTagProps & TextProps> = ({ asTag, ...rest }: TextAsTagProps & TextProps) => (

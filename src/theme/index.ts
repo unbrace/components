@@ -3,7 +3,7 @@ import getAlertsTheme from './components/alerts';
 import getBadgeTheme from './components/badge';
 import getButtonTheme from './components/button';
 import getDrawerTheme from './components/drawer';
-import formTheme from "./components/form";
+import formTheme from './components/form';
 import globals from './components/globals';
 import getIconButtonTheme from './components/iconButton';
 import getPillTheme from './components/pill';
@@ -13,6 +13,7 @@ import getTextWrapTheme from './components/textWrap';
 import getTooltipTheme from './components/tooltip';
 import defaultPalette from './palette/defaultPalette';
 import defaultTypography from './typography/defaultTypography';
+import getTableTheme from './components/table';
 
 const baseTheme = {
   globals: globals,
@@ -27,6 +28,7 @@ const componentTheme = {
   drawer: getDrawerTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
   select: getSelectTheme(baseTheme),
+  table: getTableTheme(baseTheme),
   textWrap: getTextWrapTheme(baseTheme),
   tooltip: getTooltipTheme(baseTheme),
   text: getTextTheme(baseTheme),
