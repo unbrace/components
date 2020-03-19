@@ -2,22 +2,16 @@ import merge from 'lodash/merge';
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { componentTheme } from '../theme';
-import MuiThemeProvider from './MuiThemeProvider';
 
 type Props = {
   children: React.ReactElement;
   customTheme?: object;
-  dateUtils?: any;
 };
 
-const UnbraceThemeProvider: React.FunctionComponent<Props> = ({ children, customTheme, dateUtils }: Props) => {
+const UnbraceThemeProvider: React.FunctionComponent<Props> = ({ children, customTheme }: Props) => {
   const theme = customTheme ? merge(componentTheme, customTheme) : componentTheme;
 
-  return (
-    <ThemeProvider theme={theme}>
-      <MuiThemeProvider dateUtils={dateUtils}>{children}</MuiThemeProvider>
-    </ThemeProvider>
-  );
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 export default UnbraceThemeProvider;
