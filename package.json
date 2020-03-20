@@ -68,8 +68,7 @@
     "styled-components": "^4.4.0",
     "ts-debounce": "^1.0.0",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.7.4",
-    "webpack-bundle-analyzer": "^3.6.0"
+    "typescript": "^3.7.4"
   },
   "typings": "dist/index.d.ts",
   "files": [
