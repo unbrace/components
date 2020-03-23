@@ -14,6 +14,7 @@ type Props = {
   pageSizes: number[];
   onPageSizeChange: (pageSize: number) => void;
   onPageIndexChange: (pageIndex: number) => void;
+  className?: string;
   // if you pass the redux prop we will dispatch the actions created by the given action creators instead of the change handlers
   redux?: {
     setPageIndexActionCreator: (page: number) => object;
@@ -36,6 +37,7 @@ const Paginator: React.FunctionComponent<Props> = ({
   pageSizes,
   onPageIndexChange,
   onPageSizeChange,
+  className,
 }: Props) => {
   const [loadingPageIndex, setLoadingPageIndex] = React.useState<number | null>(null);
 
@@ -64,7 +66,7 @@ const Paginator: React.FunctionComponent<Props> = ({
 
   const renderFunction = React.useCallback(
     (goToPreviousPage, goToNextPage, setPageSize) => (
-      <PaginatorWrapper>
+      <PaginatorWrapper className={className}>
         <div className="pageNumber">{pageStatus}</div>
         <IconButton onClick={goToPreviousPage} isDisabled={!pageIndex || pageIndex < 2 || Boolean(loadingPageIndex)}>
           <ChevronLeft />
@@ -83,7 +85,7 @@ const Paginator: React.FunctionComponent<Props> = ({
         </IconButton>
       </PaginatorWrapper>
     ),
-    [pageStatus, pageIndex, loadingPageIndex, selectOptions, hasNextPage, selectedValue],
+    [pageStatus, pageIndex, loadingPageIndex, selectOptions, hasNextPage, selectedValue, className],
   );
 
   return redux ? (
