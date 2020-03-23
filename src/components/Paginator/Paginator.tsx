@@ -66,7 +66,7 @@ const Paginator: React.FunctionComponent<Props> = ({
 
   const renderFunction = React.useCallback(
     (goToPreviousPage, goToNextPage, setPageSize) => (
-      <PaginatorWrapper className={className}>
+      <PaginatorWrapper className={`paginator ${className}`}>
         <div className="pageNumber">{pageStatus}</div>
         <IconButton onClick={goToPreviousPage} isDisabled={!pageIndex || pageIndex < 2 || Boolean(loadingPageIndex)}>
           <ChevronLeft />
