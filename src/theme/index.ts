@@ -13,6 +13,7 @@ import getTooltipTheme from './components/tooltip';
 import defaultPalette from './palette/defaultPalette';
 import defaultTypography from './typography/defaultTypography';
 import getTableTheme from './components/table';
+import getFormTheme from './components/form';
 
 const baseTheme = {
   globals: globals,
@@ -26,6 +27,7 @@ const componentTheme = {
   button: getButtonTheme(baseTheme),
   drawer: getDrawerTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
+  form: getFormTheme(baseTheme),
   select: getSelectTheme(baseTheme),
   table: getTableTheme(baseTheme),
   textWrap: getTextWrapTheme(baseTheme),

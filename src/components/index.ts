@@ -23,3 +23,4 @@ export {
   SortOrder,
   SortTableHeadCell,
 } from './Table';
+export { default as Input } from './Form/Input';
