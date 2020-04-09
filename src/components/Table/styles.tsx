@@ -33,6 +33,11 @@ export const Table = styled.table<TableProps>`
         css`
           td:nth-child(${index + 1}) {
             text-align: ${alignment};
+
+            > * {
+              margin-left: ${(alignment === 'right' || alignment === 'center') && 'auto'};
+              margin-right: ${(alignment === 'left' || alignment === 'center') && 'auto'};
+            }
           }
         `,
     )};
@@ -130,6 +135,11 @@ const tableCellProps = css<CellProps>`
       ? css`
           &&& {
             text-align: ${props.align || 'left'};
+
+            > * {
+              margin-left: ${(props.align === 'right' || props.align === 'center') && 'auto'};
+              margin-right: ${(props.align === 'left' || props.align === 'center') && 'auto'};
+            }
           }
         `
       : 'text-align: left;'}
