@@ -33,6 +33,11 @@ export const Table = styled.table<TableProps>`
         css`
           td:nth-child(${index + 1}) {
             text-align: ${alignment};
+
+            > * {
+              margin-left: ${(alignment === 'right' || alignment === 'center') && 'auto'};
+              margin-right: ${(alignment === 'left' || alignment === 'center') && 'auto'};
+            }
           }
         `,
     )};
