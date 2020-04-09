@@ -135,6 +135,11 @@ const tableCellProps = css<CellProps>`
       ? css`
           &&& {
             text-align: ${props.align || 'left'};
+
+            > * {
+              margin-left: ${(props.align === 'right' || props.align === 'center') && 'auto'};
+              margin-right: ${(props.align === 'left' || props.align === 'center') && 'auto'};
+            }
           }
         `
       : 'text-align: left;'}
