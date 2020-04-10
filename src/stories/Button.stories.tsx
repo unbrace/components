@@ -14,7 +14,7 @@ const Spacer = styled.div`
   }
 `;
 
-storiesOf('Button', module).add('colors', () => {
+export const ButtonVariantsStory = () => {
   return (
     <UnbraceThemeProvider>
       <Spacer>
@@ -46,7 +46,7 @@ storiesOf('Button', module).add('colors', () => {
       </Spacer>
     </UnbraceThemeProvider>
   );
-});
+};
 
 storiesOf('Button', module).add('variants', () => {
   const [loading, setloading] = React.useState(false);
