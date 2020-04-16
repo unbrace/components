@@ -20,6 +20,7 @@ export type InputProps = {
 } & Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref'> &
   Omit<HTMLProps<HTMLInputElement>, 'as'>;
 
+// eslint-disable-next-line react/display-name
 const InputField: React.FunctionComponent<InputProps> = React.forwardRef((props: InputProps, ref: React.Ref<any>) => {
   const { error, errorAsBlock, label, name, noLabel } = props;
   if (props.type === TYPE_CHECKBOX) {

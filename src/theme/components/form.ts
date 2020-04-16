@@ -35,7 +35,7 @@ const getFormTheme = (theme: DefaultTheme) => ({
     errorColor: theme.palette.danger.shade4,
     margin: '8px 0 25px',
     padding: '10px 15px',
-    transition: theme.globals.transition,
+    transition: theme.globals.transition.main,
   },
 });
 
