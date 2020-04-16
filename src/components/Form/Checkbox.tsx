@@ -38,9 +38,9 @@ const CheckContainer = styled.div<{ disabled?: boolean }>`
       position: absolute;
       width: 20px;
       height: 20px;
-      background: ${props => props.theme.form.input.background};
-      border-radius: ${props => props.theme.form.checkbox.borderRadius};
-      border: ${props => props.theme.form.checkbox.border};
+      background: ${props => props.theme.form.background.main};
+      border-radius: ${props => props.theme.form.borderRadius.checkbox};
+      border: ${props => props.theme.form.border.checkbox};
       left: -40px;
       top: 50%;
       transform: translateY(-50%);
@@ -56,7 +56,7 @@ const CheckContainer = styled.div<{ disabled?: boolean }>`
       border-left: 3px solid transparent;
       border-bottom: 3px solid transparent;
       transform: translateY(-50%) rotate(-45deg);
-      transition: border ${props => props.theme.form.input.transition};
+      transition: border ${props => props.theme.form.transition.main};
     }
   }
 
@@ -65,15 +65,15 @@ const CheckContainer = styled.div<{ disabled?: boolean }>`
 
     &:checked {
       + label {
-        color: ${props => props.theme.form.checkbox.checkedColor};
+        color: ${props => props.theme.form.color.checkbox.checked};
 
         &::before {
-          border-color: ${props => props.theme.form.checkbox.checkedColor};
+          border-color: ${props => props.theme.form.color.checkbox.checked};
         }
 
         &::after {
-          border-left: 3px solid ${props => props.theme.form.checkbox.checkedColor};
-          border-bottom: 3px solid ${props => props.theme.form.checkbox.checkedColor};
+          border-left: 3px solid ${props => props.theme.form.color.checkbox.checked};
+          border-bottom: 3px solid ${props => props.theme.form.color.checkbox.checked};
         }
       }
     }

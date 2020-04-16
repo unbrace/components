@@ -24,10 +24,10 @@ const ErrorText = styled.span<Props & AnimationProps>`
         `}
 
   font-size: 85%;
-  color: ${props => props.theme.form.input.errorColor};
+  color: ${props => props.theme.form.color.input.error};
 
-  ${props => props.state === 'entering' && props.theme.form.input.animation.entering};
-  ${props => props.state === 'entered' && props.theme.form.input.animation.entered};
+  ${props => props.state === 'entering' && props.theme.form.animation.input.entering};
+  ${props => props.state === 'entered' && props.theme.form.animation.input.entered};
 `;
 
 const TransitionedError: React.FunctionComponent<Props> = (props: Props) => (

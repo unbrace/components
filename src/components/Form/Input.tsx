@@ -37,29 +37,30 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef((props:
 });
 
 export const Input = styled.input<{ hasError?: boolean }>`
-  background: ${props => props.theme.form.input.background};
-  border-radius: ${props => props.theme.form.input.borderRadius};
-  border: ${props => (!props.hasError ? props.theme.form.input.border : props.theme.form.input.borderError)};
-  box-shadow: ${props => props.theme.form.input.boxShadow};
-  color: ${props => props.theme.form.input.color};
-  margin: ${props => props.theme.form.input.margin};
-  padding: ${props => props.theme.form.input.padding};
+  background: ${props => props.theme.form.background.main};
+  border-radius: ${props => props.theme.form.borderRadius.input};
+  border: ${props => (!props.hasError ? props.theme.form.border.input.main : props.theme.form.border.input.error)};
+  box-shadow: ${props => props.theme.form.boxShadow.main};
+  color: ${props => props.theme.form.color.input.main};
+  margin: ${props => props.theme.form.margin.main};
+  padding: ${props => props.theme.form.padding.main};
   transition: box-shadow 0.15s ease-in, border 0.15s ease-in;
   width: 100%;
+  font-size: 100%;
 
   &::placeholder {
-    color: ${props => props.theme.form.input.colorPlaceholder};
+    color: ${props => props.theme.form.color.input.placeholder};
   }
 
   &:focus {
-    border: ${props => (!props.hasError ? props.theme.form.input.borderFocus : props.theme.form.input.borderError)};
+    border: ${props => (!props.hasError ? props.theme.form.border.input.focus : props.theme.form.border.input.error)};
     box-shadow: ${props =>
-      !props.hasError ? props.theme.form.input.boxShadowFocus : props.theme.form.input.boxShadowFocusError};
+      !props.hasError ? props.theme.form.boxShadow.focus : props.theme.form.boxShadow.focusError};
     outline: none;
   }
 
   &[disabled] {
-    background: ${props => props.theme.form.input.backgroundDisabled};
+    background: ${props => props.theme.form.background.disabled};
     cursor: not-allowed;
   }
 
