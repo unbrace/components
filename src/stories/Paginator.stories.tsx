@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 import { Paginator } from '../components';
 
 const PaginatorExample: React.FC = () => {
@@ -23,15 +22,11 @@ const PaginatorExample: React.FC = () => {
 storiesOf('Paginator', module).add(
   'default',
   () => {
-    return (
-      <UnbraceThemeProvider>
-        <PaginatorExample />
-      </UnbraceThemeProvider>
-    );
+    return <PaginatorExample />;
   },
   {
     props: {
-      propTablesExclude: [UnbraceThemeProvider, PaginatorExample],
+      propTablesExclude: [PaginatorExample],
       propTables: [Paginator],
     },
   },

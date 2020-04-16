@@ -14,6 +14,7 @@ import defaultPalette from './palette/defaultPalette';
 import defaultTypography from './typography/defaultTypography';
 import getTableTheme from './components/table';
 import getFormTheme from './components/form';
+import getScrollbarTheme from './components/scrollbar';
 
 const baseTheme = {
   globals: globals,
@@ -34,6 +35,7 @@ const componentTheme = {
   tooltip: getTooltipTheme(baseTheme),
   text: getTextTheme(baseTheme),
   pill: getPillTheme(baseTheme),
+  scrollbar: getScrollbarTheme(baseTheme),
   ...baseTheme,
 };
 
