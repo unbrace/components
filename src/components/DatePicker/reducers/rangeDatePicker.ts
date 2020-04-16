@@ -18,7 +18,7 @@ export const createInitialState = (date: DateRange | undefined) => ({
   enteredTo: undefined,
 });
 
-export const reducer = (state: InitialState, action: any) => {
+export const reducer = (state: InitialState, action: any): InitialState => {
   switch (action.type) {
     case 'RESET':
       return initialState;

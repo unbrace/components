@@ -4,36 +4,17 @@ import 'react-day-picker/lib/style.css';
 import DatePickerWrapper from './DatePickerWrapper';
 
 type Props = {
-  onChange: (day: Date | undefined) => void;
-  initialDay?: Date;
+  onChange?: (day: Date | undefined) => void;
 } & DayPickerProps;
 
-export const DatePicker: React.FC<Props> = ({ onChange, initialDay, ...props }: Props) => {
-  const [selectedDay, setSelectedDay] = React.useState(initialDay);
-
-  const handleDaySelect = (day: any, { selected }: DayModifiers) => {
-    setSelectedDay(selected ? undefined : day);
+export const DatePicker: React.FC<Props> = ({ onChange, ...props }: Props) => {
+  const handleDaySelect = (day: Date, { selected }: DayModifiers) => {
+    onChange?.(selected ? undefined : day);
   };
-
-  const handleChange = React.useCallback(
-    (date: Date | undefined) => {
-      onChange(date);
-    },
-    [onChange],
-  );
-
-  React.useEffect(() => {
-    handleChange(selectedDay);
-  }, [selectedDay]);
 
   return (
     <DatePickerWrapper>
-      <DayPicker
-        {...props}
-        className={`unbrace_date-picker ${props.className} `}
-        selectedDays={selectedDay}
-        onDayClick={handleDaySelect}
-      />
+      <DayPicker {...props} className={`unbrace_date-picker ${props.className} `} onDayClick={handleDaySelect} />
     </DatePickerWrapper>
   );
 };

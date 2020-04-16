@@ -35,21 +35,11 @@ export const RangeDatePicker: React.FunctionComponent<Props> = ({ initialRange, 
     }
   };
 
-  const handleChange = React.useCallback(
-    (date: DateRange) => {
-      onChange(date);
-    },
-    [onChange],
-  );
-
   React.useEffect(() => {
-    if (!from && !to) {
-      handleChange({ from, to });
+    if (!from || to) {
+      onChange({ from, to });
     }
-    if (to) {
-      handleChange({ from, to });
-    }
-  }, [from, to]);
+  }, [from, to, onChange]);
 
   const handleDayMouseEnter = (day: Date) => {
     const { from, to } = state;
