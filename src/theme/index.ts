@@ -2,6 +2,7 @@ import { TransitionStatus } from 'react-transition-group/Transition';
 import getAlertsTheme from './components/alerts';
 import getBadgeTheme from './components/badge';
 import getButtonTheme from './components/button';
+import getDatePickerTheme from './components/datePicker';
 import getDrawerTheme from './components/drawer';
 import globals from './components/globals';
 import getIconButtonTheme from './components/iconButton';
@@ -26,6 +27,7 @@ const componentTheme = {
   alerts: getAlertsTheme(baseTheme),
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
+  datePicker: getDatePickerTheme(baseTheme),
   drawer: getDrawerTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
   form: getFormTheme(baseTheme),
