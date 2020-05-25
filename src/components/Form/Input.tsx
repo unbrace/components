@@ -21,20 +21,22 @@ export type InputProps = {
   Omit<HTMLProps<HTMLInputElement>, 'as'>;
 
 // eslint-disable-next-line react/display-name
-const InputField: React.FunctionComponent<InputProps> = React.forwardRef((props: InputProps, ref: React.Ref<any>) => {
-  const { error, errorAsBlock, label, name, noLabel } = props;
-  if (props.type === TYPE_CHECKBOX) {
-    return <Checkbox name={props.name} error={props.error} {...props} />;
-  }
+const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
+  (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
+    const { error, errorAsBlock, label, name, noLabel } = props;
+    if (props.type === TYPE_CHECKBOX) {
+      return <Checkbox name={props.name} error={props.error} {...props} />;
+    }
 
-  return (
-    <FieldContainer>
-      {!noLabel && <Label htmlFor={name}>{label || name}</Label>}
-      <Input {...props} hasError={Boolean(error)} id={name} ref={ref} />
-      {error && <ErrorText block={errorAsBlock}>{error}</ErrorText>}
-    </FieldContainer>
-  );
-});
+    return (
+      <FieldContainer>
+        {!noLabel && <Label htmlFor={name}>{label || name}</Label>}
+        <Input {...props} hasError={Boolean(error)} id={name} ref={ref} />
+        {error && <ErrorText block={errorAsBlock}>{error}</ErrorText>}
+      </FieldContainer>
+    );
+  },
+);
 
 export const Input = styled.input<{ hasError?: boolean }>`
   background: ${props => props.theme.form.background.main};

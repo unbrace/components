@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { DatePicker, RangeDatePicker, DatePickerInput } from '../components/DatePicker';
+import { DatePicker, RangeDatePicker, DatePickerInput, useRangeDatePickerInputs } from '../components/DatePicker';
 import { DayPickerProps } from 'react-day-picker';
-import useRangeDatePickerInputs from '../components/DatePicker/useRangeDatePickerInputs';
 
 export const RangePickerStory: React.FunctionComponent<DayPickerProps> = (props: DayPickerProps) => (
-  <RangeDatePicker onChange={console.log} {...props} />
+  <RangeDatePicker onChange={console.log} numberOfMonths={2} {...props} />
 );
 
 export const DatePickerStory: React.FunctionComponent<DayPickerProps> = (props: DayPickerProps) => (
@@ -18,7 +17,10 @@ export const DatePickerInputStory: React.FunctionComponent<DayPickerProps> = () 
 );
 
 export const RangePickerInputStory: React.FunctionComponent<DayPickerProps> = () => {
-  const { fromProps, toProps } = useRangeDatePickerInputs({ onChange: console.log });
+  const { fromProps, toProps } = useRangeDatePickerInputs({
+    initialRange: { from: new Date('2020/02/01'), to: new Date('2020/02/20') },
+    onChange: console.log,
+  });
 
   return (
     <div style={{ width: 400 }}>

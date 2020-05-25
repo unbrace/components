@@ -7,28 +7,26 @@ import { DateRange } from './RangeDatePicker';
 type Props = {
   onChange: ({ from, to }: DateRange) => void;
   initialRange?: DateRange;
+  numberOfMonths?: number;
 };
 
-type RangeDatePickerInputProps = Pick<DayPickerInputProps, 'value' | 'dayPickerProps'>;
+type RangeDatePickerInputProps = Pick<DayPickerInputProps, 'value' | 'dayPickerProps' | 'onDayChange'>;
 
-const useRangeDatePickerInputs = ({ initialRange, onChange }: Props) => {
+const useRangeDatePickerInputs = ({ initialRange, onChange, numberOfMonths }: Props) => {
   const [state, dispatch] = React.useReducer(reducer, createInitialState(initialRange));
   const { from, to, enteredTo } = state;
   const modifiers = { start: from, end: enteredTo };
   const disabledDays = { before: state.from, after: undefined } as Modifier;
-  const selectedDays = [from, { from, to: enteredTo }] as Modifier[];
+  const selectedDays = [from, { from, to: enteredTo || to }] as Modifier[];
+  const toRef = React.useRef<any>();
 
-  const handleDayClick = (day: Date) => {
-    if (from && to && day >= from && day <= to) {
-      dispatch({ type: 'RESET' });
+  const handleFromChange = (day: Date) => {
+    dispatch({ type: 'FIRST_DAY_SET', payload: day });
+    toRef.current?.showDayPicker();
+  };
 
-      return;
-    }
-    if (isSelectingFirstDay(from, to, day)) {
-      dispatch({ type: 'FIRST_DAY_SET', payload: day });
-    } else {
-      dispatch({ type: 'LAST_DAY_SET', payload: day });
-    }
+  const handleToChange = (day: Date) => {
+    dispatch({ type: 'LAST_DAY_SET', payload: day });
   };
 
   React.useEffect(() => {
@@ -44,33 +42,38 @@ const useRangeDatePickerInputs = ({ initialRange, onChange }: Props) => {
     }
   };
 
-  const fromProps: RangeDatePickerInputProps = {
+  const dayPickerProps = {
+    selectedDays,
+    disabledDays,
+    numberOfMonths: numberOfMonths || 1,
+    modifiers,
+    onDayMouseEnter: handleDayMouseEnter,
+    className: `unbrace_date-picker Range`,
+  };
+
+  const fromProps: RangeDatePickerInputProps & any = {
     value: state.from,
-    dayPickerProps: {
-      selectedDays,
-      disabledDays,
-      numberOfMonths: 1,
-      modifiers,
-      onDayClick: handleDayClick,
-      onDayMouseEnter: handleDayMouseEnter,
-      className: `unbrace_date-picker Range`,
+    dayPickerProps,
+    onDayChange: handleFromChange,
+    inputProps: {
+      name: 'from',
     },
   };
 
-  const toProps: RangeDatePickerInputProps = {
-    value: state.from,
-    dayPickerProps: {
-      selectedDays,
-      disabledDays,
-      numberOfMonths: 1,
-      modifiers,
-      onDayClick: handleDayClick,
-      onDayMouseEnter: handleDayMouseEnter,
-      className: `unbrace_date-picker Range`,
+  const toProps: RangeDatePickerInputProps & any = {
+    value: state.to,
+    dayPickerProps,
+    onDayChange: handleToChange,
+    passableRef: toRef,
+    inputProps: {
+      name: 'to',
     },
   };
 
-  return { fromProps, toProps };
+  return {
+    fromProps,
+    toProps,
+  };
 };
 
 export default useRangeDatePickerInputs;

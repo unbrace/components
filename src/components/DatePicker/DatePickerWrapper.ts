@@ -18,6 +18,11 @@ export default styled.div`
 
               &.DayPicker-Day--today {
                 color: ${datePicker.color.range.selectedToday};
+
+                &.DayPicker-Day--start,
+                &.DayPicker-Day--end {
+                  color: ${datePicker.color.range.startDay};
+                }
               }
             }
 

@@ -1,13 +1,15 @@
 import * as React from 'react';
-import DatePickerInputComponent from 'react-day-picker/DayPickerInput';
+import DayPickerInputComponent from 'react-day-picker/DayPickerInput';
 import { DayPickerInputProps, DayModifiers, DateUtils } from 'react-day-picker';
-import { Input } from '../Form/Input';
+import Input from '../Form/Input';
 import DatePickerWrapper from './DatePickerWrapper';
+import DatePickerInputWrapper from './DatePickerInputWrapper';
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
 
 type Props = {
   onChange?: (day: Date | undefined) => void;
+  passableRef?: React.MutableRefObject<any>;
 } & DayPickerInputProps;
 
 const parseDate = (str: string, format: string, locale: string) => {
@@ -31,20 +33,23 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ...props }: Props) => {
   };
 
   return (
-    <DatePickerInputComponent
-      formatDate={formatDate}
-      format={FORMAT}
-      parseDate={parseDate}
-      placeholder={PLACEHOLDER}
-      component={Input}
-      overlayComponent={DatePickerWrapper}
-      {...props}
-      dayPickerProps={{
-        className: `unbrace_date-picker`,
-        onDayClick: handleDaySelect,
-        ...props.dayPickerProps,
-      }}
-    />
+    <DatePickerInputWrapper>
+      <DayPickerInputComponent
+        ref={props.passableRef}
+        formatDate={formatDate}
+        format={props.format || FORMAT}
+        parseDate={parseDate}
+        placeholder={props.placeholder || PLACEHOLDER}
+        component={Input}
+        overlayComponent={DatePickerWrapper}
+        {...props}
+        dayPickerProps={{
+          className: `unbrace_date-picker`,
+          onDayClick: handleDaySelect,
+          ...props.dayPickerProps,
+        }}
+      />
+    </DatePickerInputWrapper>
   );
 };
 
