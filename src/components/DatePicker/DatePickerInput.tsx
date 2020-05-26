@@ -29,12 +29,29 @@ const FORMAT = 'dd/MM/yyyy';
 const PLACEHOLDER = 'DD/MM/YYYY';
 
 const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, ...props }: Props) => {
+  const [rect, setRect] = React.useState({ top: 0, left: 0, isOffScreen: false });
+  const wrapRef = React.useRef<HTMLDivElement>(null);
   const handleDaySelect = (day: Date, { selected }: DayModifiers) => {
     onChange?.(selected ? undefined : day);
   };
 
+  React.useEffect(() => {
+    if (wrapRef.current) {
+      const clientRect = wrapRef.current.querySelector('input')?.getBoundingClientRect();
+      if (clientRect) {
+        const HEIGHT = 416;
+        const isOffScreen = clientRect.bottom + HEIGHT > document.body.clientHeight;
+        setRect({
+          top: isOffScreen ? clientRect.top - HEIGHT - 8 : clientRect.bottom + 8,
+          left: clientRect.left,
+          isOffScreen,
+        });
+      }
+    }
+  }, []);
+
   return (
-    <DatePickerInputWrapper>
+    <DatePickerInputWrapper ref={wrapRef} top={rect.top} left={rect.left} isOffScreen={rect.isOffScreen}>
       <DayPickerInputComponent
         ref={ref || passableRef}
         formatDate={formatDate}
@@ -47,6 +64,7 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, ...props
         dayPickerProps={{
           className: `unbrace_date-picker`,
           onDayClick: handleDaySelect,
+          showOutsideDays: true,
           ...props.dayPickerProps,
         }}
       />

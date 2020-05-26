@@ -4,6 +4,11 @@ export default styled.div`
   ${({ theme: { datePicker } }) => css`
     &&&& {
       .unbrace_date-picker {
+        background: ${datePicker.background.overlay};
+        box-shadow: ${datePicker.boxShadow.overlay};
+        border-radius: ${datePicker.borderRadius.overlay};
+        border: ${datePicker.border.overlay};
+
         &.Range {
           .DayPicker-Month {
             border-collapse: separate;
@@ -95,6 +100,11 @@ export default styled.div`
 
           &.DayPicker-Day--disabled {
             color: ${datePicker.color.range.disabled};
+            cursor: not-allowed;
+          }
+
+          &.DayPicker-Day--outside {
+            color: ${datePicker.color.range.outside};
           }
 
           &.DayPicker-Day--today {

@@ -12,7 +12,10 @@ export const DatePickerStory: React.FunctionComponent<DayPickerProps> = (props: 
 
 export const DatePickerInputStory: React.FunctionComponent<DayPickerProps> = () => (
   <div style={{ width: 400 }}>
-    <DatePickerInput onChange={console.log} />
+    <DatePickerInput onChange={console.log} showOverlay />
+    <div style={{ position: 'fixed', bottom: 30, width: 400 }}>
+      <DatePickerInput onChange={console.log} />
+    </div>
   </div>
 );
 
