@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 import { AlertWithIdentifier, AlertType, Button, Alerts } from '../components';
 
 const AlertsExample: React.FC = () => {
@@ -26,15 +25,11 @@ const AlertsExample: React.FC = () => {
 storiesOf('Alerts', module).add(
   'default',
   () => {
-    return (
-      <UnbraceThemeProvider>
-        <AlertsExample />
-      </UnbraceThemeProvider>
-    );
+    return <AlertsExample />;
   },
   {
     props: {
-      propTablesExclude: [UnbraceThemeProvider],
+      propTablesExclude: [],
     },
   },
 );

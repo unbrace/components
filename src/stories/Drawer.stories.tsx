@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import UnbraceThemeProvider from '../components/UnbraceThemeProvider';
 import { Drawer, Button, Text } from '../components';
 import { useToggle } from '@unbrace/hooks';
 
@@ -36,7 +35,7 @@ const DrawerStoryComponent = ({
 
 const propsStoryConfig = {
   props: {
-    propTablesExclude: [UnbraceThemeProvider, DrawerStoryComponent],
+    propTablesExclude: [DrawerStoryComponent],
     propTables: [Drawer],
   },
 };
@@ -44,11 +43,7 @@ const propsStoryConfig = {
 storiesOf('Drawer', module).add(
   'position left',
   () => {
-    return (
-      <UnbraceThemeProvider>
-        <DrawerStoryComponent title="Just a title" tooltip="Close" />
-      </UnbraceThemeProvider>
-    );
+    return <DrawerStoryComponent title="Just a title" tooltip="Close" />;
   },
   { ...propsStoryConfig },
 );
@@ -56,11 +51,7 @@ storiesOf('Drawer', module).add(
 storiesOf('Drawer', module).add(
   'position right',
   () => {
-    return (
-      <UnbraceThemeProvider>
-        <DrawerStoryComponent title="Just a title" tooltip="Close" position={'right'} />
-      </UnbraceThemeProvider>
-    );
+    return <DrawerStoryComponent title="Just a title" tooltip="Close" position={'right'} />;
   },
   { ...propsStoryConfig },
 );
@@ -68,11 +59,7 @@ storiesOf('Drawer', module).add(
 storiesOf('Drawer', module).add(
   'no title or tooltip',
   () => {
-    return (
-      <UnbraceThemeProvider>
-        <DrawerStoryComponent />
-      </UnbraceThemeProvider>
-    );
+    return <DrawerStoryComponent />;
   },
   { ...propsStoryConfig },
 );

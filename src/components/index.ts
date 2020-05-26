@@ -23,3 +23,5 @@ export {
   SortOrder,
   SortTableHeadCell,
 } from './Table';
+export { default as Input } from './Form/Input';
+export { DatePicker, DatePickerInput, RangeDatePicker, useRangeDatePickerInputs } from './DatePicker';
