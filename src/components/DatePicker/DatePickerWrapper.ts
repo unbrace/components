@@ -93,6 +93,10 @@ export default styled.div`
             }
           }
 
+          &.DayPicker-Day--disabled {
+            color: ${datePicker.color.range.disabled};
+          }
+
           &.DayPicker-Day--today {
             color: ${datePicker.color.day.today};
           }

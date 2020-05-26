@@ -9,7 +9,8 @@ import dateFnsParse from 'date-fns/parse';
 
 type Props = {
   onChange?: (day: Date | undefined) => void;
-  passableRef?: React.MutableRefObject<any>;
+  passableRef?: React.MutableRefObject<DayPickerInputComponent>;
+  ref?: React.MutableRefObject<DayPickerInputComponent>;
 } & DayPickerInputProps;
 
 const parseDate = (str: string, format: string, locale: string) => {
@@ -27,7 +28,7 @@ const formatDate = (date: Date, format: string, locale: string) =>
 const FORMAT = 'dd/MM/yyyy';
 const PLACEHOLDER = 'DD/MM/YYYY';
 
-const DatePickerInput: React.FC<Props> = ({ onChange, ...props }: Props) => {
+const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, ...props }: Props) => {
   const handleDaySelect = (day: Date, { selected }: DayModifiers) => {
     onChange?.(selected ? undefined : day);
   };
@@ -35,7 +36,7 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ...props }: Props) => {
   return (
     <DatePickerInputWrapper>
       <DayPickerInputComponent
-        ref={props.passableRef}
+        ref={ref || passableRef}
         formatDate={formatDate}
         format={props.format || FORMAT}
         parseDate={parseDate}

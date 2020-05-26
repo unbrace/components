@@ -3,22 +3,24 @@ import { reducer, createInitialState } from './reducers/rangeDatePicker';
 import { isSelectingFirstDay } from './helpers/datePickerHelpers';
 import { Modifier, DayPickerInputProps } from 'react-day-picker';
 import { DateRange } from './RangeDatePicker';
+import DayPickerInput from 'react-day-picker/types/DayPickerInput';
 
 type Props = {
   onChange: ({ from, to }: DateRange) => void;
   initialRange?: DateRange;
   numberOfMonths?: number;
+  fromInputProps?: object;
+  toInputProps?: object;
 };
 
-type RangeDatePickerInputProps = Pick<DayPickerInputProps, 'value' | 'dayPickerProps' | 'onDayChange'>;
+type RangeDatePickerInputProps = Pick<DayPickerInputProps, 'value' | 'dayPickerProps' | 'onDayChange' | 'inputProps'>;
 
-const useRangeDatePickerInputs = ({ initialRange, onChange, numberOfMonths }: Props) => {
+const useRangeDatePickerInputs = ({ initialRange, onChange, numberOfMonths, fromInputProps, toInputProps }: Props) => {
   const [state, dispatch] = React.useReducer(reducer, createInitialState(initialRange));
   const { from, to, enteredTo } = state;
-  const modifiers = { start: from, end: enteredTo };
-  const disabledDays = { before: state.from, after: undefined } as Modifier;
+  const modifiers = { start: from, end: enteredTo || to };
   const selectedDays = [from, { from, to: enteredTo || to }] as Modifier[];
-  const toRef = React.useRef<any>();
+  const toRef = React.useRef<DayPickerInput>();
 
   const handleFromChange = (day: Date) => {
     dispatch({ type: 'FIRST_DAY_SET', payload: day });
@@ -44,30 +46,25 @@ const useRangeDatePickerInputs = ({ initialRange, onChange, numberOfMonths }: Pr
 
   const dayPickerProps = {
     selectedDays,
-    disabledDays,
     numberOfMonths: numberOfMonths || 1,
     modifiers,
     onDayMouseEnter: handleDayMouseEnter,
     className: `unbrace_date-picker Range`,
   };
 
-  const fromProps: RangeDatePickerInputProps & any = {
+  const fromProps: RangeDatePickerInputProps = {
     value: state.from,
-    dayPickerProps,
+    dayPickerProps: { ...dayPickerProps, disabledDays: { after: state.to } as Modifier },
     onDayChange: handleFromChange,
-    inputProps: {
-      name: 'from',
-    },
+    inputProps: fromInputProps,
   };
 
-  const toProps: RangeDatePickerInputProps & any = {
+  const toProps: RangeDatePickerInputProps & { passableRef: React.MutableRefObject<DayPickerInput> } = {
     value: state.to,
-    dayPickerProps,
+    dayPickerProps: { ...dayPickerProps, disabledDays: { before: state.from } as Modifier },
     onDayChange: handleToChange,
-    passableRef: toRef,
-    inputProps: {
-      name: 'to',
-    },
+    passableRef: toRef as React.MutableRefObject<DayPickerInput>,
+    inputProps: toInputProps,
   };
 
   return {

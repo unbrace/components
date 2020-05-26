@@ -26,6 +26,7 @@ const getDatePickerTheme = (theme: DefaultTheme) => ({
       selectedDay: theme.palette.primary.shade7,
       selectedToday: theme.palette.primary.shade4,
       startDay: theme.palette.primary.shade1,
+      disabled: theme.palette.neutral.shade4,
     },
     day: {
       main: theme.palette.neutral.shade8,

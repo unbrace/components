@@ -7,7 +7,7 @@ export const RangePickerStory: React.FunctionComponent<DayPickerProps> = (props:
 );
 
 export const DatePickerStory: React.FunctionComponent<DayPickerProps> = (props: DayPickerProps) => (
-  <DatePicker onChange={console.log} {...props} />
+  <DatePicker onChange={console.log} {...props} disabledDays={{ before: new Date() }} />
 );
 
 export const DatePickerInputStory: React.FunctionComponent<DayPickerProps> = () => (
@@ -19,7 +19,10 @@ export const DatePickerInputStory: React.FunctionComponent<DayPickerProps> = () 
 export const RangePickerInputStory: React.FunctionComponent<DayPickerProps> = () => {
   const { fromProps, toProps } = useRangeDatePickerInputs({
     initialRange: { from: new Date('2020/02/01'), to: new Date('2020/02/20') },
+    numberOfMonths: 2,
     onChange: console.log,
+    fromInputProps: { name: 'from' },
+    toInputProps: { name: 'to' },
   });
 
   return (
