@@ -17,28 +17,33 @@ export type InputProps = {
   errorAsBlock?: boolean;
   name: string;
   noLabel?: boolean;
+  inlineLabel?: boolean;
 } & Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref'> &
   Omit<HTMLProps<HTMLInputElement>, 'as'>;
 
 // eslint-disable-next-line react/display-name
 const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
   (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
-    const { error, errorAsBlock, label, name, noLabel } = props;
+    const { error, errorAsBlock, label, name, noLabel, inlineLabel } = props;
     if (props.type === TYPE_CHECKBOX) {
       return <Checkbox name={props.name} error={props.error} {...props} />;
     }
 
     return (
       <FieldContainer>
-        {!noLabel && <Label htmlFor={name}>{label || name}</Label>}
-        <Input {...props} hasError={Boolean(error)} id={name} ref={ref} />
+        {!noLabel && (
+          <Label inlineLabel={inlineLabel} htmlFor={name}>
+            {label || name}
+          </Label>
+        )}
+        <Input {...props} inlineLabel={inlineLabel} hasError={Boolean(error)} id={name} ref={ref} />
         {error && <ErrorText block={errorAsBlock}>{error}</ErrorText>}
       </FieldContainer>
     );
   },
 );
 
-export const Input = styled.input<{ hasError?: boolean }>`
+export const Input = styled.input<{ hasError?: boolean; inlineLabel?: boolean }>`
   background: ${props => props.theme.form.background.main};
   border-radius: ${props => props.theme.form.borderRadius.input};
   border: ${props => (!props.hasError ? props.theme.form.border.input.main : props.theme.form.border.input.error)};
@@ -46,6 +51,7 @@ export const Input = styled.input<{ hasError?: boolean }>`
   color: ${props => props.theme.form.color.input.main};
   margin: ${props => props.theme.form.margin.main};
   padding: ${props => props.theme.form.padding.main};
+  text-align: ${props => (props.inlineLabel ? 'right' : 'left')};
   transition: box-shadow 0.15s ease-in, border 0.15s ease-in;
   width: 100%;
   font-size: 100%;

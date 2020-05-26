@@ -26,6 +26,7 @@ const getFormTheme = (theme: DefaultTheme) => ({
       main: theme.palette.neutral.shade8,
       placeholder: theme.palette.neutral.shade4,
       error: theme.palette.danger.shade4,
+      labelInline: theme.palette.neutral.shade5,
     },
   },
   animation: {
@@ -43,6 +44,16 @@ const getFormTheme = (theme: DefaultTheme) => ({
   },
   padding: {
     main: '10px 15px',
+  },
+  left: {
+    label: {
+      absolute: '15px',
+    },
+  },
+  top: {
+    label: {
+      absolute: '17px',
+    },
   },
   transition: {
     main: theme.globals.transition.main,
