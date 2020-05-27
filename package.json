@@ -11,7 +11,7 @@
     "publish-np": "npm run build && np",
     "test": "yarn lint",
     "storybook": "start-storybook -p 6006",
-    "start": "start-storybook -p 6006 -c watch-css",
+    "start": "yarn storybook",
     "build-storybook": "build-storybook"
   },
   "repository": {
