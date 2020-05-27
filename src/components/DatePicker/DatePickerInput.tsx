@@ -47,8 +47,10 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
   }, inputDebounceTimeOut || 800);
 
   const handleDayChange = React.useCallback(
-    (day: Date | undefined) => {
-      if (typeof day !== 'undefined' && !triggeredBySelect) {
+    (day: Date | undefined, _modifiers: DayModifiers, dayPickerInput: DayPickerInputComponent) => {
+      const input = dayPickerInput.getInput();
+      const isEmpty = !input.value.trim();
+      if ((typeof day !== 'undefined' || isEmpty) && !triggeredBySelect) {
         debouncedOnChange(day);
       }
     },
