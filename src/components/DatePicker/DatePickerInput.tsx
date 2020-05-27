@@ -6,12 +6,14 @@ import DatePickerWrapper from './DatePickerWrapper';
 import DatePickerInputWrapper from './DatePickerInputWrapper';
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
+import { debounce } from 'ts-debounce';
 
 type Props = {
   onChange?: (day: Date | undefined) => void;
   passableRef?: React.MutableRefObject<DayPickerInputComponent>;
   ref?: React.MutableRefObject<DayPickerInputComponent>;
-} & DayPickerInputProps;
+  inputDebounceTimeOut?: number;
+} & Omit<DayPickerInputProps, 'onChange'>;
 
 const parseDate = (str: string, format: string, locale: string) => {
   const parsed = dateFnsParse(str, format, new Date(), ({ locale } as unknown) as { locale: Locale });
@@ -28,14 +30,32 @@ const formatDate = (date: Date, format: string, locale: string) =>
 const FORMAT = 'dd/MM/yyyy';
 const PLACEHOLDER = 'DD/MM/YYYY';
 
-const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, ...props }: Props) => {
+const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDebounceTimeOut, ...props }: Props) => {
   const [rect, setRect] = React.useState({ top: 0, left: 0, isOffScreen: false });
   const wrapRef = React.useRef<HTMLDivElement>(null);
+  let triggeredBySelect = false;
   const handleDaySelect = (day: Date, { selected }: DayModifiers) => {
     onChange?.(selected ? undefined : day);
+    // This will make sure the onChange isn't called twice when selecting a day,
+    // since that will also trigger the onDayChange event
+    triggeredBySelect = true;
+    setTimeout(() => (triggeredBySelect = false), 100);
   };
 
-  React.useEffect(() => {
+  const debouncedOnChange = debounce((day: Date | undefined) => {
+    onChange?.(day);
+  }, inputDebounceTimeOut || 800);
+
+  const handleDayChange = React.useCallback(
+    (day: Date | undefined) => {
+      if (typeof day !== 'undefined' && !triggeredBySelect) {
+        debouncedOnChange(day);
+      }
+    },
+    [debouncedOnChange, triggeredBySelect],
+  );
+
+  const setPosition = () => {
     if (wrapRef.current) {
       const clientRect = wrapRef.current.querySelector('input')?.getBoundingClientRect();
       if (clientRect) {
@@ -48,6 +68,10 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, ...props
         });
       }
     }
+  };
+
+  React.useEffect(() => {
+    setPosition();
   }, []);
 
   return (
@@ -59,7 +83,9 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, ...props
         parseDate={parseDate}
         placeholder={props.placeholder || PLACEHOLDER}
         component={Input}
+        onDayPickerShow={setPosition}
         overlayComponent={DatePickerWrapper}
+        onDayChange={handleDayChange}
         {...props}
         dayPickerProps={{
           className: `unbrace_date-picker`,
