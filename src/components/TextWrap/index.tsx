@@ -3,13 +3,33 @@ import { debounce } from 'ts-debounce';
 import { Tooltip } from '..';
 import { TextWrap } from './styles';
 
-export type TextWrapProps = {
+type TextAsTagProps = {
+  asTag?:
+    | 'p'
+    | 'span'
+    | 'small'
+    | 'big'
+    | 'strong'
+    | 'b'
+    | 'i'
+    | 's'
+    | 'u'
+    | 'del'
+    | 'ins'
+    | 'blockquote'
+    | 'q'
+    | 'code'
+    | 'address'
+    | 'pre';
+};
+
+export type TextWrapProps = TextAsTagProps & {
   children?: React.ReactNode;
   isCapitalized?: boolean;
   list?: string[];
 } & React.HTMLAttributes<HTMLSpanElement>;
 
-const TextWrapComponent: React.FunctionComponent<TextWrapProps> = ({ list, ...rest }: TextWrapProps) => {
+const TextWrapComponent: React.FunctionComponent<TextWrapProps> = ({ list, asTag, ...rest }: TextWrapProps) => {
   const listCount = list && (list.length > 1 ? list.length : undefined);
   const wrapRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
   const [isTruncated, setIsTruncated] = React.useState(false);
@@ -43,7 +63,7 @@ const TextWrapComponent: React.FunctionComponent<TextWrapProps> = ({ list, ...re
   return (
     <React.Fragment>
       <Tooltip isActive={isTruncated} content={tooltipContent}>
-        <TextWrap listCount={isTruncated ? listCount : undefined} ref={wrapRef} {...rest} />
+        <TextWrap listCount={isTruncated ? listCount : undefined} ref={wrapRef} {...rest} as={asTag} />
       </Tooltip>
     </React.Fragment>
   );
