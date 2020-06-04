@@ -25,3 +25,4 @@ export {
 } from './Table';
 export { default as Input } from './Form/Input';
 export { DatePicker, DatePickerInput, RangeDatePicker, useRangeDatePickerInputs } from './DatePicker';
+export { Modal, ModalBody, ModalHeader, ModalFooter } from './Modal';

@@ -16,6 +16,7 @@ import defaultTypography from './typography/defaultTypography';
 import getTableTheme from './components/table';
 import getFormTheme from './components/form';
 import getScrollbarTheme from './components/scrollbar';
+import getModalTheme from './components/modal';
 
 const baseTheme = {
   globals: globals,
@@ -31,6 +32,7 @@ const componentTheme = {
   drawer: getDrawerTheme(baseTheme),
   iconButton: getIconButtonTheme(baseTheme),
   form: getFormTheme(baseTheme),
+  modal: getModalTheme(baseTheme),
   select: getSelectTheme(baseTheme),
   table: getTableTheme(baseTheme),
   textWrap: getTextWrapTheme(baseTheme),
