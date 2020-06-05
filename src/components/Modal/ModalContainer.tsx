@@ -37,12 +37,9 @@ const ModalContainer: React.FunctionComponent<Props> = ({
         <Content
           toggleModal={toggleModal}
           closeModal={closeModal}
+          keepOpenLabel={keepOpenLabel}
           keepOpenCheckbox={
-            title === 'import' ? (
-              <Input name="createAnother" label={keepOpenLabel} type={'checkbox'} onChange={toggleKeepOpen} />
-            ) : (
-              <Input name="createAnother" label={keepOpenLabel} type={'checkbox'} onChange={toggleKeepOpen} />
-            )
+            <Input inlineLabel name="createAnother" label={keepOpenLabel} type={'checkbox'} onChange={toggleKeepOpen} />
           }
           {...contentProps}
         />

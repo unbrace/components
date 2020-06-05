@@ -3,9 +3,12 @@ import { ModalHeader, ModalFooter, ModalBody } from '../../components/Modal/layo
 import { ModalContainer } from '../../components/Modal';
 import styled from 'styled-components';
 import { Button, SubmitButton } from '../../components/Button';
+import { Input } from '../../components';
 
 type ModalProps = {
   toggleModal: () => void;
+  keepOpenCheckbox?: React.ElementType<typeof Input>;
+  keepOpenLabel?: string;
 };
 
 export const ModalHeaderExample = () => (
@@ -15,8 +18,9 @@ export const ModalHeaderExample = () => (
   </ModalHeader>
 );
 
-export const ModalFooterExample = ({ toggleModal }: ModalProps) => (
+export const ModalFooterExample = ({ toggleModal, keepOpenCheckbox, keepOpenLabel }: ModalProps) => (
   <ModalFooter>
+    {keepOpenLabel ? keepOpenCheckbox : null}
     <Button onClick={toggleModal} color="tertiary">
       Cancel
     </Button>
@@ -28,11 +32,11 @@ export const ModalFooterExample = ({ toggleModal }: ModalProps) => (
 
 export const ModalBodyExample = () => <ModalBody />;
 
-export const ModalExample = ({ toggleModal }: ModalProps) => (
+export const ModalExample = (props: ModalProps) => (
   <React.Fragment>
     <ModalHeaderExample />
     <ModalBodyExample />
-    <ModalFooterExample toggleModal={toggleModal} />
+    <ModalFooterExample {...props} />
   </React.Fragment>
 );
 
