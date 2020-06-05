@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import ModalContainer from './ModalContainer';
 import { useToggle } from '@unbrace/hooks';
 
-// TODO: type content to only allow ModalContent + Possibly type contentProps and pass this typing down internally so there is autocomplete for these props
 type Props = {
   content: React.ComponentType<any>;
   children?: (toggleModal: ToggleModalType) => JSX.Element;
@@ -11,17 +10,13 @@ type Props = {
   size?: ModalSizes;
   isVisible?: boolean;
   title?: string;
-};
-
-type State = {
-  isOpen: boolean;
-  keepOpen: boolean;
+  keepOpenLabel?: string;
 };
 
 export type ToggleModalType = () => void;
 export type ModalSizes = 'small' | 'medium' | 'large';
 
-const Modal: React.FC<Props> = ({ isVisible, children, contentProps, size, title, content }: Props) => {
+const Modal: React.FC<Props> = ({ isVisible, children, contentProps, size, title, content, keepOpenLabel }: Props) => {
   const [isOpen, toggleIsOpen] = useToggle(false);
   const [keepOpen, toggleKeepOpen] = useToggle(false);
 
@@ -48,6 +43,7 @@ const Modal: React.FC<Props> = ({ isVisible, children, contentProps, size, title
       {isOpen &&
         createPortal(
           <ModalContainer
+            keepOpenLabel={keepOpenLabel}
             content={content}
             toggleModal={toggleModal}
             closeModal={closeModal}

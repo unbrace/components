@@ -35,13 +35,46 @@ Below is a static modal example (meaning its position and display have been over
     </UnbraceThemeProvider>
 </Preview>
 
+## Sizes
+### Small
+
+<Preview height={200} >
+    <UnbraceThemeProvider>
+    <ModalContainerExample size='small' content={ModalExample}/>
+    </UnbraceThemeProvider>
+</Preview>
+
+### Medium
+
+<Preview height={200} >
+    <UnbraceThemeProvider>
+    <ModalContainerExample size='medium' content={ModalExample}/>
+    </UnbraceThemeProvider>
+</Preview>
+
+### Large
+
+<Preview height={200} >
+    <UnbraceThemeProvider>
+    <ModalContainerExample size='large' content={ModalExample}/>
+    </UnbraceThemeProvider>
+</Preview>
+
+## Create another
+
+<Preview height={200} >
+    <UnbraceThemeProvider>
+    <ModalContainerExample size="medium" keepOpenLabel='Create another?' content={ModalExample}/>
+    </UnbraceThemeProvider>
+</Preview>
+
 ## Live demo
 Toggle a working modal demo by clicking the button below.
 
 <Preview>
   <Story name="Modal">
   <React.Fragment>
-      <Modal content={ModalExample}>
+      <Modal size="medium" content={ModalExample}>
       {(toggleModal) => <Button color="primary" onClick={toggleModal}>Open modal</Button>}
       </Modal>
       <div id="modal"/>
