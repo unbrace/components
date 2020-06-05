@@ -36,13 +36,20 @@ const TextWrapComponent: React.FunctionComponent<TextWrapProps> = ({ list, asTag
 
   const debouncedTruncatedSet = debounce(() => {
     if (wrapRef.current) {
-      setIsTruncated(wrapRef.current.clientWidth < wrapRef.current.scrollWidth);
+      setIsTruncated(
+        wrapRef.current.clientWidth < wrapRef.current.scrollWidth ||
+          wrapRef.current.clientHeight < wrapRef.current.scrollHeight,
+      );
     }
   }, 300);
 
   React.useLayoutEffect(() => {
     setTimeout(() => {
-      if (wrapRef.current && wrapRef.current.clientWidth < wrapRef.current.scrollWidth) {
+      if (
+        wrapRef.current &&
+        (wrapRef.current.clientWidth < wrapRef.current.scrollWidth ||
+          wrapRef.current.clientHeight < wrapRef.current.scrollHeight)
+      ) {
         setIsTruncated(true);
       }
     }, 300);
