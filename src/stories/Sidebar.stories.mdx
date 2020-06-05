@@ -6,7 +6,7 @@ import { Meta, Story, Preview} from '@storybook/addon-docs/blocks';
 # Sidebar
 
 <Preview>
-  <Story name="Sidebar">
+  <Story name="Sidebar" parameters={{props: {propTablesExclude: [Text, UnbraceThemeProvider, 'GlobalStyleComponent' ]}}} >
     <UnbraceThemeProvider>
     <div style={{width: '100%', height: '100%', background: '#F5F7FD'}}>
     <Sidebar>
