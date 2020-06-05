@@ -9,6 +9,7 @@
     "strictNullChecks": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
+    "rootDir": "src",
     "outDir": "./dist",
     "target": "es5",
     "jsx": "react",

@@ -13,7 +13,7 @@ const Spacer = styled.div`
   }
 `;
 
-storiesOf('Button', module).add('colors', () => {
+export const ButtonVariantsStory = () => {
   return (
     <Spacer>
       <div>
@@ -43,7 +43,7 @@ storiesOf('Button', module).add('colors', () => {
       </div>
     </Spacer>
   );
-});
+};
 
 storiesOf('Button', module).add('variants', () => {
   const [loading, setloading] = React.useState(false);
