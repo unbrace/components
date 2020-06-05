@@ -26,3 +26,6 @@ export {
 export { default as Input } from './Form/Input';
 export { DatePicker, DatePickerInput, RangeDatePicker, useRangeDatePickerInputs } from './DatePicker';
 export { Modal, ModalBody, ModalHeader, ModalFooter } from './Modal';
+export { Sidebar } from './Sidebar';
+export { Flexer } from './Positioning';
+export { Divider, Spacer } from './Spacing';

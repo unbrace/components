@@ -1,0 +1,29 @@
+import {UnbraceThemeProvider, Sidebar, Flexer, TextWrap, Spacer, Text} from '../components';
+import { Meta, Story, Preview} from '@storybook/addon-docs/blocks';
+
+<Meta title="Sidebar" component={Sidebar} />
+
+# Sidebar
+
+<Preview>
+  <Story name="Sidebar">
+    <UnbraceThemeProvider>
+    <div style={{width: '100%', height: '100%', background: '#F5F7FD'}}>
+    <Sidebar>
+    {Array(5).fill('').map(() => (
+    <div style={{padding: 12, height: 105, borderBottom: '1px solid rgb(236, 241, 248)', display: 'flex'}}>
+        <Flexer direction="column" flex={1} >
+        <Text colorLevel="medium" size='xs' color="neutral">info@unbrace.be</Text>
+        <Text>This is a test subject</Text>
+        <Flexer flex={1} justify='flex-end' align="flex-end">
+        <Text colorLevel="medium" size='xs' color="neutral">Fri - 05/06/2020 - 10:19:09</Text>
+        </Flexer>
+        </Flexer>
+        </div>
+    ))}
+    </Sidebar>
+    </div>
+    </UnbraceThemeProvider>
+    </Story>
+</Preview>
+
