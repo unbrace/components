@@ -9,8 +9,16 @@ import {ModalHeaderExample, ModalContainerExample, ModalFooterExample, ModalBody
 
 # Modal
 
-<Props components={{Modal: Modal, ModalContainer: ModalContainer}} />
+## Installation
+Add `<div id="modal"></div>` somewhere inside the `<body/>` of the `public/index.html` file.
+> This modal component uses React Portal to render it's content into a DOM node. https://reactjs.org/docs/portals.html
 
+
+## Props
+
+<Props of={Modal} />
+
+## Usage example
 <Source code='<Modal
 content={ModalExample}
 contentProps={{ someProp: someValue }}
@@ -19,7 +27,7 @@ size="medium">
 </Modal>;' />
 
 ## Modal components
-Below is a static modal example (meaning its position and display have been overridden). Included are the modal header, modal body (required for padding), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
+Below is a static modal example (meaning its position and display have been overridden). Included are the modal header, modal body, and modal footer (optional).
 
 <Preview height={200} >
     <UnbraceThemeProvider>
@@ -28,7 +36,7 @@ Below is a static modal example (meaning its position and display have been over
 </Preview>
 
 ## Live demo
-Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
+Toggle a working modal demo by clicking the button below.
 
 <Preview>
   <Story name="Modal">
