@@ -7,6 +7,7 @@ type Props = {
   position?: 'top' | 'bottom' | 'left' | 'right';
   content?: string | number | React.ReactNode;
   isActive?: boolean;
+  boxed?: boolean;
 };
 
 type TooltipState = {
@@ -54,6 +55,7 @@ const Tooltip: React.FC<Props> = ({
   positionAbsolute,
   position = 'bottom',
   content,
+  boxed,
   isActive = true,
 }: Props) => {
   const [state, setState] = React.useState<TooltipState>({
@@ -96,6 +98,7 @@ const Tooltip: React.FC<Props> = ({
         bottom={state.bottom}
         right={state.right}
         position={position}
+        boxed={boxed}
       >
         {content ?? null}
       </StyledTooltip>

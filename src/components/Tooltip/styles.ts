@@ -8,6 +8,7 @@ type Props = {
   left?: number;
   right?: number;
   bottom?: number;
+  boxed?: boolean;
 };
 
 export const StyledTooltip = styled.span<Props>`
@@ -74,6 +75,12 @@ export const StyledTooltip = styled.span<Props>`
         css`
           transform: translateX(-50%) translateY(100%);
         `}
+    `}
+  ${props =>
+    props.boxed &&
+    css`
+      max-width: ${props.theme.tooltip.maxWidth.boxed};
+      white-space: normal;
     `}
 
   > li {

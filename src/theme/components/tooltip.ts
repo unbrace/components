@@ -7,6 +7,9 @@ const getTooltipTheme = (theme: DefaultTheme) => ({
   color: { main: theme.palette.neutral.shade2 },
   fontSize: { main: theme.typography.fontSize.small_5 },
   padding: { main: '5px 10px' },
+  maxWidth: {
+    boxed: '420px',
+  },
 });
 
 export default getTooltipTheme;
