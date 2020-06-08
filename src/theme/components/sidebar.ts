@@ -8,7 +8,7 @@ const getSidebarTheme = (theme: DefaultTheme) => ({
     },
   },
   background: {
-    main: theme.palette.neutral.shade0, //
+    main: theme.palette.neutral.shade0,
   },
   border: {
     right: `solid 2px ${theme.palette.neutral.shade2}`,
