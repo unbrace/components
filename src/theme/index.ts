@@ -17,6 +17,7 @@ import getTableTheme from './components/table';
 import getFormTheme from './components/form';
 import getScrollbarTheme from './components/scrollbar';
 import getModalTheme from './components/modal';
+import getSidebarTheme from './components/sidebar';
 
 const baseTheme = {
   globals: globals,
@@ -40,6 +41,7 @@ const componentTheme = {
   text: getTextTheme(baseTheme),
   pill: getPillTheme(baseTheme),
   scrollbar: getScrollbarTheme(baseTheme),
+  sidebar: getSidebarTheme(baseTheme),
   ...baseTheme,
 };
 

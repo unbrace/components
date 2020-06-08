@@ -11,6 +11,13 @@ module.exports = {
         },
         tsDocgenLoaderOptions: {
           tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+          propFilter(prop) {
+            if (prop.parent) {
+              return !prop.parent.fileName.includes('@types/react');
+            }
+
+            return true;
+          }
         },
         forkTsCheckerWebpackPluginOptions: {
           colors: false, // disables built-in colors in logger messages
