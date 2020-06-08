@@ -1,0 +1,83 @@
+import { Meta, Story, Preview, Anchor, Description, SubTitle, Source, Props } from '@storybook/addon-docs/blocks';
+import { UnbraceThemeProvider } from '../components';
+import { Modal, ModalContainer, Button, ModalHeader } from '../components'
+import ReactDOM from 'react-dom';
+import {ModalHeaderExample, ModalContainerExample, ModalFooterExample, ModalBodyExample, ModalExample} from './storyHelpers/ModalExamples';
+
+<Meta title="Modal" component={Modal} />
+
+# Modal
+
+## Installation
+Add `<div id="modal"></div>` somewhere inside the `<body/>` of the `public/index.html` file.
+> This modal component uses React Portal to render it's content into a DOM node. https://reactjs.org/docs/portals.html
+
+
+## Props
+
+<Props of={Modal} />
+
+## Usage example
+<Source code='<Modal
+content={ModalExample}
+contentProps={{ someProp: someValue }}
+size="medium">
+{toggleModal => <Button onClick={toggleModal}></Button>}
+</Modal>;' />
+
+## Modal components
+Below is a static modal example (meaning its position and display have been overridden). Included are the modal header, modal body, and modal footer (optional).
+
+<Preview height={200} >
+    <UnbraceThemeProvider>
+    <ModalContainerExample content={ModalExample}/>
+    </UnbraceThemeProvider>
+</Preview>
+
+## Sizes
+### Small
+
+<Preview height={200} >
+    <UnbraceThemeProvider>
+    <ModalContainerExample size='small' content={ModalExample}/>
+    </UnbraceThemeProvider>
+</Preview>
+
+### Medium
+
+<Preview height={200} >
+    <UnbraceThemeProvider>
+    <ModalContainerExample size='medium' content={ModalExample}/>
+    </UnbraceThemeProvider>
+</Preview>
+
+### Large
+
+<Preview height={200} >
+    <UnbraceThemeProvider>
+    <ModalContainerExample size='large' content={ModalExample}/>
+    </UnbraceThemeProvider>
+</Preview>
+
+## Create another
+
+<Preview height={200} >
+    <UnbraceThemeProvider>
+    <ModalContainerExample size="medium" keepOpenLabel='Create another?' content={ModalExample}/>
+    </UnbraceThemeProvider>
+</Preview>
+
+## Live demo
+Toggle a working modal demo by clicking the button below.
+
+<Preview>
+  <Story name="Modal">
+  <React.Fragment>
+      <Modal size="medium" content={ModalExample}>
+      {(toggleModal) => <Button color="primary" onClick={toggleModal}>Open modal</Button>}
+      </Modal>
+      <div id="modal"/>
+      </React.Fragment>
+  </Story>
+</Preview>
+

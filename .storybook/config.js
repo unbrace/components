@@ -12,6 +12,7 @@ addDecorator(s => (
     <StoryWrapper>{s()}</StoryWrapper>
   </UnbraceThemeProvider>
 ));
-// automatically import all files ending in *.stories.tsx
-configure(require.context('../src/stories', true, /\.stories\.tsx?$/), module);
+
+// automatically import all files ending in *.stories.tsx or *.stories.mdx
+configure(require.context('../src/stories', true, /\.stories(.tsx|.mdx)?$/), module);
 addDecorator(withPropsTable);
