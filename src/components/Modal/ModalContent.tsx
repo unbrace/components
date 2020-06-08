@@ -1,6 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { ModalBody, ModalFooter, ModalHeader } from './layout';
+import { ModalBody, ModalFooter, ModalHeader, ModalContentWrapper } from './styles';
 
 type Props = {
   children: React.ReactNode;
@@ -15,11 +14,5 @@ class ModalContent extends React.PureComponent<Props> {
     return <ModalContentWrapper>{this.props.children}</ModalContentWrapper>;
   }
 }
-
-const ModalContentWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  max-height: 90vh;
-`;
 
 export default ModalContent;

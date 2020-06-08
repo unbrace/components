@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { animations } from '../../../theme/keyframes';
-import { ModalStyleProps } from '../ModalContainer';
+import { animations } from '../../theme/keyframes';
+import { ModalStyleProps } from './ModalContainer';
 
 export const ModalWrapper = styled('section')<ModalStyleProps>`
   animation: ${animations.flyIn} 0.3s ease-out;
@@ -18,6 +18,26 @@ export const ModalWrapper = styled('section')<ModalStyleProps>`
   ${props => props.size === 'small' && 'width: 300px;'};
   ${props => props.size === 'medium' && 'width: 700px;'};
   ${props => props.size === 'large' && 'width: 900px;'};
+`;
+
+export const ModalContentWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+`;
+
+export const ModalOverlay = styled('div')`
+  align-items: center;
+  animation: ${animations.fadeIn} 0.15s ease-in;
+  background-color: rgba(58, 58, 58, 0.3);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 2000;
 `;
 
 export const ModalHeader = styled.header`

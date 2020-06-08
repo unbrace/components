@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Input } from '../';
-import { ModalWrapper } from './layout';
-import ModalOverlay from './layout/ModalOverlay';
+import { ModalWrapper, ModalOverlay } from './styles';
 import { ModalSizes } from './Modal';
 
 type Props = {
