@@ -27,22 +27,30 @@ export type TextWrapProps = TextAsTagProps & {
   children?: React.ReactNode;
   isCapitalized?: boolean;
   list?: string[];
+  boxed?: boolean;
 } & React.HTMLAttributes<HTMLSpanElement>;
 
-const TextWrapComponent: React.FunctionComponent<TextWrapProps> = ({ list, asTag, ...rest }: TextWrapProps) => {
+const TextWrapComponent: React.FunctionComponent<TextWrapProps> = ({ list, asTag, boxed, ...rest }: TextWrapProps) => {
   const listCount = list && (list.length > 1 ? list.length : undefined);
   const wrapRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
   const [isTruncated, setIsTruncated] = React.useState(false);
 
   const debouncedTruncatedSet = debounce(() => {
     if (wrapRef.current) {
-      setIsTruncated(wrapRef.current.clientWidth < wrapRef.current.scrollWidth);
+      setIsTruncated(
+        wrapRef.current.clientWidth < wrapRef.current.scrollWidth ||
+          wrapRef.current.clientHeight < wrapRef.current.scrollHeight,
+      );
     }
   }, 300);
 
   React.useLayoutEffect(() => {
     setTimeout(() => {
-      if (wrapRef.current && wrapRef.current.clientWidth < wrapRef.current.scrollWidth) {
+      if (
+        wrapRef.current &&
+        (wrapRef.current.clientWidth < wrapRef.current.scrollWidth ||
+          wrapRef.current.clientHeight < wrapRef.current.scrollHeight)
+      ) {
         setIsTruncated(true);
       }
     }, 300);
@@ -62,7 +70,7 @@ const TextWrapComponent: React.FunctionComponent<TextWrapProps> = ({ list, asTag
 
   return (
     <React.Fragment>
-      <Tooltip isActive={isTruncated} content={tooltipContent}>
+      <Tooltip isActive={isTruncated} content={tooltipContent} boxed={boxed}>
         <TextWrap listCount={isTruncated ? listCount : undefined} ref={wrapRef} {...rest} as={asTag} />
       </Tooltip>
     </React.Fragment>
