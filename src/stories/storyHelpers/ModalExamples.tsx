@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ModalHeader, ModalFooter, ModalBody } from '../../components/Modal/layout';
-import { ModalContainer } from '../../components/Modal';
+import { ModalContainer, ModalHeader, ModalFooter, ModalBody } from '../../components/Modal';
 import styled from 'styled-components';
 import { Button, SubmitButton } from '../../components/Button';
 import { Input } from '../../components';
