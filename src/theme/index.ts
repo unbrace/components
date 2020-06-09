@@ -19,6 +19,7 @@ import getScrollbarTheme from './components/scrollbar';
 import getModalTheme from './components/modal';
 import getSidebarTheme from './components/sidebar';
 import getHeaderTheme from './components/header';
+import getSkeletonTheme from './components/skeleton';
 
 const baseTheme = {
   globals: globals,
@@ -44,6 +45,7 @@ const componentTheme = {
   scrollbar: getScrollbarTheme(baseTheme),
   sidebar: getSidebarTheme(baseTheme),
   header: getHeaderTheme(),
+  skeleton: getSkeletonTheme(baseTheme),
   ...baseTheme,
 };
 

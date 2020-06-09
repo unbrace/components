@@ -29,3 +29,4 @@ export { Modal, ModalBody, ModalHeader, ModalFooter } from './Modal';
 export { Sidebar, Search, Counter } from './Sidebar';
 export { Flexer } from './Positioning';
 export { Divider, Spacer } from './Spacing';
+export { SkeletonGenerator, ContentLoader } from './Skeleton';

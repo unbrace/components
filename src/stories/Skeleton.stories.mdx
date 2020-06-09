@@ -1,0 +1,27 @@
+import {UnbraceThemeProvider, SkeletonGenerator} from '../components';
+import { Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks';
+import SkeletonExample from './storyHelpers/SkeletonExamples';
+import ContentLoader from '../components/Skeleton/ContentLoader';
+
+<Meta title="Skeleton" component={ContentLoader} />
+
+# Skeleton
+
+## Demo
+
+<Preview>
+  <Story name="Skeleton" parameters={{props: {propTablesExclude: [UnbraceThemeProvider, 'GlobalStyleComponent' ]}}}>
+    <UnbraceThemeProvider>
+    <SkeletonGenerator count={2}>
+        <ContentLoader height={155}>
+             <rect x="20" y="20" rx="5" ry="5" width="160" height="30" />
+             <rect x="20" y="75" rx="5" ry="5" width="190" height="15" />
+             <rect x="20" y="115" rx="5" ry="5" width="230" height="15" />
+           </ContentLoader>
+           </SkeletonGenerator>
+    </UnbraceThemeProvider>
+  </Story>
+</Preview>
+
+## Props
+<Props components={{SkeletonGenerator, ContentLoader }} />
