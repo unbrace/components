@@ -40,7 +40,7 @@ export const SearchWrapper = styled(Flexer)`
 
 export const CountWrapper = styled.span`
     position: fixed;
-    top: ${props => props.theme.header.height};
+    top: calc(${props => props.theme.header.height} - ${props => props.theme.sidebar.countComponent.fontSize} + 1px);
     padding: 0px 8px;
     border-radius: ${props => props.theme.sidebar.border.radiusCount};
     margin-left: 7px;
