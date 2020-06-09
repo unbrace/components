@@ -12,6 +12,7 @@ const getSidebarTheme = (theme: DefaultTheme) => ({
   },
   border: {
     right: `solid 2px ${theme.palette.neutral.shade2}`,
+    radiusCount: theme.globals.borderRadius.small,
   },
   color: {
     loading: theme.palette.neutral.shade4,
@@ -19,6 +20,11 @@ const getSidebarTheme = (theme: DefaultTheme) => ({
   width: {
     huge: '320px',
     large: '260px',
+  },
+  countComponent: {
+    fontSize: theme.typography.fontSize.small_4,
+    color: theme.palette.neutral.shade4,
+    background: theme.palette.neutral.shade0,
   },
 });
 

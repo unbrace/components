@@ -18,6 +18,7 @@ import getFormTheme from './components/form';
 import getScrollbarTheme from './components/scrollbar';
 import getModalTheme from './components/modal';
 import getSidebarTheme from './components/sidebar';
+import getHeaderTheme from './components/header';
 
 const baseTheme = {
   globals: globals,
@@ -42,6 +43,7 @@ const componentTheme = {
   pill: getPillTheme(baseTheme),
   scrollbar: getScrollbarTheme(baseTheme),
   sidebar: getSidebarTheme(baseTheme),
+  header: getHeaderTheme(),
   ...baseTheme,
 };
 
