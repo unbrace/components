@@ -32,8 +32,8 @@ export const GlobalContentLoader: React.FunctionComponent<Props> = ({ height, ..
         <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
           <ContentLoader
             speed={2}
-            foregroundColor={themeContext.skeleton.primaryColor}
-            backgroundColor={themeContext.skeleton.secondaryColor}
+            primaryColor={themeContext.skeleton.primaryColor}
+            secondaryColor={themeContext.skeleton.secondaryColor}
             height={height}
             {...other}
           />

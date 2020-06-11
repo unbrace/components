@@ -20,6 +20,7 @@ import getModalTheme from './components/modal';
 import getSidebarTheme from './components/sidebar';
 import getHeaderTheme from './components/header';
 import getSkeletonTheme from './components/skeleton';
+import getPaperTheme from './components/paper';
 
 const baseTheme = {
   globals: globals,
@@ -46,6 +47,7 @@ const componentTheme = {
   sidebar: getSidebarTheme(baseTheme),
   header: getHeaderTheme(),
   skeleton: getSkeletonTheme(baseTheme),
+  paper: getPaperTheme(baseTheme),
   ...baseTheme,
 };
 

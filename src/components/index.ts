@@ -30,3 +30,4 @@ export { Sidebar, Search, Counter } from './Sidebar';
 export { Flexer } from './Positioning';
 export { Divider, Spacer } from './Spacing';
 export { SkeletonGenerator, ContentLoader } from './Skeleton';
+export { Paper } from './Paper';

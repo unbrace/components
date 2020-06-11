@@ -1,0 +1,14 @@
+import {UnbraceThemeProvider, Paper} from '../components';
+import { Meta, Story, Preview} from '@storybook/addon-docs/blocks';
+
+<Meta title="Paper" component={Paper} />
+
+# Sidebar
+
+<Preview>
+  <Story name="Paper" parameters={{props: {propTablesExclude: [UnbraceThemeProvider, 'GlobalStyleComponent' ]}}} >
+    <UnbraceThemeProvider>
+        <Paper/>
+    </UnbraceThemeProvider>
+    </Story>
+</Preview>
