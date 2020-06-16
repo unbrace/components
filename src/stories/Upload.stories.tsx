@@ -32,9 +32,9 @@ storiesOf('Upload', module).add(
           <Upload
             fileName={fileName}
             noFileSelectedText="Drop your file here or click to browse"
-            acceptedFileTypes={['.pdf']}
+            acceptedFileTypes={['.csv', '.pptx']}
             onChange={onChange}
-            error="Required"
+            color="#FF5733"
           />
         </Wrapper>
       </React.Fragment>

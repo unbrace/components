@@ -2,22 +2,23 @@ import styled from 'styled-components';
 import Flexer from '../Positioning/Flexer';
 
 export const Dropzone = styled(Flexer)`
-  border-radius: 3px;
-  border-color: rgb(207, 212, 219);
+  border-radius: ${props => props.theme.upload.dropzone.border.radius};
+  border-color: ${props => props.theme.upload.dropzone.border.color};
   border-style: dashed;
-  border-width: 2px;
-  margin-top: 8px;
+  border-width: ${props => props.theme.upload.dropzone.border.width};
+
+  margin-top: ${props => props.theme.upload.dropzone.margin.top};
+  margin-bottom: ${props => props.theme.upload.dropzone.margin.bottom};
 
   font-size: 90%;
   padding: 10px;
   position: relative;
-  margin-bottom: 2px;
-  height: 200px;
+  min-height: 200px;
 
   .input-wrapper {
-    border-radius: 5px;
+    border-radius: ${props => props.theme.upload.dropzone.inputWrapper.borderRadius};
     height: 100%;
-    padding: 0 10px 5px 0;
+    padding: ${props => props.theme.upload.dropzone.inputWrapper.padding};
     position: absolute;
     width: 100%;
     z-index: 0;
@@ -36,13 +37,13 @@ export const Dropzone = styled(Flexer)`
 `;
 
 export const DropzoneWrapper = styled.div`
-  border-radius: 8px;
-  border: 1px solid ${props => props.theme.palette.neutral.shade3};
-  box-shadow: ${props => props.theme.form.boxShadow.main};
+  border-radius: ${props => props.theme.upload.dropzoneWrapper.borderRadius};
+  border: ${props => props.theme.upload.dropzoneWrapper.border};
+  box-shadow: ${props => props.theme.upload.dropzoneWrapper.boxShadow};
   display: flex;
   flex-direction: row;
-  margin: 10px 0 5px;
+  margin: ${props => props.theme.upload.dropzoneWrapper.margin};
   p {
-    color: ${props => props.theme.palette.neutral.shade8};
+    color: ${props => props.theme.upload.dropzoneWrapper.text.color};
   }
 `;

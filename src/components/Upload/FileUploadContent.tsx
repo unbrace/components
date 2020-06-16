@@ -1,47 +1,42 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import FileUploadIcon from './FileUploadIcon';
+import { Flexer } from '..';
 
 type Props = {
   fileName: string | null;
   noFileSelectedText: string;
+  color?: string;
 };
 
-const FileUploadContent: React.FC<Props> = ({ fileName, noFileSelectedText }: Props) => {
+const FileUploadContent: React.FC<Props> = ({ fileName, noFileSelectedText, color }: Props) => {
   return (
     <FileUploadContentWrapper>
-      <FileUploadIcon />
-      <div>
+      <FileUploadIcon color={color} />
+      <Flexer flex={1} direction="column" justify="center" align="center">
         <p>{fileName || noFileSelectedText}</p>
-      </div>
+      </Flexer>
     </FileUploadContentWrapper>
   );
 };
 
-const FileUploadContentWrapper = styled.div`
-  display: flex;
+const FileUploadContentWrapper = styled(Flexer)`
   width: 100%;
-  padding: 0 50px;
+  padding: ${props => props.theme.upload.fileUpload.padding};
 
   svg {
     width: 100px;
     height: 100px;
-    margin-right: 32px;
+    margin-right: ${props => props.theme.upload.fileUpload.svgMarginRight};
   }
 
   > div {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     > p {
       text-align: center;
     }
 
     button {
-      margin-top: 16px;
+      margin-top: ${props => props.theme.upload.fileUpload.buttonMarginTop};
     }
   }
 `;

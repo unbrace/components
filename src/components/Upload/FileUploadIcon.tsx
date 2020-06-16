@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-const FileUploadIcon = () => (
+type Props = {
+  color?: string;
+};
+
+const FileUploadIcon = ({ color }: Props) => (
   <svg
     id="72abf1fc-af5c-4a12-adab-83afeedac95e"
     data-name="Layer 1"
@@ -83,19 +87,19 @@ const FileUploadIcon = () => (
     <rect x="357.59" y="58.59" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="357.59" y="98.59" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="357.59" y="138.59" width="142.73" height="10.89" fill="#e0e0e0" />
-    <rect x="357.59" y="178.59" width="142.73" height="10.89" fill="#0093B2" opacity="0.5" />
+    <rect x="357.59" y="178.59" width="142.73" height="10.89" fill={color ? color : '#0093B2'} opacity="0.5" />
     <rect x="357.59" y="218.59" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="357.59" y="258.59" width="142.73" height="10.89" fill="#e0e0e0" />
-    <rect x="84.72" y="343.59" width="142.73" height="10.89" fill="#0093B2" opacity="0.5" />
+    <rect x="84.72" y="343.59" width="142.73" height="10.89" fill={color ? color : '#0093B2'} opacity="0.5" />
     <rect x="84.72" y="387.13" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="84.72" y="365.36" width="372.56" height="10.89" fill="#69f0ae" opacity="0.5" />
-    <rect x="84.72" y="448.82" width="142.73" height="10.89" fill="#0093B2" opacity="0.5" />
+    <rect x="84.72" y="448.82" width="142.73" height="10.89" fill={color ? color : '#0093B2'} opacity="0.5" />
     <rect x="84.72" y="492.37" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="84.72" y="470.59" width="372.56" height="10.89" fill="#e0e0e0" />
-    <rect x="84.72" y="554.06" width="142.73" height="10.89" fill="#0093B2" opacity="0.5" />
+    <rect x="84.72" y="554.06" width="142.73" height="10.89" fill={color ? color : '#0093B2'} opacity="0.5" />
     <rect x="84.72" y="597.6" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="84.72" y="575.83" width="305.41" height="10.89" fill="#e0e0e0" />
-    <polygon points="310 281 50 281 50 54 59 43 79.75 43 310 43 310 281" fill="#0093B2" />
+    <polygon points="310 281 50 281 50 54 59 43 79.75 43 310 43 310 281" fill={color ? color : '#0093B2'} />
     <polygon points="4.91 96.5 94 96.5 94 3.5 4.91 96.5" fill="url(#b071ddd1-33a6-4512-b8b6-1cee124e019a)" />
     <polygon points="6.91 94.5 92 94.5 92 5.5 6.91 94.5" fill="#f5f5f5" />
     <g opacity="0.5">
@@ -131,19 +135,19 @@ const FileUploadIcon = () => (
     <rect x="462.59" y="103.59" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="462.59" y="143.59" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="462.59" y="183.59" width="142.73" height="10.89" fill="#e0e0e0" />
-    <rect x="462.59" y="223.59" width="142.73" height="10.89" fill="#0093B2" opacity="0.5" />
+    <rect x="462.59" y="223.59" width="142.73" height="10.89" fill={color ? color : '#0093B2'} opacity="0.5" />
     <rect x="462.59" y="263.59" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="462.59" y="303.59" width="142.73" height="10.89" fill="#e0e0e0" />
-    <rect x="189.72" y="388.59" width="142.73" height="10.89" fill="#0093B2" opacity="0.5" />
+    <rect x="189.72" y="388.59" width="142.73" height="10.89" fill={color ? color : '#0093B2'} opacity="0.5" />
     <rect x="189.72" y="432.13" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="189.72" y="410.36" width="372.56" height="10.89" fill="#69f0ae" opacity="0.5" />
-    <rect x="189.72" y="493.82" width="142.73" height="10.89" fill="#0093B2" opacity="0.5" />
+    <rect x="189.72" y="493.82" width="142.73" height="10.89" fill={color ? color : '#0093B2'} opacity="0.5" />
     <rect x="189.72" y="537.37" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="189.72" y="515.59" width="372.56" height="10.89" fill="#e0e0e0" />
-    <rect x="189.72" y="599.06" width="142.73" height="10.89" fill="#0093B2" opacity="0.5" />
+    <rect x="189.72" y="599.06" width="142.73" height="10.89" fill={color ? color : '#0093B2'} opacity="0.5" />
     <rect x="189.72" y="642.6" width="142.73" height="10.89" fill="#e0e0e0" />
     <rect x="189.72" y="620.83" width="305.41" height="10.89" fill="#e0e0e0" />
-    <polygon points="415 326 155 326 155 99 164 88 184.75 88 415 88 415 326" fill="#0093B2" />
+    <polygon points="415 326 155 326 155 99 164 88 184.75 88 415 88 415 326" fill={color ? color : '#0093B2'} />
     <polygon points="109.91 141.5 199 141.5 199 48.5 109.91 141.5" fill="url(#152252ce-949a-4e00-886c-6a46b2444b40)" />
     <polygon points="111.91 139.5 197 139.5 197 50.5 111.91 139.5" fill="#fcfcfc" />
   </svg>
