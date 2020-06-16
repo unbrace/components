@@ -5,6 +5,7 @@ import { AnimationProps } from '../../theme';
 
 type Props = {
   block?: boolean;
+  left?: boolean;
 };
 
 const ErrorText = styled.span<Props & AnimationProps>`
@@ -16,8 +17,16 @@ const ErrorText = styled.span<Props & AnimationProps>`
     props.block
       ? css`
           text-align: right;
+          justify-content: flex-end;
+        `
+      : props.left
+      ? css`
+          text-align: left;
+          justify-content: flex-start;
         `
       : css`
+          justify-content: flex-end;
+
           position: absolute;
           right: 0;
           bottom: 0;
