@@ -1,10 +1,13 @@
 import * as React from 'react';
+import { withTheme } from 'styled-components';
+import { ComponentTheme } from '../../theme/index';
 
 type Props = {
   color?: string;
+  theme: ComponentTheme;
 };
 
-const FileUploadIcon = ({ color }: Props) => (
+const FileUploadIcon = ({ color, theme }: Props) => (
   <svg
     id="72abf1fc-af5c-4a12-adab-83afeedac95e"
     data-name="Layer 1"
@@ -105,7 +108,7 @@ const FileUploadIcon = ({ color }: Props) => (
     <g opacity="0.5">
       <circle cx="627.87" cy="696.25" r="100.13" fill="url(#d200849e-56d5-45c5-85eb-e9070e3330a6)" />
     </g>
-    <circle cx="627.87" cy="696.25" r="93.72" fill="#3ad29f" />
+    <circle cx="627.87" cy="696.25" r="93.72" fill={theme.palette.success.shade4} />
     <g opacity="0.5">
       <polygon
         points="678.44 684.95 639.16 684.95 639.16 645.68 616.58 645.68 616.58 684.95 577.3 684.95 577.3 707.54 616.58 707.54 616.58 746.82 639.16 746.82 639.16 707.54 678.44 707.54 678.44 684.95"
@@ -153,4 +156,4 @@ const FileUploadIcon = ({ color }: Props) => (
   </svg>
 );
 
-export default FileUploadIcon;
+export default withTheme(FileUploadIcon);
