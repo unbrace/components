@@ -11,7 +11,7 @@ type Props = {
   acceptedFileTypes?: string[];
   onChange?: (file: File) => void;
   error?: string;
-  color?: string;
+  color?: 'primary' | 'secondary' | 'warning' | 'tertiary' | 'danger';
   acceptedFilesText?: string;
 };
 

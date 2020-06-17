@@ -30,6 +30,15 @@ const getUploadTheme = (theme: DefaultTheme) => ({
     svgMarginRight: '32px',
     buttonMarginTop: '16px',
   },
+  svgIcon: {
+    fill: {
+      primary: theme.palette.primary.shade5,
+      secondary: theme.palette.secondary.shade5,
+      warning: theme.palette.warning.shade5,
+      tertiary: theme.palette.neutral.shade5,
+      danger: theme.palette.danger.shade5,
+    },
+  },
 });
 
 export default getUploadTheme;

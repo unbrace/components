@@ -6,7 +6,7 @@ import { Flexer } from '..';
 type Props = {
   fileName: string | null;
   noFileSelectedText: string;
-  color?: string;
+  color?: 'primary' | 'secondary' | 'warning' | 'tertiary' | 'danger';
 };
 
 const FileUploadContent: React.FC<Props> = ({ fileName, noFileSelectedText, color }: Props) => {

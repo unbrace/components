@@ -26,6 +26,7 @@ storiesOf('Upload', module).add(
             noFileSelectedText="Drop your file here or click to browse"
             acceptedFileTypes={['.pdf']}
             onChange={onChange}
+            color="primary"
           />
         </Wrapper>
         <Wrapper>
@@ -34,7 +35,34 @@ storiesOf('Upload', module).add(
             noFileSelectedText="Drop your file here or click to browse"
             acceptedFileTypes={['.csv', '.pptx']}
             onChange={onChange}
-            color="#FF5733"
+            color="warning"
+          />
+        </Wrapper>
+        <Wrapper>
+          <Upload
+            fileName={fileName}
+            noFileSelectedText="Drop your file here or click to browse"
+            acceptedFileTypes={['.csv', '.pptx']}
+            onChange={onChange}
+            color="danger"
+          />
+        </Wrapper>
+        <Wrapper>
+          <Upload
+            fileName={fileName}
+            noFileSelectedText="Drop your file here or click to browse"
+            acceptedFileTypes={['.csv', '.pptx']}
+            onChange={onChange}
+            color="secondary"
+          />
+        </Wrapper>
+        <Wrapper>
+          <Upload
+            fileName={fileName}
+            noFileSelectedText="Drop your file here or click to browse"
+            acceptedFileTypes={['.csv', '.pptx']}
+            onChange={onChange}
+            color="tertiary"
           />
         </Wrapper>
       </React.Fragment>
