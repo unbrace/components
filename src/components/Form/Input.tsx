@@ -51,6 +51,7 @@ export const Input = styled.input<{ hasError?: boolean; inlineLabel?: boolean }>
   color: ${props => props.theme.form.color.input.main};
   margin: ${props => props.theme.form.margin.main};
   padding: ${props => props.theme.form.padding.main};
+  height: ${props => props.theme.form.height.input};
   text-align: ${props => (props.inlineLabel ? 'right' : 'left')};
   transition: box-shadow 0.15s ease-in, border 0.15s ease-in;
   width: 100%;

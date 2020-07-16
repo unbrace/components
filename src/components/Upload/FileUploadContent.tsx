@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import FileUploadIcon from './FileUploadIcon';
-import { Flexer } from '..';
+import { Flexer } from '../Positioning';
 
 type Props = {
   fileName: string | null;

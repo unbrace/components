@@ -39,6 +39,9 @@ const getFormTheme = (theme: DefaultTheme) => ({
     main: theme.palette.neutral.shade0,
     disabled: theme.palette.neutral.shade1,
   },
+  height: {
+    input: '40px',
+  },
   margin: {
     main: '8px 0 25px',
   },
