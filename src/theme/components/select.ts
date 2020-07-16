@@ -31,7 +31,7 @@ const getSelectTheme = (theme: DefaultTheme) => ({
     focus: `0px 1px 7px -1px ${theme.palette.primary.shade3}, inset 0px 2px 2px ${theme.palette.neutral.shade3}`,
     focusError: `0px 1px 7px -1px ${theme.palette.danger.shade3}, inset 0px 2px 2px ${theme.palette.neutral.shade3}`,
   },
-  minHeight: {
+  height: {
     main: '40px',
   },
   padding: {

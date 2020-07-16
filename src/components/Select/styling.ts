@@ -21,7 +21,7 @@ export const getSelectStyling = (theme: ComponentTheme, error?: string, isCapita
             : selectTheme.boxShadow.focus
           : selectTheme.boxShadow.main,
         color: selectTheme.color.main,
-        minHeight: selectTheme.minHeight.main,
+        height: selectTheme.height.main,
         transition: selectTheme.transition.main,
       };
     },
