@@ -26,7 +26,7 @@ const baseTheme = {
   typography: defaultTypography,
 };
 
-const componentTheme = {
+const componentTheme = (baseTheme: DefaultTheme) => ({
   alerts: getAlertsTheme(baseTheme),
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
@@ -45,9 +45,9 @@ const componentTheme = {
   sidebar: getSidebarTheme(baseTheme),
   upload: getUploadTheme(baseTheme),
   ...baseTheme,
-};
+});
 
-export type ComponentTheme = typeof componentTheme;
+export type ComponentTheme = ReturnType<typeof componentTheme>;
 export type DefaultTheme = typeof baseTheme;
 export type AnimationProps = {
   state: TransitionStatus;
