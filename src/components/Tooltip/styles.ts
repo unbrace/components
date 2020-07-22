@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { animations } from '../../theme/keyframes';
 
 type Props = {
-  position?: 'top' | 'bottom' | 'left' | 'right';
+  position?: 'top' | 'bottom' | 'left' | 'right' | 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
   positionAbsolute?: boolean;
   top?: number;
   left?: number;
@@ -57,11 +57,31 @@ export const StyledTooltip = styled.span<Props>`
     css`
       transform: translateX(-100%) translateY(-50%);
     `}
+
   ${props =>
     props.position === 'right' &&
     css`
       transform: translateY(-50%);
     `}
+
+  ${props =>
+    props.position === 'top-left' &&
+    css`
+      transform: translateX(-100%) translateY(-100%);
+    `}
+
+  ${props =>
+    props.position === 'top-right' &&
+    css`
+      transform: translateY(-100%);
+    `}
+
+  ${props =>
+    props.position === 'bottom-left' &&
+    css`
+      transform: translateX(-100%);
+    `}
+
   ${props =>
     props.position === 'top' &&
     css`
