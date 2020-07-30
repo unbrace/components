@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Input } from '../';
 import { ModalWrapper, ModalOverlay } from './styles';
 import { ModalSizes } from './Modal';
+import Draggable from 'react-draggable';
 
 type Props = {
   content: React.ComponentType<any>;
@@ -32,17 +33,27 @@ const ModalContainer: React.FunctionComponent<Props> = ({
 }: Props) => {
   return (
     <ModalOverlay {...props} onMouseDown={toggleModal}>
-      <ModalWrapper onClick={handleClick} onMouseDown={handleClick} size={size}>
-        <Content
-          toggleModal={toggleModal}
-          closeModal={closeModal}
-          keepOpenLabel={keepOpenLabel}
-          keepOpenCheckbox={
-            <Input inlineLabel name="createAnother" label={keepOpenLabel} type={'checkbox'} onChange={toggleKeepOpen} />
-          }
-          {...contentProps}
-        />
-      </ModalWrapper>
+      <div onClick={handleClick} onMouseDown={handleClick}>
+        <Draggable>
+          <ModalWrapper size={size}>
+            <Content
+              toggleModal={toggleModal}
+              closeModal={closeModal}
+              keepOpenLabel={keepOpenLabel}
+              keepOpenCheckbox={
+                <Input
+                  inlineLabel
+                  name="createAnother"
+                  label={keepOpenLabel}
+                  type={'checkbox'}
+                  onChange={toggleKeepOpen}
+                />
+              }
+              {...contentProps}
+            />
+          </ModalWrapper>
+        </Draggable>
+      </div>
     </ModalOverlay>
   );
 };
