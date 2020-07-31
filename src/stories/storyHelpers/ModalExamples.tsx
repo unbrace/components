@@ -6,6 +6,7 @@ import { Input } from '../../components';
 
 type ModalProps = {
   toggleModal: () => void;
+  closeModal: () => void;
   keepOpenCheckbox?: React.ElementType<typeof Input>;
   keepOpenLabel?: string;
 };
@@ -17,10 +18,10 @@ export const ModalHeaderExample = () => (
   </ModalHeader>
 );
 
-export const ModalFooterExample = ({ toggleModal, keepOpenCheckbox, keepOpenLabel }: ModalProps) => (
+export const ModalFooterExample = ({ toggleModal, keepOpenCheckbox, keepOpenLabel, closeModal }: ModalProps) => (
   <ModalFooter>
     {keepOpenLabel ? keepOpenCheckbox : null}
-    <Button onClick={toggleModal} color="tertiary">
+    <Button onClick={closeModal} color="tertiary">
       Cancel
     </Button>
     <SubmitButton onClick={toggleModal} color="primary">

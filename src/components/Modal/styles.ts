@@ -14,6 +14,7 @@ export const ModalWrapper = styled('section')<ModalStyleProps>`
   outline: 0;
   position: relative;
   width: ${props => props.theme.modal.defaultWidth};
+  cursor: move;
 
   ${props => props.size === 'small' && 'width: 300px;'};
   ${props => props.size === 'medium' && 'width: 700px;'};
