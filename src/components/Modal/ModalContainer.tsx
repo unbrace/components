@@ -13,6 +13,7 @@ type Props = {
   handleClick: (e: React.MouseEvent) => void;
   contentProps?: any;
   keepOpenLabel?: string;
+  draggableHandle?: string;
 } & ModalStyleProps;
 
 export type ModalStyleProps = {
@@ -28,13 +29,14 @@ const ModalContainer: React.FunctionComponent<Props> = ({
   toggleKeepOpen,
   size,
   title,
+  draggableHandle,
   keepOpenLabel,
   ...props
 }: Props) => {
   return (
     <ModalOverlay {...props} onMouseDown={toggleModal}>
       <div onClick={handleClick} onMouseDown={handleClick}>
-        <Draggable>
+        <Draggable handle={draggableHandle}>
           <ModalWrapper size={size}>
             <Content
               toggleModal={toggleModal}
