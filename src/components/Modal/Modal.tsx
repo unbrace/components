@@ -11,22 +11,12 @@ type Props = {
   isVisible?: boolean;
   title?: string;
   keepOpenLabel?: string;
-  draggableHandle?: string;
 };
 
 export type ToggleModalType = () => void;
 export type ModalSizes = 'small' | 'medium' | 'large';
 
-const Modal: React.FC<Props> = ({
-  isVisible,
-  children,
-  contentProps,
-  size,
-  title,
-  content,
-  keepOpenLabel,
-  draggableHandle,
-}: Props) => {
+const Modal: React.FC<Props> = ({ isVisible, children, contentProps, size, title, content, keepOpenLabel }: Props) => {
   const [isOpen, toggleIsOpen] = useToggle(false);
   const [keepOpen, toggleKeepOpen] = useToggle(false);
 
@@ -53,7 +43,6 @@ const Modal: React.FC<Props> = ({
       {isOpen &&
         createPortal(
           <ModalContainer
-            draggableHandle={draggableHandle}
             keepOpenLabel={keepOpenLabel}
             content={content}
             toggleModal={toggleModal}
