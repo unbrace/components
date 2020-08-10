@@ -14,7 +14,7 @@ export default styled.div<Props>`
 
       .unbrace_date-picker {
         position: fixed;
-        z-index: 100;
+        z-index: 105;
         height: ${isOffScreen ? '416px' : 'auto'};
         top: ${top}px;
         left: ${left}px;

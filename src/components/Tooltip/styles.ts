@@ -21,7 +21,7 @@ export const StyledTooltip = styled.span<Props>`
   opacity: 0;
   padding: ${props => props.theme.tooltip.padding.main};
   position: ${props => (props.positionAbsolute ? 'absolute' : 'fixed')};
-  z-index: 100;
+  z-index: 200;
   white-space: nowrap;
   
   &&& {
