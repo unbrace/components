@@ -78,7 +78,7 @@ export const ModalHeader = styled.header`
 `;
 
 export const ModalBody = styled.section`
-  max-height: 74vh;
+  max-height: 65vh;
   overflow-y: auto;
   padding: ${props => props.theme.modal.padding};
   white-space: pre-wrap;
