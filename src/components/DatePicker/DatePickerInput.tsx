@@ -62,11 +62,25 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
       const clientRect = wrapRef.current.querySelector('input')?.getBoundingClientRect();
       if (clientRect) {
         const HEIGHT = 416;
-        const isOffScreen = clientRect.bottom + HEIGHT > document.body.clientHeight;
+        const WIDTH = 358;
+        const GUTTER = 8;
+        const isOffScreenPlacedBelow = clientRect.bottom + HEIGHT > document.body.clientHeight;
+        const isOffScreenPlacedOnTop = clientRect.top - HEIGHT - GUTTER < 0;
+        const isOffScreenPlacedRight = clientRect.right + WIDTH + GUTTER > document.body.clientWidth;
+
         setRect({
-          top: isOffScreen ? clientRect.top - HEIGHT - 8 : clientRect.bottom + 8,
-          left: clientRect.left,
-          isOffScreen,
+          top: isOffScreenPlacedBelow
+            ? isOffScreenPlacedOnTop
+              ? GUTTER
+              : clientRect.top - HEIGHT - GUTTER
+            : clientRect.bottom + GUTTER,
+          left:
+            isOffScreenPlacedBelow && isOffScreenPlacedOnTop
+              ? isOffScreenPlacedRight
+                ? clientRect.left - WIDTH - GUTTER
+                : clientRect.right + GUTTER
+              : clientRect.left,
+          isOffScreen: isOffScreenPlacedBelow,
         });
       }
     }
