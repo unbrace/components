@@ -10,6 +10,10 @@ import { debounce } from 'ts-debounce';
 import styled from 'styled-components';
 import { Close } from '../icons';
 
+const InputWithRightPadding = styled(Input)`
+  padding: 10px 30px 10px 15px;
+`;
+
 type Props = {
   onChange?: (day: Date | undefined) => void;
   passableRef?: React.MutableRefObject<DayPickerInputComponent>;
@@ -109,7 +113,7 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
           format={props.format || FORMAT}
           parseDate={parseDate}
           placeholder={props.placeholder || PLACEHOLDER}
-          component={Input}
+          component={InputWithRightPadding}
           onDayPickerShow={setPosition}
           overlayComponent={DatePickerWrapper}
           onDayChange={handleDayChange}
@@ -131,7 +135,7 @@ export default DatePickerInput;
 
 const ClearButton = styled(Close)`
   position: absolute;
-  top: 20px;
+  top: 19px;
   right: 10px;
   cursor: pointer;
 
