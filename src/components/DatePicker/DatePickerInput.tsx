@@ -19,6 +19,7 @@ type Props = {
   passableRef?: React.MutableRefObject<DayPickerInputComponent>;
   ref?: React.MutableRefObject<DayPickerInputComponent>;
   inputDebounceTimeOut?: number;
+  onClear?: () => void;
 } & Omit<DayPickerInputProps, 'onChange'>;
 
 const parseDate = (str: string, format: string, locale: string) => {
@@ -55,12 +56,12 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
 
   const handleDayChange = React.useCallback(
     (day: Date | undefined, _modifiers: DayModifiers, dayPickerInput: DayPickerInputComponent) => {
-      // const input = dayPickerInput.getInput();
-      // const isEmpty = !input.value.trim();
-      // setValue(day || '');
-      // if ((typeof day !== 'undefined' || isEmpty) && !triggeredBySelect) {
-      //   debouncedOnChange(day);
-      // }
+      const input = dayPickerInput.getInput();
+      const isEmpty = !input.value.trim();
+      setValue(day || '');
+      if ((typeof day !== 'undefined' || isEmpty) && !triggeredBySelect) {
+        debouncedOnChange(day);
+      }
       console.log(day, dayPickerInput);
     },
     [debouncedOnChange, triggeredBySelect],
@@ -68,10 +69,8 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
 
   const clear = () => {
     setValue('');
-    console.log('clear');
-    // debouncedOnChange(undefined);
+    debouncedOnChange(undefined);
   };
-  console.log('lol', value);
 
   const setPosition = () => {
     if (wrapRef.current) {
@@ -106,6 +105,8 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
     setPosition();
   }, []);
 
+  const withValueStateProps = props.onClear ? undefined : { value };
+
   return (
     <DatePickerInputWrapper ref={wrapRef} top={rect.top} left={rect.left} isOffScreen={rect.isOffScreen}>
       <RelativeContainer>
@@ -120,16 +121,15 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
           overlayComponent={DatePickerWrapper}
           onDayChange={handleDayChange}
           {...props}
-          value={value}
           dayPickerProps={{
             className: `unbrace_date-picker`,
             onDayClick: handleDaySelect,
             showOutsideDays: true,
             ...props.dayPickerProps,
-            selectedDays: new Date(value),
           }}
+          {...withValueStateProps}
         />
-        <ClearButton onClick={clear} />
+        <ClearButton onClick={props.onClear || clear} />
       </RelativeContainer>
     </DatePickerInputWrapper>
   );
