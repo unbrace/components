@@ -38,7 +38,7 @@ const PLACEHOLDER = 'DD/MM/YYYY';
 
 const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDebounceTimeOut, ...props }: Props) => {
   const [rect, setRect] = React.useState({ top: 0, left: 0, isOffScreen: false });
-  const [value, setValue] = React.useState<Date | undefined>(undefined);
+  const [value, setValue] = React.useState<Date | string>('');
   const wrapRef = React.useRef<HTMLDivElement>(null);
   let triggeredBySelect = false;
   const handleDaySelect = (day: Date, { selected }: DayModifiers) => {
@@ -55,20 +55,23 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
 
   const handleDayChange = React.useCallback(
     (day: Date | undefined, _modifiers: DayModifiers, dayPickerInput: DayPickerInputComponent) => {
-      const input = dayPickerInput.getInput();
-      const isEmpty = !input.value.trim();
-      setValue(day);
-      if ((typeof day !== 'undefined' || isEmpty) && !triggeredBySelect) {
-        debouncedOnChange(day);
-      }
+      // const input = dayPickerInput.getInput();
+      // const isEmpty = !input.value.trim();
+      // setValue(day || '');
+      // if ((typeof day !== 'undefined' || isEmpty) && !triggeredBySelect) {
+      //   debouncedOnChange(day);
+      // }
+      console.log(day, dayPickerInput);
     },
     [debouncedOnChange, triggeredBySelect],
   );
 
   const clear = () => {
-    setValue(undefined);
-    debouncedOnChange(undefined);
+    setValue('');
+    console.log('clear');
+    // debouncedOnChange(undefined);
   };
+  console.log('lol', value);
 
   const setPosition = () => {
     if (wrapRef.current) {
@@ -107,7 +110,6 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
     <DatePickerInputWrapper ref={wrapRef} top={rect.top} left={rect.left} isOffScreen={rect.isOffScreen}>
       <RelativeContainer>
         <DayPickerInputComponent
-          value={value}
           ref={ref || passableRef}
           formatDate={formatDate}
           format={props.format || FORMAT}
@@ -118,11 +120,13 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
           overlayComponent={DatePickerWrapper}
           onDayChange={handleDayChange}
           {...props}
+          value={value}
           dayPickerProps={{
             className: `unbrace_date-picker`,
             onDayClick: handleDaySelect,
             showOutsideDays: true,
             ...props.dayPickerProps,
+            selectedDays: new Date(value),
           }}
         />
         <ClearButton onClick={clear} />

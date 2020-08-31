@@ -21,7 +21,6 @@ export const DatePickerInputStory: React.FunctionComponent<DayPickerProps> = () 
 
 export const RangePickerInputStory: React.FunctionComponent<DayPickerProps> = () => {
   const { fromProps, toProps } = useRangeDatePickerInputs({
-    initialRange: { from: new Date('2020/02/01'), to: new Date('2020/02/20') },
     numberOfMonths: 2,
     onChange: console.log,
     fromInputProps: { name: 'from', inlineLabel: true },
