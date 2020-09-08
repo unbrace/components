@@ -47,6 +47,7 @@ const Paginator: React.FunctionComponent<Props> = ({
     selectOptions,
     pageSize,
   ]);
+  const totalPages = Math.ceil(totalItems / pageSize);
 
   React.useEffect(() => {
     if (loadingPageIndex !== pageIndex) {
@@ -80,12 +81,15 @@ const Paginator: React.FunctionComponent<Props> = ({
             getOptionValue={(option: { value: number }) => option.value}
           />
         </PageSizeWrapper>
-        <IconButton onClick={goToNextPage} isDisabled={!hasNextPage || Boolean(loadingPageIndex)}>
+        <IconButton
+          onClick={goToNextPage}
+          isDisabled={!hasNextPage || Boolean(loadingPageIndex) || pageIndex > totalPages}
+        >
           <ChevronRight />
         </IconButton>
       </PaginatorWrapper>
     ),
-    [pageStatus, pageIndex, loadingPageIndex, selectOptions, hasNextPage, selectedValue, className],
+    [pageStatus, pageIndex, loadingPageIndex, selectOptions, hasNextPage, selectedValue, className, totalPages],
   );
 
   return redux ? (
