@@ -8,7 +8,6 @@ import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
 import { debounce } from 'ts-debounce';
 import styled from 'styled-components';
-import { Close } from '../icons';
 
 const InputWithRightPadding = styled(Input)`
   padding: 10px 30px 10px 15px;
@@ -20,6 +19,7 @@ type Props = {
   ref?: React.MutableRefObject<DayPickerInputComponent>;
   inputDebounceTimeOut?: number;
   onClear?: () => void;
+  isClearable?: boolean;
 } & Omit<DayPickerInputProps, 'onChange'>;
 
 const parseDate = (str: string, format: string, locale: string) => {
@@ -37,7 +37,14 @@ const formatDate = (date: Date, format: string, locale: string) =>
 const FORMAT = 'dd/MM/yyyy';
 const PLACEHOLDER = 'DD/MM/YYYY';
 
-const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDebounceTimeOut, ...props }: Props) => {
+const DatePickerInput: React.FC<Props> = ({
+  onChange,
+  ref,
+  passableRef,
+  inputDebounceTimeOut,
+  isClearable,
+  ...props
+}: Props) => {
   const [rect, setRect] = React.useState({ top: 0, left: 0, isOffScreen: false });
   const [value, setValue] = React.useState<Date | string>('');
   const wrapRef = React.useRef<HTMLDivElement>(null);
@@ -62,7 +69,6 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
       if ((typeof day !== 'undefined' || isEmpty) && !triggeredBySelect) {
         debouncedOnChange(day);
       }
-      console.log(day, dayPickerInput);
     },
     [debouncedOnChange, triggeredBySelect],
   );
@@ -109,47 +115,27 @@ const DatePickerInput: React.FC<Props> = ({ onChange, ref, passableRef, inputDeb
 
   return (
     <DatePickerInputWrapper ref={wrapRef} top={rect.top} left={rect.left} isOffScreen={rect.isOffScreen}>
-      <RelativeContainer>
-        <DayPickerInputComponent
-          ref={ref || passableRef}
-          formatDate={formatDate}
-          format={props.format || FORMAT}
-          parseDate={parseDate}
-          placeholder={props.placeholder || PLACEHOLDER}
-          component={InputWithRightPadding}
-          onDayPickerShow={setPosition}
-          overlayComponent={DatePickerWrapper}
-          onDayChange={handleDayChange}
-          {...props}
-          dayPickerProps={{
-            className: `unbrace_date-picker`,
-            onDayClick: handleDaySelect,
-            showOutsideDays: true,
-            ...props.dayPickerProps,
-          }}
-          {...withValueStateProps}
-        />
-        <ClearButton onClick={props.onClear || clear} />
-      </RelativeContainer>
+      <DayPickerInputComponent
+        ref={ref || passableRef}
+        formatDate={formatDate}
+        format={props.format || FORMAT}
+        parseDate={parseDate}
+        placeholder={props.placeholder || PLACEHOLDER}
+        component={InputWithRightPadding}
+        onDayPickerShow={setPosition}
+        overlayComponent={DatePickerWrapper}
+        onDayChange={handleDayChange}
+        {...props}
+        dayPickerProps={{
+          className: `unbrace_date-picker`,
+          onDayClick: handleDaySelect,
+          showOutsideDays: true,
+          ...props.dayPickerProps,
+        }}
+        {...withValueStateProps}
+      />
     </DatePickerInputWrapper>
   );
 };
 
 export default DatePickerInput;
-
-const ClearButton = styled(Close)`
-  position: absolute;
-  top: 19px;
-  right: 10px;
-  cursor: pointer;
-
-  > svg {
-    max-width: 17px;
-    max-height: 17px;
-    fill: ${props => props.theme.palette.neutral.shade4};
-  }
-`;
-
-const RelativeContainer = styled.div`
-  position: relative;
-`;

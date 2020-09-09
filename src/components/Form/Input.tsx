@@ -5,6 +5,7 @@ import { ErrorText } from './ErrorText';
 import { FieldContainer } from './FieldContainer';
 import { Label } from './Label';
 import { HTMLProps } from 'react';
+import { Close } from '../icons';
 
 export const TYPE_CHECKBOX = 'checkbox';
 export const TYPE_EMAIL = 'email';
@@ -18,13 +19,15 @@ export type InputProps = {
   name: string;
   noLabel?: boolean;
   inlineLabel?: boolean;
+  onClear?: () => void;
+  isClearable?: boolean;
 } & Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref'> &
   Omit<HTMLProps<HTMLInputElement>, 'as'>;
 
 // eslint-disable-next-line react/display-name
 const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
   (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
-    const { error, errorAsBlock, label, name, noLabel, inlineLabel } = props;
+    const { error, errorAsBlock, label, name, noLabel, inlineLabel, onClear, isClearable } = props;
     if (props.type === TYPE_CHECKBOX) {
       return <Checkbox name={props.name} error={props.error} {...props} />;
     }
@@ -36,7 +39,10 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
             {label || name}
           </Label>
         )}
-        <Input {...props} inlineLabel={inlineLabel} hasError={Boolean(error)} id={name} ref={ref} />
+        <RelativeContainer>
+          <Input {...props} inlineLabel={inlineLabel} hasError={Boolean(error)} id={name} ref={ref} />
+          {isClearable && <ClearButton onClick={onClear} />}
+        </RelativeContainer>
         {error && <ErrorText block={errorAsBlock}>{error}</ErrorText>}
       </FieldContainer>
     );
@@ -81,6 +87,23 @@ export const Input = styled.input<{ hasError?: boolean; inlineLabel?: boolean }>
     display: flex;
     align-self: flex-start;
   `};
+`;
+
+const ClearButton = styled(Close)`
+  position: absolute;
+  top: 19px;
+  right: 10px;
+  cursor: pointer;
+
+  > svg {
+    max-width: 17px;
+    max-height: 17px;
+    fill: ${props => props.theme.palette.neutral.shade4};
+  }
+`;
+
+const RelativeContainer = styled.div`
+  position: relative;
 `;
 
 export default InputField;
