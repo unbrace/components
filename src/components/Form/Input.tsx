@@ -49,7 +49,7 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
   },
 );
 
-export const Input = styled.input<{ hasError?: boolean; inlineLabel?: boolean }>`
+export const Input = styled.input<{ hasError?: boolean; inlineLabel?: boolean; isClearable?: boolean }>`
   background: ${props => props.theme.form.background.main};
   border-radius: ${props => props.theme.form.borderRadius.input};
   border: ${props => (!props.hasError ? props.theme.form.border.input.main : props.theme.form.border.input.error)};
@@ -62,6 +62,7 @@ export const Input = styled.input<{ hasError?: boolean; inlineLabel?: boolean }>
   transition: box-shadow 0.15s ease-in, border 0.15s ease-in;
   width: 100%;
   font-size: 100%;
+  ${props => props.isClearable && props.inlineLabel && 'padding-right: 32px'};
 
   &::placeholder {
     color: ${props => props.theme.form.color.input.placeholder};
