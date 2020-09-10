@@ -29,7 +29,7 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
   (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
     const { error, errorAsBlock, label, name, noLabel, inlineLabel, onClear, isClearable } = props;
     if (props.type === TYPE_CHECKBOX) {
-      return <Checkbox name={props.name} error={props.error} {...props} />;
+      return <Checkbox {...props} />;
     }
 
     return (
@@ -99,6 +99,12 @@ const ClearButton = styled(Close)`
     max-width: 17px;
     max-height: 17px;
     fill: ${props => props.theme.palette.neutral.shade4};
+  }
+
+  &:hover {
+    > svg {
+      fill: ${props => props.theme.palette.neutral.shade5};
+    }
   }
 `;
 

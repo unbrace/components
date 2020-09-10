@@ -13,10 +13,7 @@ type Props = {
   toInputProps?: object;
 };
 
-type RangeDatePickerInputProps = Pick<
-  DayPickerInputProps,
-  'value' | 'dayPickerProps' | 'onDayChange' | 'inputProps'
-> & { onClear: (type: string) => void };
+type RangeDatePickerInputProps = Pick<DayPickerInputProps, 'value' | 'dayPickerProps' | 'onDayChange' | 'inputProps'>;
 
 const useRangeDatePickerInputs = ({ initialRange, onChange, numberOfMonths, fromInputProps, toInputProps }: Props) => {
   const [state, dispatch] = React.useReducer(reducer, createInitialState(initialRange));
@@ -47,10 +44,6 @@ const useRangeDatePickerInputs = ({ initialRange, onChange, numberOfMonths, from
     }
   };
 
-  const handleDayClear = (type: string) => () => {
-    dispatch({ type, payload: '' });
-  };
-
   const dayPickerProps = {
     selectedDays,
     numberOfMonths: numberOfMonths || 1,
@@ -64,7 +57,6 @@ const useRangeDatePickerInputs = ({ initialRange, onChange, numberOfMonths, from
     dayPickerProps: { ...dayPickerProps, disabledDays: { after: state.to } as Modifier },
     onDayChange: handleFromChange,
     inputProps: fromInputProps,
-    onClear: handleDayClear('FIRST_DAY_SET'),
   };
 
   const toProps: RangeDatePickerInputProps & { passableRef: React.MutableRefObject<DayPickerInput> } = {
@@ -73,7 +65,6 @@ const useRangeDatePickerInputs = ({ initialRange, onChange, numberOfMonths, from
     onDayChange: handleToChange,
     passableRef: toRef as React.MutableRefObject<DayPickerInput>,
     inputProps: toInputProps,
-    onClear: handleDayClear('LAST_DAY_SET'),
   };
 
   return {
