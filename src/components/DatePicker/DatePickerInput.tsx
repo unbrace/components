@@ -13,8 +13,6 @@ type Props = {
   passableRef?: React.MutableRefObject<DayPickerInputComponent>;
   ref?: React.MutableRefObject<DayPickerInputComponent>;
   inputDebounceTimeOut?: number;
-  onClear?: () => void;
-  isClearable?: boolean;
 } & Omit<DayPickerInputProps, 'onChange'>;
 
 const parseDate = (str: string, format: string, locale: string) => {
