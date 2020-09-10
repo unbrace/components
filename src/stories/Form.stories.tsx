@@ -1,26 +1,49 @@
 import * as React from 'react';
 import { Input as InputComponent } from '../components';
 import { InputProps } from '../components/Form/Input';
+import NumberInput from '../components/Form/NumberInput';
 
-export const Input: React.FunctionComponent<InputProps> = (props: InputProps) => (
-  <div style={{ width: 300 }}>
-    <InputComponent {...props} name="basic" type="text" />
-    <InputComponent {...props} name="placeholder" type="text" placeholder="Placeholder" />
-    <InputComponent {...props} name="error" type="text" placeholder="Placeholder" error="Invalid input" />
-    <InputComponent {...props} label="label" name="label" type="text" placeholder="Placeholder" />
-    <InputComponent {...props} disabled label="Disabled" name="Disabled" type="text" placeholder="Placeholder" />
-    <InputComponent {...props} inlineLabel label="Inline Label" name="inline" type="text" placeholder="DD/MM/YY" />
-    <InputComponent {...props} noLabel label="No Label" name="noLabel" type="text" placeholder="No label placholder" />
-    <InputComponent
-      {...props}
-      defaultValue="Default value"
-      label="Default value"
-      name="Default value"
-      type="text"
-      placeholder="Placeholder"
-    />
-  </div>
-);
+export const Input: React.FunctionComponent<InputProps> = (props: InputProps) => {
+  const NUMBER_WITH_COMMAS_REGEX = '[0-9]*(,[0-9]*)?';
+  const [numberValue, setNumberValue] = React.useState('');
+
+  return (
+    <div style={{ width: 300 }}>
+      <InputComponent {...props} name="basic" type="text" />
+      <InputComponent {...props} name="placeholder" type="text" placeholder="Placeholder" />
+      <InputComponent {...props} name="error" type="text" placeholder="Placeholder" error="Invalid input" />
+      <InputComponent {...props} label="label" name="label" type="text" placeholder="Placeholder" />
+      <NumberInput
+        {...props}
+        label="number"
+        name="number"
+        type="text"
+        placeholder="Placeholder"
+        pattern={NUMBER_WITH_COMMAS_REGEX}
+        value={numberValue}
+        onNumberChange={(value: string) => setNumberValue(value)}
+      />
+      <InputComponent {...props} disabled label="Disabled" name="Disabled" type="text" placeholder="Placeholder" />
+      <InputComponent {...props} inlineLabel label="Inline Label" name="inline" type="text" placeholder="DD/MM/YY" />
+      <InputComponent
+        {...props}
+        noLabel
+        label="No Label"
+        name="noLabel"
+        type="text"
+        placeholder="No label placholder"
+      />
+      <InputComponent
+        {...props}
+        defaultValue="Default value"
+        label="Default value"
+        name="Default value"
+        type="text"
+        placeholder="Placeholder"
+      />
+    </div>
+  );
+};
 
 export const Checkbox: React.FunctionComponent<InputProps> = () => (
   <React.Fragment>

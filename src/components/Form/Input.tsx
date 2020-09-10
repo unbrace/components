@@ -18,13 +18,15 @@ export type InputProps = {
   name: string;
   noLabel?: boolean;
   inlineLabel?: boolean;
+  pattern?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 } & Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref'> &
   Omit<HTMLProps<HTMLInputElement>, 'as'>;
 
 // eslint-disable-next-line react/display-name
 const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
   (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
-    const { error, errorAsBlock, label, name, noLabel, inlineLabel } = props;
+    const { error, errorAsBlock, label, name, noLabel, inlineLabel, pattern, onChange } = props;
     if (props.type === TYPE_CHECKBOX) {
       return <Checkbox name={props.name} error={props.error} {...props} />;
     }
@@ -36,7 +38,15 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
             {label || name}
           </Label>
         )}
-        <Input {...props} inlineLabel={inlineLabel} hasError={Boolean(error)} id={name} ref={ref} />
+        <Input
+          {...props}
+          onChange={onChange}
+          pattern={pattern}
+          inlineLabel={inlineLabel}
+          hasError={Boolean(error)}
+          id={name}
+          ref={ref}
+        />
         {error && <ErrorText block={errorAsBlock}>{error}</ErrorText>}
       </FieldContainer>
     );
