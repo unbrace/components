@@ -4,38 +4,84 @@ import { PlusButton, MinusButton, VerticalLine } from './NumberInput_styles';
 import styled from 'styled-components';
 
 type Props = {
-  onNumberChange?: (value: string) => void;
+  onChange?: (values: NumberInputValueProps) => void;
   numberInputMargin?: number;
-} & InputProps;
+  stepSize?: number;
+} & Omit<InputProps, 'onChange'>;
 
+export type NumberInputValueProps = {
+  stringValue?: string;
+  numberValue?: number;
+};
+
+const DECIMAL = ',';
 const NumberInput: React.FC<Props> = (props: Props) => {
-  const { pattern, numberInputMargin, onChange, onNumberChange } = props;
+  const { numberInputMargin, onChange, stepSize } = props;
+  const [stringValue, setStringValue] = React.useState<string | undefined>(undefined);
+  const [numberValue, setNumberValue] = React.useState<number | undefined>(undefined);
+
+  const replaceDecimals = (value: string, from: string, to: string) => value.replace(from, to);
+
+  const format = React.useCallback((value: number) => {
+    return replaceDecimals(value === -0 ? '-0' : value.toString(), '.', DECIMAL);
+  }, []);
 
   const onInputChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.validity.valid) {
-        onChange?.(e);
-        onNumberChange?.(e.target.value);
+        setStringValue(e.target.value);
+        const formatted = replaceDecimals(e.target.value, DECIMAL, '.');
+        if (!isNaN(parseFloat(formatted)) && formatted.match(/[0-9]$/) && formatted.match(/^(-)?[0-9]/)) {
+          const newNumberValue = parseFloat(formatted);
+          setStringValue(format(newNumberValue));
+          setNumberValue(newNumberValue);
+        }
+        if (e.target.value === '') {
+          setNumberValue(undefined);
+        }
       }
     },
-    [onChange, onNumberChange],
+    [format],
   );
 
-  const plusOne = () => {
-    const calculatedValue = !props.value ? '1' : (Number(props.value) + 1).toString();
-    onNumberChange?.(calculatedValue);
+  const onBlur = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const parsed = parseFloat(replaceDecimals(e.target.value, DECIMAL, '.'));
+      if (!isNaN(parsed)) {
+        setStringValue(format(parsed));
+        setNumberValue(parsed);
+      }
+    },
+    [format],
+  );
+
+  const addStep = () => {
+    const calculatedValue = (numberValue ? numberValue : 0) + (stepSize || 1);
+    setStringValue(format(calculatedValue));
+    setNumberValue(calculatedValue);
   };
 
-  const minusOne = () => {
-    const calculatedValue = !props.value ? '-1' : (Number(props.value) - 1).toString();
-    onNumberChange?.(calculatedValue);
+  const subtractStep = () => {
+    const calculatedValue = (numberValue ? numberValue : 0) - (stepSize || 1);
+    setStringValue(format(calculatedValue));
+    setNumberValue(calculatedValue);
   };
+
+  React.useEffect(() => {
+    (onChange as (values: NumberInputValueProps) => void)?.({ stringValue, numberValue });
+  }, [numberValue, stringValue, onChange]);
 
   return (
     <RelativeContainer>
-      <InputField {...props} pattern={pattern} onChange={onInputChange} />
-      <PlusButton onClick={plusOne} numberInputMargin={numberInputMargin || 0} />
-      <MinusButton onClick={minusOne} numberInputMargin={numberInputMargin || 0} />
+      <InputField
+        {...props}
+        pattern={`[-]?[0-9${DECIMAL}e]*`}
+        onChange={onInputChange}
+        onBlur={onBlur}
+        value={stringValue}
+      />
+      <PlusButton onClick={addStep} numberInputMargin={numberInputMargin || 0} />
+      <MinusButton onClick={subtractStep} numberInputMargin={numberInputMargin || 0} />
       <VerticalLine numberInputMargin={numberInputMargin || 0} />
     </RelativeContainer>
   );

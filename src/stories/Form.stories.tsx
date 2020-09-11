@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Input as InputComponent } from '../components';
+import { Input as InputComponent, NumberInput, NumberInputValueProps } from '../components';
 import { InputProps } from '../components/Form/Input';
-import NumberInput from '../components/Form/NumberInput';
 
 export const Input: React.FunctionComponent<InputProps> = (props: InputProps) => {
-  const NUMBER_WITH_COMMAS_REGEX = '[0-9]*(,[0-9]*)?';
-  const [numberValue, setNumberValue] = React.useState('');
+  const [numberValue, setNumberValue] = React.useState<number | undefined>(0);
+  console.log(numberValue);
 
   return (
     <div style={{ width: 300 }}>
@@ -19,9 +18,9 @@ export const Input: React.FunctionComponent<InputProps> = (props: InputProps) =>
         name="number"
         type="text"
         placeholder="Placeholder"
-        pattern={NUMBER_WITH_COMMAS_REGEX}
+        stepSize={5}
         value={numberValue}
-        onNumberChange={(value: string) => setNumberValue(value)}
+        onChange={(values: NumberInputValueProps) => setNumberValue(values.numberValue)}
       />
       <InputComponent {...props} disabled label="Disabled" name="Disabled" type="text" placeholder="Placeholder" />
       <InputComponent {...props} inlineLabel label="Inline Label" name="inline" type="text" placeholder="DD/MM/YY" />
