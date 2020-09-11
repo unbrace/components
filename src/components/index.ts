@@ -30,3 +30,4 @@ export { Modal, ModalBody, ModalHeader, ModalFooter, ModalContent } from './Moda
 export { Sidebar } from './Sidebar';
 export { Flexer } from './Positioning';
 export { Divider, Spacer } from './Spacing';
+export { default as NumberInput, NumberInputValueProps } from './Form/NumberInput';

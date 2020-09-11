@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Input as InputComponent } from '../components';
+import { Input as InputComponent, NumberInput, NumberInputValueProps } from '../components';
 import { InputProps } from '../components/Form/Input';
 
 export const Input: React.FunctionComponent<InputProps> = (props: InputProps) => {
-  const [state, setState] = React.useState('');
+  const [numberValue, setNumberValue] = React.useState<number | undefined>(0);
 
   return (
     <div style={{ width: 300 }}>
@@ -11,6 +11,25 @@ export const Input: React.FunctionComponent<InputProps> = (props: InputProps) =>
       <InputComponent {...props} name="placeholder" type="text" placeholder="Placeholder" />
       <InputComponent {...props} name="error" type="text" placeholder="Placeholder" error="Invalid input" />
       <InputComponent {...props} label="label" name="label" type="text" placeholder="Placeholder" />
+      <NumberInput
+        {...props}
+        label="number with comma & 5 step"
+        name="number"
+        type="text"
+        placeholder="Placeholder"
+        stepSize={5}
+        value={numberValue}
+        onChange={(values: NumberInputValueProps) => setNumberValue(values.numberValue)}
+      />
+      <NumberInput
+        {...props}
+        label="number with point"
+        name="number"
+        type="text"
+        placeholder="Placeholder"
+        decimalCharacter="."
+        onChange={console.log}
+      />
       <InputComponent {...props} disabled label="Disabled" name="Disabled" type="text" placeholder="Placeholder" />
       <InputComponent {...props} inlineLabel label="Inline Label" name="inline" type="text" placeholder="DD/MM/YY" />
       <InputComponent
@@ -20,17 +39,6 @@ export const Input: React.FunctionComponent<InputProps> = (props: InputProps) =>
         name="noLabel"
         type="text"
         placeholder="No label placholder"
-      />
-      <InputComponent
-        {...props}
-        isClearable
-        onClear={() => setState('')}
-        onChange={val => setState(val.value)}
-        label="Clearable"
-        name="clearable"
-        type="text"
-        placeholder="Clearable input"
-        value={state}
       />
       <InputComponent
         {...props}
