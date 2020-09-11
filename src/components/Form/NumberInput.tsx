@@ -7,6 +7,7 @@ type Props = {
   onChange?: (values: NumberInputValueProps) => void;
   numberInputMargin?: number;
   stepSize?: number;
+  decimalCharacter?: string;
 } & Omit<InputProps, 'onChange'>;
 
 export type NumberInputValueProps = {
@@ -16,21 +17,25 @@ export type NumberInputValueProps = {
 
 const DECIMAL = ',';
 const NumberInput: React.FC<Props> = (props: Props) => {
-  const { numberInputMargin, onChange, stepSize } = props;
+  const { numberInputMargin, onChange, stepSize, decimalCharacter } = props;
   const [stringValue, setStringValue] = React.useState<string | undefined>(undefined);
   const [numberValue, setNumberValue] = React.useState<number | undefined>(undefined);
+  const decimalChar = decimalCharacter || DECIMAL;
 
   const replaceDecimals = (value: string, from: string, to: string) => value.replace(from, to);
 
-  const format = React.useCallback((value: number) => {
-    return replaceDecimals(value === -0 ? '-0' : value.toString(), '.', DECIMAL);
-  }, []);
+  const format = React.useCallback(
+    (value: number) => {
+      return replaceDecimals(value === -0 ? '-0' : value.toString(), '.', decimalChar);
+    },
+    [decimalChar],
+  );
 
   const onInputChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.validity.valid) {
         setStringValue(e.target.value);
-        const formatted = replaceDecimals(e.target.value, DECIMAL, '.');
+        const formatted = replaceDecimals(e.target.value, decimalChar, '.');
         if (!isNaN(parseFloat(formatted)) && formatted.match(/[0-9]$/) && formatted.match(/^(-)?[0-9]/)) {
           const newNumberValue = parseFloat(formatted);
           setStringValue(format(newNumberValue));
@@ -41,18 +46,18 @@ const NumberInput: React.FC<Props> = (props: Props) => {
         }
       }
     },
-    [format],
+    [format, decimalChar],
   );
 
   const onBlur = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const parsed = parseFloat(replaceDecimals(e.target.value, DECIMAL, '.'));
+      const parsed = parseFloat(replaceDecimals(e.target.value, decimalChar, '.'));
       if (!isNaN(parsed)) {
         setStringValue(format(parsed));
         setNumberValue(parsed);
       }
     },
-    [format],
+    [format, decimalChar],
   );
 
   const addStep = () => {
@@ -75,7 +80,7 @@ const NumberInput: React.FC<Props> = (props: Props) => {
     <RelativeContainer>
       <InputField
         {...props}
-        pattern={`[-]?[0-9${DECIMAL}e]*`}
+        pattern={`[-]?[0-9${decimalChar}e]*`}
         onChange={onInputChange}
         onBlur={onBlur}
         value={stringValue}

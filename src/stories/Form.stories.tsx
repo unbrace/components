@@ -14,13 +14,22 @@ export const Input: React.FunctionComponent<InputProps> = (props: InputProps) =>
       <InputComponent {...props} label="label" name="label" type="text" placeholder="Placeholder" />
       <NumberInput
         {...props}
-        label="number"
+        label="number with comma & 5 step"
         name="number"
         type="text"
         placeholder="Placeholder"
         stepSize={5}
         value={numberValue}
         onChange={(values: NumberInputValueProps) => setNumberValue(values.numberValue)}
+      />
+      <NumberInput
+        {...props}
+        label="number with point"
+        name="number"
+        type="text"
+        placeholder="Placeholder"
+        decimalCharacter="."
+        onChange={console.log}
       />
       <InputComponent {...props} disabled label="Disabled" name="Disabled" type="text" placeholder="Placeholder" />
       <InputComponent {...props} inlineLabel label="Inline Label" name="inline" type="text" placeholder="DD/MM/YY" />
