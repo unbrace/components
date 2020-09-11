@@ -1,6 +1,6 @@
 {
   "name": "@unbrace/components",
-  "version": "1.12.6",
+  "version": "1.12.7",
   "description": "Frontend components used by Unbrace",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
