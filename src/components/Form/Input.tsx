@@ -21,6 +21,7 @@ export type InputProps = {
   inlineLabel?: boolean;
   onClear?: () => void;
   isClearable?: boolean;
+  absoluteElements?: React.ReactNode;
 } & Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref'> &
   Omit<HTMLProps<HTMLInputElement>, 'as'>;
 
@@ -42,6 +43,7 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
         <RelativeContainer>
           <Input {...props} inlineLabel={inlineLabel} hasError={Boolean(error)} id={name} ref={ref} />
           {isClearable && <ClearButton onClick={onClear} />}
+          {props.absoluteElements && props.absoluteElements}
         </RelativeContainer>
         {error && <ErrorText block={errorAsBlock}>{error}</ErrorText>}
       </FieldContainer>

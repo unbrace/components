@@ -1,11 +1,9 @@
 import * as React from 'react';
 import InputField, { InputProps } from './Input';
 import { PlusButton, MinusButton, VerticalLine } from './NumberInput_styles';
-import styled from 'styled-components';
 
 type Props = {
   onChange?: (values: NumberInputValueProps) => void;
-  numberInputMargin?: number;
   stepSize?: number;
   decimalCharacter?: string;
 } & Omit<InputProps, 'onChange'>;
@@ -17,7 +15,7 @@ export type NumberInputValueProps = {
 
 const DECIMAL = ',';
 const NumberInput: React.FC<Props> = (props: Props) => {
-  const { numberInputMargin, onChange, stepSize, decimalCharacter } = props;
+  const { onChange, stepSize, decimalCharacter } = props;
   const [stringValue, setStringValue] = React.useState<string | undefined>(undefined);
   const [numberValue, setNumberValue] = React.useState<number | undefined>(undefined);
   const decimalChar = decimalCharacter || DECIMAL;
@@ -26,7 +24,7 @@ const NumberInput: React.FC<Props> = (props: Props) => {
 
   const format = React.useCallback(
     (value: number) => {
-      return replaceDecimals(value === -0 ? '-0' : value.toString(), '.', decimalChar);
+      return replaceDecimals(value === -0 ? '0' : value.toString(), '.', decimalChar);
     },
     [decimalChar],
   );
@@ -74,26 +72,25 @@ const NumberInput: React.FC<Props> = (props: Props) => {
 
   React.useEffect(() => {
     (onChange as (values: NumberInputValueProps) => void)?.({ stringValue, numberValue });
-  }, [numberValue, stringValue, onChange]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [numberValue, stringValue]);
 
   return (
-    <RelativeContainer>
-      <InputField
-        {...props}
-        pattern={`[-]?[0-9${decimalChar}e]*`}
-        onChange={onInputChange}
-        onBlur={onBlur}
-        value={stringValue}
-      />
-      <PlusButton onClick={addStep} numberInputMargin={numberInputMargin || 0} />
-      <MinusButton onClick={subtractStep} numberInputMargin={numberInputMargin || 0} />
-      <VerticalLine numberInputMargin={numberInputMargin || 0} />
-    </RelativeContainer>
+    <InputField
+      {...props}
+      pattern={`[-]?[0-9${decimalChar}e]*`}
+      onChange={onInputChange}
+      onBlur={onBlur}
+      value={stringValue}
+      absoluteElements={
+        <React.Fragment>
+          <PlusButton onClick={addStep} />
+          <MinusButton onClick={subtractStep} />
+          <VerticalLine />
+        </React.Fragment>
+      }
+    />
   );
 };
 
 export default NumberInput;
-
-const RelativeContainer = styled.div`
-  position: relative;
-`;

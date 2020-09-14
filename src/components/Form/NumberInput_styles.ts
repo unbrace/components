@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Add, Minus } from '../icons';
 
-export const PlusButton = styled(Add)<{ numberInputMargin: number }>`
+export const PlusButton = styled(Add)`
   position: absolute;
-  top: ${props => `calc(45px - ${props.numberInputMargin}px)`};
+  top: 21px;
   right: 10px;
   cursor: pointer;
 
@@ -14,9 +14,9 @@ export const PlusButton = styled(Add)<{ numberInputMargin: number }>`
   }
 `;
 
-export const MinusButton = styled(Minus)<{ numberInputMargin: number }>`
+export const MinusButton = styled(Minus)`
   position: absolute;
-  top: ${props => `calc(45px - ${props.numberInputMargin}px)`};
+  top: 21px;
   right: 37px;
   cursor: pointer;
 
@@ -27,11 +27,11 @@ export const MinusButton = styled(Minus)<{ numberInputMargin: number }>`
   }
 `;
 
-export const VerticalLine = styled.div<{ numberInputMargin: number }>`
+export const VerticalLine = styled.div`
   border-top: 1px solid ${props => props.theme.palette.neutral.shade3};
   transform: rotate(90deg);
   width: 39px;
   position: absolute;
   right: 45px;
-  top: ${props => `calc(52px - ${props.numberInputMargin}px)`};
+  top: 28px;
 `;
