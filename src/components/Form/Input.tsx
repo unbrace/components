@@ -19,7 +19,7 @@ export type InputProps = {
   name: string;
   noLabel?: boolean;
   inlineLabel?: boolean;
-  onClear?: () => void;
+  onClear?: (() => void) | ((e: React.MouseEvent<Element>) => void);
   isClearable?: boolean;
   addonRight?: React.ReactNode;
   addonWidth?: number;

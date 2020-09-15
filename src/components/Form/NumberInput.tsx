@@ -49,31 +49,39 @@ const NumberInput: React.FC<Props> = (props: Props) => {
   );
 
   const onBlur = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: React.FocusEvent<HTMLInputElement>) => {
       const parsed = parseFloat(replaceDecimals(e.target.value, decimalChar, '.'));
       if (!isNaN(parsed)) {
         setStringValue(format(parsed));
         setNumberValue(parsed);
       }
+      props.onBlur?.(e);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [format, decimalChar],
   );
 
-  const onClear = React.useCallback(() => {
+  const onClear = React.useCallback((e: React.MouseEvent<Element>) => {
     setStringValue('');
     setNumberValue(undefined);
+    const input = e.currentTarget.parentElement?.parentElement?.querySelector('input');
+    input?.focus();
   }, []);
 
-  const addStep = () => {
+  const onAddStep = (e: React.MouseEvent<Element>) => {
     const calculatedValue = (numberValue ? numberValue : 0) + (stepSize || 1);
     setStringValue(format(calculatedValue));
     setNumberValue(calculatedValue);
+    const input = e.currentTarget.parentElement?.parentElement?.querySelector('input');
+    input?.focus();
   };
 
-  const subtractStep = () => {
+  const onSubtractStep = (e: React.MouseEvent<Element>) => {
     const calculatedValue = (numberValue ? numberValue : 0) - (stepSize || 1);
     setStringValue(format(calculatedValue));
     setNumberValue(calculatedValue);
+    const input = e.currentTarget.parentElement?.parentElement?.querySelector('input');
+    input?.focus();
   };
 
   React.useEffect(() => {
@@ -89,6 +97,7 @@ const NumberInput: React.FC<Props> = (props: Props) => {
       setStringValue('');
       setNumberValue(undefined);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.value]);
 
   return (
@@ -103,8 +112,8 @@ const NumberInput: React.FC<Props> = (props: Props) => {
       addonRight={
         <Addon>
           <VerticalLine />
-          <MinusButton onClick={subtractStep} />
-          <PlusButton onClick={addStep} />
+          <MinusButton onClick={onSubtractStep} />
+          <PlusButton onClick={onAddStep} />
         </Addon>
       }
     />
