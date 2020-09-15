@@ -81,6 +81,8 @@ export const Input = styled.input<{
   font-size: 100%;
   ${props => props.isClearable && props.inlineLabel && 'padding-right: 32px'};
   ${props => props.isClearable && props.inlineLabel && props.addonWidth && `padding-right: ${props.addonWidth + 32}px`};
+  ${props =>
+    !props.isClearable && props.inlineLabel && props.addonWidth && `padding-right: ${props.addonWidth + 15}px`};
 
   &::placeholder {
     color: ${props => props.theme.form.color.input.placeholder};

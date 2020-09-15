@@ -6,7 +6,8 @@ type Props = {
   onChange?: (values: NumberInputValueProps) => void;
   stepSize?: number;
   decimalCharacter?: string;
-} & Omit<InputProps, 'onChange' | 'onClear'>;
+  value?: number;
+} & Omit<InputProps, 'onChange' | 'onClear' | 'value'>;
 
 export type NumberInputValueProps = {
   stringValue?: string;
@@ -16,10 +17,7 @@ export type NumberInputValueProps = {
 const DECIMAL = ',';
 const NumberInput: React.FC<Props> = (props: Props) => {
   const { onChange, stepSize, decimalCharacter } = props;
-  const [stringValue, setStringValue] = React.useState<string | undefined>(undefined);
-  const [numberValue, setNumberValue] = React.useState<number | undefined>(undefined);
   const decimalChar = decimalCharacter || DECIMAL;
-
   const replaceDecimals = (value: string, from: string, to: string) => value.replace(from, to);
 
   const format = React.useCallback(
@@ -27,6 +25,11 @@ const NumberInput: React.FC<Props> = (props: Props) => {
       return replaceDecimals(value === -0 ? '0' : value.toString(), '.', decimalChar);
     },
     [decimalChar],
+  );
+
+  const [numberValue, setNumberValue] = React.useState<number | undefined>(props.value || undefined);
+  const [stringValue, setStringValue] = React.useState<string | undefined>(
+    (props.value && format(props.value)) || undefined,
   );
 
   const onInputChange = React.useCallback(
@@ -79,6 +82,16 @@ const NumberInput: React.FC<Props> = (props: Props) => {
     (onChange as (values: NumberInputValueProps) => void)?.({ stringValue, numberValue });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [numberValue, stringValue]);
+
+  React.useEffect(() => {
+    if (props.value !== undefined) {
+      setStringValue(format(props.value));
+      setNumberValue(props.value);
+    } else {
+      setStringValue('');
+      setNumberValue(undefined);
+    }
+  }, [props.value]);
 
   return (
     <InputField

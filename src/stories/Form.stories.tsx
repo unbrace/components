@@ -3,8 +3,8 @@ import { Input as InputComponent, NumberInput, NumberInputValueProps } from '../
 import { InputProps } from '../components/Form/Input';
 
 export const Input: React.FunctionComponent<InputProps> = (props: InputProps) => {
-  const [numberValue, setNumberValue] = React.useState<number | undefined>(0);
-  const [numberValue2, setNumberValue2] = React.useState<number | undefined>(0);
+  const [numberValue, setNumberValue] = React.useState<number | undefined>(34.33);
+  const [numberValue2, setNumberValue2] = React.useState<number | undefined>(undefined);
 
   return (
     <div style={{ width: 300 }}>
@@ -24,20 +24,31 @@ export const Input: React.FunctionComponent<InputProps> = (props: InputProps) =>
       <NumberInput
         {...props}
         label="number with point"
-        name="number"
+        name="number2"
         type="text"
         decimalCharacter="."
         isClearable
-        onChange={console.log}
+        value={numberValue}
+        onChange={(values: NumberInputValueProps) => setNumberValue(values.numberValue)}
       />
       <NumberInput
         {...props}
         label="inline"
-        name="number"
+        name="number3"
         type="text"
         inlineLabel
         decimalCharacter=","
         isClearable
+        value={numberValue2}
+        onChange={(values: NumberInputValueProps) => setNumberValue2(values.numberValue)}
+      />
+      <NumberInput
+        {...props}
+        label="inline no clear"
+        name="number4"
+        type="text"
+        inlineLabel
+        decimalCharacter=","
         value={numberValue2}
         onChange={(values: NumberInputValueProps) => setNumberValue2(values.numberValue)}
       />
