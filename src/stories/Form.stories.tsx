@@ -4,7 +4,7 @@ import { InputProps } from '../components/Form/Input';
 
 export const Input: React.FunctionComponent<InputProps> = (props: InputProps) => {
   const [numberValue, setNumberValue] = React.useState<number | undefined>(34.33);
-  const [numberValue2, setNumberValue2] = React.useState<number | undefined>(undefined);
+  const [numberValue2, setNumberValue2] = React.useState<number | undefined>(0);
 
   return (
     <div style={{ width: 300 }}>
