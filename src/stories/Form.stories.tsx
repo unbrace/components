@@ -4,19 +4,19 @@ import { InputProps } from '../components/Form/Input';
 
 export const Input: React.FunctionComponent<InputProps> = (props: InputProps) => {
   const [numberValue, setNumberValue] = React.useState<number | undefined>(0);
+  const [numberValue2, setNumberValue2] = React.useState<number | undefined>(0);
 
   return (
     <div style={{ width: 300 }}>
       <InputComponent {...props} name="basic" type="text" />
       <InputComponent {...props} name="placeholder" type="text" placeholder="Placeholder" />
       <InputComponent {...props} name="error" type="text" placeholder="Placeholder" error="Invalid input" />
-      <InputComponent {...props} label="label" name="label" type="text" placeholder="Placeholder" />
+      <InputComponent {...props} label="label" name="label" type="text" placeholder="Placeholder" isClearable />
       <NumberInput
         {...props}
         label="number with comma & 5 step"
         name="number"
         type="text"
-        placeholder="Placeholder"
         stepSize={5}
         value={numberValue}
         onChange={(values: NumberInputValueProps) => setNumberValue(values.numberValue)}
@@ -26,9 +26,20 @@ export const Input: React.FunctionComponent<InputProps> = (props: InputProps) =>
         label="number with point"
         name="number"
         type="text"
-        placeholder="Placeholder"
         decimalCharacter="."
+        isClearable
         onChange={console.log}
+      />
+      <NumberInput
+        {...props}
+        label="inline"
+        name="number"
+        type="text"
+        inlineLabel
+        decimalCharacter=","
+        isClearable
+        value={numberValue2}
+        onChange={(values: NumberInputValueProps) => setNumberValue2(values.numberValue)}
       />
       <InputComponent {...props} disabled label="Disabled" name="Disabled" type="text" placeholder="Placeholder" />
       <InputComponent {...props} inlineLabel label="Inline Label" name="inline" type="text" placeholder="DD/MM/YY" />

@@ -21,7 +21,8 @@ export type InputProps = {
   inlineLabel?: boolean;
   onClear?: () => void;
   isClearable?: boolean;
-  absoluteElements?: React.ReactNode;
+  addonRight?: React.ReactNode;
+  addonWidth?: number;
 } & Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'ref'> &
   Omit<HTMLProps<HTMLInputElement>, 'as'>;
 
@@ -41,9 +42,18 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
           </Label>
         )}
         <RelativeContainer>
-          <Input {...props} inlineLabel={inlineLabel} hasError={Boolean(error)} id={name} ref={ref} />
-          {isClearable && <ClearButton onClick={onClear} />}
-          {props.absoluteElements && props.absoluteElements}
+          <Input
+            {...props}
+            addonWidth={props.addonWidth}
+            inlineLabel={inlineLabel}
+            hasError={Boolean(error)}
+            id={name}
+            ref={ref}
+          />
+          {isClearable && onClear && props.value && (
+            <ClearButton moveToRightAmount={props.addonWidth} onClick={onClear} />
+          )}
+          {props.addonRight && props.addonRight}
         </RelativeContainer>
         {error && <ErrorText block={errorAsBlock}>{error}</ErrorText>}
       </FieldContainer>
@@ -51,7 +61,12 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
   },
 );
 
-export const Input = styled.input<{ hasError?: boolean; inlineLabel?: boolean; isClearable?: boolean }>`
+export const Input = styled.input<{
+  hasError?: boolean;
+  inlineLabel?: boolean;
+  isClearable?: boolean;
+  addonWidth?: number;
+}>`
   background: ${props => props.theme.form.background.main};
   border-radius: ${props => props.theme.form.borderRadius.input};
   border: ${props => (!props.hasError ? props.theme.form.border.input.main : props.theme.form.border.input.error)};
@@ -65,6 +80,7 @@ export const Input = styled.input<{ hasError?: boolean; inlineLabel?: boolean; i
   width: 100%;
   font-size: 100%;
   ${props => props.isClearable && props.inlineLabel && 'padding-right: 32px'};
+  ${props => props.isClearable && props.inlineLabel && props.addonWidth && `padding-right: ${props.addonWidth + 32}px`};
 
   &::placeholder {
     color: ${props => props.theme.form.color.input.placeholder};
@@ -92,10 +108,10 @@ export const Input = styled.input<{ hasError?: boolean; inlineLabel?: boolean; i
   `};
 `;
 
-const ClearButton = styled(Close)`
+const ClearButton = styled(Close)<{ moveToRightAmount?: number }>`
   position: absolute;
-  top: 19px;
-  right: 10px;
+  top: 20px;
+  right: ${props => (props.moveToRightAmount ? `${props.moveToRightAmount + 10}px` : '10px')};
   cursor: pointer;
 
   > svg {

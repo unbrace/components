@@ -1,12 +1,12 @@
 import * as React from 'react';
 import InputField, { InputProps } from './Input';
-import { PlusButton, MinusButton, VerticalLine } from './NumberInput_styles';
+import { PlusButton, MinusButton, VerticalLine, Addon } from './NumberInput_styles';
 
 type Props = {
   onChange?: (values: NumberInputValueProps) => void;
   stepSize?: number;
   decimalCharacter?: string;
-} & Omit<InputProps, 'onChange'>;
+} & Omit<InputProps, 'onChange' | 'onClear'>;
 
 export type NumberInputValueProps = {
   stringValue?: string;
@@ -58,6 +58,11 @@ const NumberInput: React.FC<Props> = (props: Props) => {
     [format, decimalChar],
   );
 
+  const onClear = React.useCallback(() => {
+    setStringValue('');
+    setNumberValue(undefined);
+  }, []);
+
   const addStep = () => {
     const calculatedValue = (numberValue ? numberValue : 0) + (stepSize || 1);
     setStringValue(format(calculatedValue));
@@ -81,13 +86,15 @@ const NumberInput: React.FC<Props> = (props: Props) => {
       pattern={`[-]?[0-9${decimalChar}e]*`}
       onChange={onInputChange}
       onBlur={onBlur}
+      onClear={onClear}
       value={stringValue}
-      absoluteElements={
-        <React.Fragment>
-          <PlusButton onClick={addStep} />
-          <MinusButton onClick={subtractStep} />
+      addonWidth={58}
+      addonRight={
+        <Addon>
           <VerticalLine />
-        </React.Fragment>
+          <MinusButton onClick={subtractStep} />
+          <PlusButton onClick={addStep} />
+        </Addon>
       }
     />
   );

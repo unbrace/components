@@ -3,9 +3,9 @@ import { Add, Minus } from '../icons';
 
 export const PlusButton = styled(Add)`
   position: absolute;
-  top: 21px;
-  right: 10px;
   cursor: pointer;
+  top: 12px;
+  left: 34px;
 
   > svg {
     max-width: 17px;
@@ -16,9 +16,9 @@ export const PlusButton = styled(Add)`
 
 export const MinusButton = styled(Minus)`
   position: absolute;
-  top: 21px;
-  right: 37px;
   cursor: pointer;
+  top: 12px;
+  left: 10px;
 
   > svg {
     max-width: 17px;
@@ -28,10 +28,18 @@ export const MinusButton = styled(Minus)`
 `;
 
 export const VerticalLine = styled.div`
-  border-top: 1px solid ${props => props.theme.palette.neutral.shade3};
-  transform: rotate(90deg);
-  width: 39px;
+  border-left: ${props => props.theme.form.border.input.main};
+  width: 1px;
+  height: 100%;
+  display: inline-block;
+`;
+
+export const Addon = styled.div`
+  width: 80px;
   position: absolute;
-  right: 45px;
-  top: 28px;
+  display: block;
+  height: ${props => props.theme.form.height.input};
+  margin: ${props => props.theme.form.margin.main};
+  top: 0;
+  right: -19px;
 `;
