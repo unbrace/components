@@ -28,9 +28,7 @@ const NumberInput: React.FC<Props> = (props: Props) => {
   );
 
   const [numberValue, setNumberValue] = React.useState<number | undefined>(props.value || undefined);
-  const [stringValue, setStringValue] = React.useState<string | undefined>(
-    (props.value && format(props.value)) || undefined,
-  );
+  const [stringValue, setStringValue] = React.useState<string | undefined>((props.value && format(props.value)) || '');
 
   const onInputChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

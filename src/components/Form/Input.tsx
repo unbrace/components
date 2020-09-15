@@ -29,7 +29,8 @@ export type InputProps = {
 // eslint-disable-next-line react/display-name
 const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
   (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
-    const { error, errorAsBlock, label, name, noLabel, inlineLabel, onClear, isClearable } = props;
+    const { error, errorAsBlock, label, name, noLabel, inlineLabel, isClearable } = props;
+    const { onClear, ...rest } = props;
     if (props.type === TYPE_CHECKBOX) {
       return <Checkbox {...props} />;
     }
@@ -43,7 +44,7 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
         )}
         <RelativeContainer>
           <Input
-            {...props}
+            {...rest}
             addonWidth={props.addonWidth}
             inlineLabel={inlineLabel}
             hasError={Boolean(error)}
