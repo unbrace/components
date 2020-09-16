@@ -21,7 +21,7 @@ const NumberInput: React.FC<Props> = (props: Props) => {
   const { onChange, stepSize, decimalCharacter, precision } = props;
   const decimalChar = decimalCharacter || DECIMAL;
   const precisionNum = precision || PRECISION;
-  const FORMAT_REGEX = new RegExp(`^(-)?\\d+(\.\\d{${precisionNum}})$`);
+  const FORMAT_REGEX = new RegExp(`^(-)?\\d+(\\.\\d{${precisionNum}})$`);
   const replaceDecimals = (value: string, from: string, to: string) => value.replace(from, to);
 
   const toStringFormat = React.useCallback(
