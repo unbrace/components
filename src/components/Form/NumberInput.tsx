@@ -6,6 +6,7 @@ type Props = {
   onChange?: (values: NumberInputValueProps) => void;
   stepSize?: number;
   decimalCharacter?: string;
+  precision?: number;
   value?: number;
 } & Omit<InputProps, 'onChange' | 'onClear' | 'value'>;
 
@@ -15,23 +16,30 @@ export type NumberInputValueProps = {
 };
 
 const DECIMAL = ',';
+const PRECISION = 2;
 const NumberInput: React.FC<Props> = (props: Props) => {
-  const { onChange, stepSize, decimalCharacter } = props;
+  const { onChange, stepSize, decimalCharacter, precision } = props;
   const decimalChar = decimalCharacter || DECIMAL;
+  const precisionNum = precision || PRECISION;
+  const FORMAT_REGEX = new RegExp(`^(-)?\\d+(\.\\d{${precisionNum}})$`);
   const replaceDecimals = (value: string, from: string, to: string) => value.replace(from, to);
 
-  const format = React.useCallback(
-    (value: number) => {
-      return replaceDecimals(value === -0 ? '0' : value.toString(), '.', decimalChar);
-    },
-    [decimalChar],
+  const toStringFormat = React.useCallback(
+    (value: number) => replaceDecimals(value.toFixed(precisionNum), '.', decimalChar),
+    [decimalChar, precisionNum],
+  );
+
+  const toNumber = React.useCallback(
+    (numberValue: string) =>
+      Math.round(parseFloat(numberValue) * Math.pow(10, precisionNum)) / Math.pow(10, precisionNum),
+    [precisionNum],
   );
 
   const [numberValue, setNumberValue] = React.useState<number | undefined>(
     props.value !== undefined ? props.value : undefined,
   );
   const [stringValue, setStringValue] = React.useState<string | undefined>(
-    props.value !== undefined ? format(props.value) : '',
+    props.value !== undefined ? toStringFormat(props.value) : '',
   );
 
   const onInputChange = React.useCallback(
@@ -39,9 +47,8 @@ const NumberInput: React.FC<Props> = (props: Props) => {
       if (e.target.validity.valid) {
         setStringValue(e.target.value);
         const formatted = replaceDecimals(e.target.value, decimalChar, '.');
-        if (!isNaN(parseFloat(formatted)) && formatted.match(/[0-9]$/) && formatted.match(/^(-)?[0-9]/)) {
-          const newNumberValue = parseFloat(formatted);
-          setStringValue(format(newNumberValue));
+        if (!isNaN(parseFloat(formatted)) && FORMAT_REGEX.exec(formatted)) {
+          const newNumberValue = toNumber(formatted);
           setNumberValue(newNumberValue);
         }
         if (e.target.value === '') {
@@ -49,20 +56,20 @@ const NumberInput: React.FC<Props> = (props: Props) => {
         }
       }
     },
-    [format, decimalChar],
+    [decimalChar, toNumber, FORMAT_REGEX],
   );
 
   const onBlur = React.useCallback(
     (e: React.FocusEvent<HTMLInputElement>) => {
-      const parsed = parseFloat(replaceDecimals(e.target.value, decimalChar, '.'));
+      const parsed = toNumber(replaceDecimals(e.target.value, decimalChar, '.'));
       if (!isNaN(parsed)) {
-        setStringValue(format(parsed));
+        setStringValue(toStringFormat(parsed));
         setNumberValue(parsed);
       }
       props.onBlur?.(e);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [format, decimalChar],
+    [toStringFormat, decimalChar],
   );
 
   const onClear = React.useCallback((e: React.MouseEvent<Element>) => {
@@ -74,7 +81,7 @@ const NumberInput: React.FC<Props> = (props: Props) => {
 
   const onAddStep = (e: React.MouseEvent<Element>) => {
     const calculatedValue = (numberValue ? numberValue : 0) + (stepSize || 1);
-    setStringValue(format(calculatedValue));
+    setStringValue(toStringFormat(calculatedValue));
     setNumberValue(calculatedValue);
     const input = e.currentTarget.parentElement?.parentElement?.querySelector('input');
     input?.focus();
@@ -82,7 +89,7 @@ const NumberInput: React.FC<Props> = (props: Props) => {
 
   const onSubtractStep = (e: React.MouseEvent<Element>) => {
     const calculatedValue = (numberValue ? numberValue : 0) - (stepSize || 1);
-    setStringValue(format(calculatedValue));
+    setStringValue(toStringFormat(calculatedValue));
     setNumberValue(calculatedValue);
     const input = e.currentTarget.parentElement?.parentElement?.querySelector('input');
     input?.focus();
@@ -95,7 +102,7 @@ const NumberInput: React.FC<Props> = (props: Props) => {
 
   React.useEffect(() => {
     if (props.value !== undefined) {
-      setStringValue(format(props.value));
+      setStringValue(toStringFormat(props.value));
       setNumberValue(props.value);
     } else {
       setStringValue('');

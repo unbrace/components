@@ -38,6 +38,7 @@ export const Input: React.FunctionComponent<InputProps> = (props: InputProps) =>
         type="text"
         inlineLabel
         decimalCharacter=","
+        precision={4}
         isClearable
         value={numberValue2}
         onChange={(values: NumberInputValueProps) => setNumberValue2(values.numberValue)}
@@ -48,6 +49,7 @@ export const Input: React.FunctionComponent<InputProps> = (props: InputProps) =>
         name="number4"
         type="text"
         inlineLabel
+        precision={2}
         decimalCharacter=","
         value={numberValue2}
         onChange={(values: NumberInputValueProps) => setNumberValue2(values.numberValue)}
