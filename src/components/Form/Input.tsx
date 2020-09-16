@@ -52,7 +52,7 @@ const InputField: React.FunctionComponent<InputProps> = React.forwardRef(
             ref={ref}
           />
           {isClearable && onClear && props.value && (
-            <ClearButton moveToRightAmount={props.addonWidth} onClick={onClear} />
+            <ClearButton className="input__close" moveToRightAmount={props.addonWidth} onClick={onClear} />
           )}
           {props.addonRight && props.addonRight}
         </RelativeContainer>
@@ -112,20 +112,24 @@ export const Input = styled.input<{
 `;
 
 const ClearButton = styled(Close)<{ moveToRightAmount?: number }>`
-  position: absolute;
-  top: 20px;
-  right: ${props => (props.moveToRightAmount ? `${props.moveToRightAmount + 10}px` : '10px')};
-  cursor: pointer;
+  &.input__close {
+    &&& {
+      position: absolute;
+      top: 20px;
+      right: ${props => (props.moveToRightAmount ? `${props.moveToRightAmount + 10}px` : '10px')};
+      cursor: pointer;
 
-  > svg {
-    max-width: 17px;
-    max-height: 17px;
-    fill: ${props => props.theme.palette.neutral.shade4};
-  }
+      > svg {
+        max-width: 17px;
+        max-height: 17px;
+        fill: ${props => props.theme.palette.neutral.shade4};
+      }
 
-  &:hover {
-    > svg {
-      fill: ${props => props.theme.palette.neutral.shade5};
+      &:hover {
+        > svg {
+          fill: ${props => props.theme.palette.neutral.shade5};
+        }
+      }
     }
   }
 `;
