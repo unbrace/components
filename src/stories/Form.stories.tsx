@@ -49,7 +49,7 @@ export const Input: React.FunctionComponent<InputProps> = (props: InputProps) =>
         name="number4"
         type="text"
         inlineLabel
-        precision={2}
+        precision={0}
         decimalCharacter=","
         value={numberValue2}
         onChange={(values: NumberInputValueProps) => setNumberValue2(values.numberValue)}
