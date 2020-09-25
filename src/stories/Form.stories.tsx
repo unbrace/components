@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Input as InputComponent, NumberInput, NumberInputValueProps } from '../components';
+import { Input as InputComponent, NumberInput, NumberInputValueProps, Toggle as ToggleComponent } from '../components';
 import { InputProps } from '../components/Form/Input';
 
 export const Input: React.FunctionComponent<InputProps> = (props: InputProps) => {
@@ -80,6 +80,20 @@ export const Checkbox: React.FunctionComponent<InputProps> = () => (
   <React.Fragment>
     <InputComponent name="basic" type="checkbox" label="Basic" />
     <InputComponent disabled name="disabled" type="checkbox" label="Disabled" />
+  </React.Fragment>
+);
+
+export const Toggle: React.FunctionComponent<InputProps> = () => (
+  <React.Fragment>
+    <ToggleComponent
+      label="Toggle"
+      name="toggle"
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e.target.checked)}
+    />
+    <ToggleComponent
+      name="toggleNoLabel"
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e.target.checked)}
+    />
   </React.Fragment>
 );
 

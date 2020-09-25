@@ -31,3 +31,4 @@ export { Sidebar } from './Sidebar';
 export { Flexer } from './Positioning';
 export { Divider, Spacer } from './Spacing';
 export { default as NumberInput, NumberInputValueProps } from './Form/NumberInput';
+export { default as Toggle } from './Form/Toggle';
