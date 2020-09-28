@@ -1,0 +1,41 @@
+import { Meta, Story, Preview, Anchor, Description, SubTitle, Source, Props } from '@storybook/addon-docs/blocks';
+import { UnbraceThemeProvider } from '../components';
+import { EmptyState, Button } from '../components';
+import ReactDOM from 'react-dom';
+
+<Meta title="EmptyState" component={EmptyState} />
+
+# Empty State
+
+## Props
+
+<Props of={EmptyState} />
+
+## Usage example
+
+<Source code='
+<EmptyState
+src={yourImageSource}
+title="your title"
+subTitle="your subTitle"
+callToAction={<Button>Action</Button>}
+/>' />
+
+## Empty State components
+
+...
+
+<Preview height={200}>
+  <Story name="Empty State">
+    <UnbraceThemeProvider>
+      <EmptyState
+        src="https://nummerplaat-direct.be/wp-content/uploads/2019/08/placeholder.png"
+        title="Oh no!"
+        subTitle="It's super empty here, tap below to fill it up!"
+        callToAction={
+            <Button>Tap here!</Button>
+        }
+      />
+    </UnbraceThemeProvider>
+  </Story>
+</Preview>
