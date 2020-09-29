@@ -11,7 +11,12 @@ type Props = {
   withGlobalStyle?: boolean;
 };
 
-const UnbraceThemeProvider: React.FunctionComponent<Props> = ({ children, customTheme, customBaseTheme }: Props) => {
+const UnbraceThemeProvider: React.FunctionComponent<Props> = ({
+  children,
+  customTheme,
+  customBaseTheme,
+  withGlobalStyle,
+}: Props) => {
   const baseTheme = customBaseTheme ? merge(originalBaseTheme, customBaseTheme) : originalBaseTheme;
   const theme = customTheme ? merge(componentTheme(baseTheme), customTheme) : componentTheme(baseTheme);
 
