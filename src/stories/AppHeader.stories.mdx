@@ -1,0 +1,46 @@
+import {UnbraceThemeProvider, AppHeader, IconButton, Add, Close, Paginator } from '../components';
+import { Meta, Story, Preview, Props, Source } from '@storybook/addon-docs/blocks';
+
+<Meta title="AppHeader" component={AppHeader} />
+
+# AppHeader
+
+## Props
+
+<Props of={AppHeader} />
+
+## Usage example
+
+<Source code='
+<AppHeader 
+leftContent={<IconButton><Add /></IconButton>} 
+rightContent={<Paginator {...pagerProps} />}
+/>' />
+
+<Preview >
+  <Story name="AppHeader" parameters={{props: {propTablesExclude: [UnbraceThemeProvider, 'GlobalStyleComponent' ]}}} >
+    <UnbraceThemeProvider>
+        <div style={{ width: 800 }}>
+            <AppHeader 
+            leftContent={
+                <React.Fragment>
+                    <IconButton>
+                        <Add />
+                    </IconButton>
+                    <IconButton>
+                        <Close />
+                    </IconButton>
+                </React.Fragment>} 
+            rightContent={<Paginator 
+                pageIndex={1}
+                pageSize={20}
+                totalItems={1000}
+                hasNextPage={false}
+                onPageIndexChange={console.log}
+                onPageSizeChange={console.log}
+                pageSizes={[5, 10, 20, 50, 100]} />}
+            />
+        </div>
+    </UnbraceThemeProvider>
+    </Story>
+</Preview>

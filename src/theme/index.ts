@@ -22,6 +22,7 @@ import getHeaderTheme from './components/header';
 import getSkeletonTheme from './components/skeleton';
 import getPaperTheme from './components/paper';
 import getUploadTheme from './components/upload';
+import getAppHeaderTheme from './components/appHeader';
 
 const baseTheme = {
   globals: globals,
@@ -31,6 +32,7 @@ const baseTheme = {
 
 const componentTheme = (baseTheme: DefaultTheme) => ({
   alerts: getAlertsTheme(baseTheme),
+  appHeader: getAppHeaderTheme(baseTheme),
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
   datePicker: getDatePickerTheme(baseTheme),

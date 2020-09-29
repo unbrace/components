@@ -13,7 +13,7 @@ type Props = {
 
 const Section = styled('section')<Props & AnimationProps>`
   background-color: ${props => props.theme.paper.backgroundColor};
-  border-radius: ${props => props.theme.paper.borderRadius};
+  border-radius: ${props => props.theme.paper.borderRadius.main};
   box-shadow: ${props => props.theme.paper.boxShadow.regular};
   margin: ${props => props.theme.paper.margin};
   padding: ${props => props.theme.paper.padding.vertical} ${props => props.theme.paper.padding.vertical};

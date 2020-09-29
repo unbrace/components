@@ -35,3 +35,5 @@ export { default as Toggle } from './Form/Toggle';
 export { default as EmptyState } from './EmptyState';
 export { SkeletonGenerator, ContentLoader } from './Skeleton';
 export { Paper } from './Paper';
+export { default as AppHeader } from './AppHeader';
+export { default as Coloring } from './Coloring';
