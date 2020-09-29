@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 type Props = {
-  variant?: 'faded' | 'success' | 'danger' | 'warning';
+  variant?: 'faded' | 'success' | 'danger' | 'warning' | 'primary';
 } & React.HTMLAttributes<HTMLSpanElement>;
 
 const Coloring = styled.span<Props>`

@@ -23,10 +23,10 @@ type TextAsTagProps = {
     | 'pre';
 };
 
-type TextProps = CommonTextProps & HTMLAttributes<HTMLElement>;
+type TextProps = { weight?: 'bolder' } & CommonTextProps & HTMLAttributes<HTMLElement>;
 
 const StyledText = styled.p<TextAsTagProps & TextProps>`
-  font-weight: 400;
+  font-weight: ${props => (props.weight === 'bolder' ? 500 : 400)};
   font-family: ${props => props.theme.typography.fontFamily};
   font-size: ${props => props.theme.text.fontSize.text[props.size || 'm']};
   color: ${props => props.theme.text.color.text[props.color || 'neutral'][props.colorLevel || 'normal']};
