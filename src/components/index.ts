@@ -11,6 +11,7 @@ export * from './Alerts';
 export { Drawer } from './Drawer';
 export { Heading, Text } from './Text';
 export { Pill } from './Pill';
+export { default as Upload } from './Upload';
 export {
   default as Table,
   TableBody,
@@ -25,9 +26,11 @@ export {
 } from './Table';
 export { default as Input } from './Form/Input';
 export { DatePicker, DatePickerInput, RangeDatePicker, useRangeDatePickerInputs } from './DatePicker';
-export { Modal, ModalBody, ModalHeader, ModalFooter } from './Modal';
+export { Modal, ModalBody, ModalHeader, ModalFooter, ModalContent } from './Modal';
 export { Sidebar, Search, Counter } from './Sidebar';
 export { Flexer } from './Positioning';
 export { Divider, Spacer } from './Spacing';
+export { default as NumberInput, NumberInputValueProps } from './Form/NumberInput';
+export { default as Toggle } from './Form/Toggle';
 export { SkeletonGenerator, ContentLoader } from './Skeleton';
 export { Paper } from './Paper';

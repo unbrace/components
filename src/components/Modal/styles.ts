@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { animations } from '../../theme/keyframes';
 import { ModalStyleProps } from './ModalContainer';
 
@@ -18,6 +18,13 @@ export const ModalWrapper = styled('section')<ModalStyleProps>`
   ${props => props.size === 'small' && 'width: 300px;'};
   ${props => props.size === 'medium' && 'width: 700px;'};
   ${props => props.size === 'large' && 'width: 900px;'};
+  ${props =>
+    props.position &&
+    css`
+      position: fixed;
+      top: ${props.position.top}px;
+      left: ${props.position.left}px;
+    `};
 `;
 
 export const ModalContentWrapper = styled.section`
@@ -71,7 +78,7 @@ export const ModalHeader = styled.header`
 `;
 
 export const ModalBody = styled.section`
-  max-height: 74vh;
+  max-height: 65vh;
   overflow-y: auto;
   padding: ${props => props.theme.modal.padding};
   white-space: pre-wrap;

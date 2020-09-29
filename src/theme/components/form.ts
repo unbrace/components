@@ -8,10 +8,18 @@ const getFormTheme = (theme: DefaultTheme) => ({
       error: `1px solid ${theme.palette.danger.shade3}`,
       focus: `1px solid ${theme.palette.primary.shade3}`,
     },
+    toggle: {
+      off: `2px solid ${theme.palette.neutral.shade2}`,
+      on: `2px solid ${theme.palette.primary.shade4}`,
+    },
   },
   borderRadius: {
     checkbox: '3px',
     input: '5px',
+    toggle: {
+      inner: '50%',
+      outer: '17px',
+    },
   },
   boxShadow: {
     main: `inset 0px 2px 2px ${theme.palette.neutral.shade3}`,
@@ -38,6 +46,20 @@ const getFormTheme = (theme: DefaultTheme) => ({
   background: {
     main: theme.palette.neutral.shade0,
     disabled: theme.palette.neutral.shade1,
+    toggle: {
+      off: theme.palette.neutral.shade3,
+      on: theme.palette.primary.shade4,
+    },
+  },
+  height: {
+    input: '40px',
+    toggle: {
+      inner: '20px',
+      outer: '32px',
+    },
+  },
+  width: {
+    toggle: '64px',
   },
   margin: {
     main: '8px 0 25px',

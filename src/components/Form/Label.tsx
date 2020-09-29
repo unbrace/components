@@ -11,6 +11,7 @@ export const Label = styled.label<Props>`
   ${props =>
     props.inlineLabel &&
     css`
+      z-index: 1;
       position: absolute;
       top: ${props.theme.form.top.label.absolute};
       left: ${props.theme.form.left.label.absolute};

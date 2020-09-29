@@ -4,7 +4,7 @@ import { StyledTooltip } from './styles';
 type Props = {
   children: React.ReactElement;
   positionAbsolute?: boolean;
-  position?: 'top' | 'bottom' | 'left' | 'right';
+  position?: 'top' | 'bottom' | 'left' | 'right' | 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
   content?: string | number | React.ReactNode;
   isActive?: boolean;
   boxed?: boolean;
@@ -26,6 +26,10 @@ const calculateLeft = (e: React.MouseEvent, position: string, positionAbsolute?:
   const { left, width, right } = e.currentTarget.getBoundingClientRect();
   if (position === 'right') return positionAbsolute ? undefined : right + TOOLTIP_SPACING;
   if (position === 'left') return positionAbsolute ? 0 - TOOLTIP_SPACING : left - TOOLTIP_SPACING;
+  if (position === 'top-left' || position === 'bottom-left')
+    return positionAbsolute ? 0 + TOOLTIP_SPACING : left + TOOLTIP_SPACING;
+  if (position === 'top-right' || position === 'bottom-right')
+    return positionAbsolute ? undefined : right - TOOLTIP_SPACING;
 
   return positionAbsolute ? width / 2 : left + width / 2;
 };
@@ -38,8 +42,10 @@ const calculateRight = (position: string, positionAbsolute?: boolean) => {
 
 const calculateTop = (e: React.MouseEvent, position: string, positionAbsolute?: boolean) => {
   const { top, height, bottom } = e.currentTarget.getBoundingClientRect();
-  if (position === 'bottom') return positionAbsolute ? undefined : bottom + TOOLTIP_SPACING;
-  if (position === 'top') return positionAbsolute ? 0 - TOOLTIP_SPACING : top - TOOLTIP_SPACING;
+  if (position === 'bottom' || position === 'bottom-right' || position === 'bottom-left')
+    return positionAbsolute ? undefined : bottom + TOOLTIP_SPACING;
+  if (position === 'top' || position === 'top-left' || position === 'top-right')
+    return positionAbsolute ? 0 - TOOLTIP_SPACING : top - TOOLTIP_SPACING;
 
   return positionAbsolute ? height / 2 : top + height / 2;
 };

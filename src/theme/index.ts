@@ -21,6 +21,7 @@ import getSidebarTheme from './components/sidebar';
 import getHeaderTheme from './components/header';
 import getSkeletonTheme from './components/skeleton';
 import getPaperTheme from './components/paper';
+import getUploadTheme from './components/upload';
 
 const baseTheme = {
   globals: globals,
@@ -28,7 +29,7 @@ const baseTheme = {
   typography: defaultTypography,
 };
 
-const componentTheme = {
+const componentTheme = (baseTheme: DefaultTheme) => ({
   alerts: getAlertsTheme(baseTheme),
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
@@ -45,13 +46,14 @@ const componentTheme = {
   pill: getPillTheme(baseTheme),
   scrollbar: getScrollbarTheme(baseTheme),
   sidebar: getSidebarTheme(baseTheme),
+  upload: getUploadTheme(baseTheme),
   header: getHeaderTheme(),
   skeleton: getSkeletonTheme(baseTheme),
   paper: getPaperTheme(baseTheme),
   ...baseTheme,
-};
+});
 
-export type ComponentTheme = typeof componentTheme;
+export type ComponentTheme = ReturnType<typeof componentTheme>;
 export type DefaultTheme = typeof baseTheme;
 export type AnimationProps = {
   state: TransitionStatus;
