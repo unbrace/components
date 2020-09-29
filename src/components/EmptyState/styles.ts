@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 32px 0;
+  margin: 32px auto;
   max-width: 400px;
   text-align: center;
   animation: ${animations.fadeIn} 0.25s linear;
