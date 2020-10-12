@@ -27,8 +27,13 @@ export {
 export { default as Input } from './Form/Input';
 export { DatePicker, DatePickerInput, RangeDatePicker, useRangeDatePickerInputs } from './DatePicker';
 export { Modal, ModalBody, ModalHeader, ModalFooter, ModalContent } from './Modal';
-export { Sidebar } from './Sidebar';
+export { Sidebar, Search, Counter } from './Sidebar';
 export { Flexer } from './Positioning';
 export { Divider, Spacer } from './Spacing';
 export { default as NumberInput, NumberInputValueProps } from './Form/NumberInput';
 export { default as Toggle } from './Form/Toggle';
+export { default as EmptyState } from './EmptyState';
+export { SkeletonGenerator, ContentLoader } from './Skeleton';
+export { Paper } from './Paper';
+export { default as AppHeader } from './AppHeader';
+export { default as Coloring } from './Coloring';

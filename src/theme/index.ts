@@ -18,7 +18,11 @@ import getFormTheme from './components/form';
 import getScrollbarTheme from './components/scrollbar';
 import getModalTheme from './components/modal';
 import getSidebarTheme from './components/sidebar';
+import getHeaderTheme from './components/header';
+import getSkeletonTheme from './components/skeleton';
+import getPaperTheme from './components/paper';
 import getUploadTheme from './components/upload';
+import getAppHeaderTheme from './components/appHeader';
 
 const baseTheme = {
   globals: globals,
@@ -28,6 +32,7 @@ const baseTheme = {
 
 const componentTheme = (baseTheme: DefaultTheme) => ({
   alerts: getAlertsTheme(baseTheme),
+  appHeader: getAppHeaderTheme(baseTheme),
   badge: getBadgeTheme(baseTheme),
   button: getButtonTheme(baseTheme),
   datePicker: getDatePickerTheme(baseTheme),
@@ -44,6 +49,9 @@ const componentTheme = (baseTheme: DefaultTheme) => ({
   scrollbar: getScrollbarTheme(baseTheme),
   sidebar: getSidebarTheme(baseTheme),
   upload: getUploadTheme(baseTheme),
+  header: getHeaderTheme(),
+  skeleton: getSkeletonTheme(baseTheme),
+  paper: getPaperTheme(baseTheme),
   ...baseTheme,
 });
 
