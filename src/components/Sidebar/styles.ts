@@ -4,10 +4,10 @@ import { Flexer } from '../Positioning';
 export const SearchWrapper = styled(Flexer)`
   height: ${props => props.theme.header.height};
   padding: 10px;
-  background-color: ${props => props.theme.palette.neutral.shade0};
+  background-color: ${props => props.theme.sidebar.background.main};
   flex-shrink: 0;
-  border-bottom: solid 2px ${props => props.theme.palette.neutral.shade2};
-  color: ${props => props.theme.palette.neutral.shade3};
+  border-bottom: ${props => props.theme.sidebar.border.bottomSearch};
+  color: ${props => props.theme.sidebar.color.searchWrap};
   position: sticky;
   top: 0;
 
@@ -21,7 +21,8 @@ export const SearchWrapper = styled(Flexer)`
     box-sizing: border-box;
     font-weight: 500;
     letter-spacing: 0.5px;
-    color: ${props => props.theme.palette.neutral.shade8};
+    color: ${props => props.theme.sidebar.color.searchInput};
+    font-family: inherit;
 
     &::placeholder {
       color: ${props => props.theme.form.color.input.placeholder};
@@ -32,7 +33,7 @@ export const SearchWrapper = styled(Flexer)`
     transition: all 0.2s linear;
     margin-right: 10px;
     cursor: pointer;
-    fill: ${props => props.theme.palette.neutral.shade4};
+    fill: ${props => props.theme.sidebar.fill.search};
     width: 21px;
     height: 21px;
   }
