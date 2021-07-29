@@ -19,7 +19,7 @@ export type NumberInputValueProps = {
 const DECIMAL = ',';
 const PRECISION = 2;
 const NumberInput: React.FC<Props> = (props: Props) => {
-  const { onChange, stepSize, decimalCharacter, precision } = props;
+  const { onChange, stepSize, decimalCharacter, precision, defaultValue } = props;
   const decimalChar = decimalCharacter || DECIMAL;
   const precisionNum = precision === 0 ? Number('0') : precision || PRECISION;
   const FORMAT_REGEX = new RegExp(`^(-)?\\d+(\\.\\d{${precisionNum}})${precisionNum === 0 ? '{0}' : ''}$`);
@@ -119,7 +119,7 @@ const NumberInput: React.FC<Props> = (props: Props) => {
       onChange={onInputChange}
       onBlur={onBlur}
       onClear={onClear}
-      value={stringValue}
+      value={defaultValue !== null ? defaultValue || '' : stringValue}
       addonWidth={58}
       addonRight={
         <Addon>
