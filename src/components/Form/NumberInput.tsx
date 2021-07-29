@@ -8,6 +8,7 @@ type Props = {
   decimalCharacter?: string;
   precision?: number;
   value?: number;
+  defaultValue?: number;
 } & Omit<InputProps, 'onChange' | 'onClear' | 'value'>;
 
 export type NumberInputValueProps = {
@@ -36,10 +37,10 @@ const NumberInput: React.FC<Props> = (props: Props) => {
   );
 
   const [numberValue, setNumberValue] = React.useState<number | undefined>(
-    props.value !== undefined ? props.value : undefined,
+    props.value || props.defaultValue || undefined,
   );
   const [stringValue, setStringValue] = React.useState<string | undefined>(
-    props.value !== undefined ? toStringFormat(props.value) : '',
+    props.value ? toStringFormat(props.value) : props.defaultValue ? toStringFormat(props.defaultValue) : '',
   );
 
   const onInputChange = React.useCallback(
