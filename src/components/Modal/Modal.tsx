@@ -11,12 +11,22 @@ type Props = {
   isVisible?: boolean;
   title?: string;
   keepOpenLabel?: string;
+  disableCloseOnEsc?: boolean;
 };
 
 export type ToggleModalType = () => void;
 export type ModalSizes = 'small' | 'medium' | 'large';
 
-const Modal: React.FC<Props> = ({ isVisible, children, contentProps, size, title, content, keepOpenLabel }: Props) => {
+const Modal: React.FC<Props> = ({
+  isVisible,
+  children,
+  contentProps,
+  size,
+  title,
+  content,
+  keepOpenLabel,
+  disableCloseOnEsc,
+}: Props) => {
   const [isOpen, toggleIsOpen] = useToggle(false);
   const [keepOpen, toggleKeepOpen] = useToggle(false);
 
@@ -52,6 +62,7 @@ const Modal: React.FC<Props> = ({ isVisible, children, contentProps, size, title
             contentProps={contentProps}
             size={size}
             title={title}
+            disableCloseOnEsc={disableCloseOnEsc}
           />,
           document.getElementById('modal') as HTMLElement,
         )}

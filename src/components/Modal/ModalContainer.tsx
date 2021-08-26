@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Input } from '../';
 import { ModalWrapper, ModalOverlay } from './styles';
 import { ModalSizes } from './Modal';
+import useKeyboardShortcut from 'use-keyboard-shortcut';
 import 'mousetrap';
 
 type Props = {
@@ -13,6 +14,7 @@ type Props = {
   handleClick: (e: React.MouseEvent) => void;
   contentProps?: any;
   keepOpenLabel?: string;
+  disableCloseOnEsc?: boolean;
 } & ModalStyleProps;
 
 export type ModalPositionProps = { top: number; left: number };
@@ -38,11 +40,13 @@ const ModalContainer: React.FunctionComponent<Props> = ({
   toggleKeepOpen,
   size,
   title,
+  disableCloseOnEsc,
   keepOpenLabel,
   ...props
 }: Props) => {
   const [position, setPosition] = React.useState<ModalPositionProps | undefined>(undefined);
   const ref = React.useRef<HTMLElement>(null);
+  useKeyboardShortcut(['Escape'], disableCloseOnEsc ? () => undefined : () => closeModal());
 
   const handleMovement = (position: ModalPositionProps) => {
     if (ref.current) {
